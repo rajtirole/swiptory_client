@@ -2,7 +2,7 @@
 
 function App() {
   return (
-<div>app</div>
+<div>swiptory</div>
   );
 }
 
