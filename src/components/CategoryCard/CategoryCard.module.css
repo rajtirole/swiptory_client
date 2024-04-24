@@ -1,0 +1,42 @@
+.CategoryCard{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    box-sizing: initial;
+    cursor: pointer;
+    position: relative;
+    height: 13rem;
+    width: 13rem;
+    border-radius: 15px;
+}
+.CategoryCard::-webkit-scrollbar {
+    display: none;
+   
+  }
+  .CategoryCardBorder{
+    border: 5px solid #00acd2;
+    
+  }
+.CategoryCard>img{
+   width: 100%;
+   height: 100%;
+   border-radius: 10px;
+  
+    
+
+
+filter: brightness(50%);
+   
+    
+}
+.CategoryCard>h2{
+    color: #fff;
+    font-size: var(--fs-3);
+    font-weight: 700;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+

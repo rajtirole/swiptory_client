@@ -1,0 +1,88 @@
+.Sign_up_button{
+   
+        padding: 10px 15px;
+        border-radius: 15px;
+        border: none;
+        color: #ffff;
+        background-color:#FF7373;
+        cursor: pointer;
+        font-size: var(--fs-5);
+        font-weight: var(--font-bold);
+        
+        
+}
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.8))
+  }
+.RegisterButton{
+    background-color: var(--secondary-color);
+    padding: 5px 10px;
+    border-radius: 15px;
+        border: none;
+        color: #000000;
+        cursor: pointer;
+        font-size: var(--fs-5);
+        font-weight: var(--font-bold);
+        
+
+}
+
+.RegisterContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    gap: 2rem;
+}
+.heading{
+    font-size: var(--fs-3);
+    font-weight: var(--font-bold);
+}
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+}
+.inputValueContainer{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    font-weight: var(--font-bold);
+    font-size: var(--fs-4);
+    align-items: center;
+    justify-content: space-between;
+}
+.input{
+    border: 1px solid #000000;
+    width: 100%;
+    padding: 5px 10px;
+    display: flex;
+}
+.input>input{
+    outline:none;
+    border: none;
+    width: 100%;
+}
+.input>input::placeholder{
+   color: #8E8E8E;
+   font-weight: 500;
+   font-size: var(--fs-5);
+}
+
+.errorContainer{
+    color: #FF0E0E;
+    font-size: var(--fs-5);
+    font-weight: var(--font-bold);
+}
+.declineImageContainer{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}

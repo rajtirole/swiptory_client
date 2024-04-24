@@ -1,0 +1,153 @@
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    /* width: 100%; */
+}
+.slideContainer{
+    font-weight: 500;
+
+}
+.SlideButtonContainer{
+    display: flex;
+    gap: 1rem;
+
+}
+.feilds{
+    display: flex;
+    gap: 1rem;
+    font-weight: var(--fs-bold);
+    font-size: var(--fs-4);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+
+}
+.slide{
+    width: 100%;
+}
+.inputcontainers{
+    width: 50%;
+
+}
+.inputcontainers>select{
+    width: 100%;
+}
+.feilds>div>input::placeholder{
+    font-weight: 700;
+    /* font-size: var(--fs-4); */
+
+}
+
+.inputcontainers>input{
+    width: 100%;
+}
+.SlideButtonContainer>div>button{
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    font-size: var(--fs-4);
+    font-weight: var(--fs-bold);
+    border-radius: 10px;
+    cursor: pointer;
+
+
+}
+.SlideButtonContainer>div{
+    box-shadow: 0px 4px 15px 0px #0000001A;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+
+}
+.SlideButtonContainer>div>img{
+    top: 0;
+    right: 0;
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    cursor: pointer;
+
+}
+.slideContainer{
+    position: relative;
+    padding: 10px 15px;
+}
+.slideContainer>p{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #474141;
+    font-size: 0.5rem;
+
+}
+.navigation{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.navigation>div{
+    display: flex;
+    gap: 2rem;
+}
+.navigation>div>button{
+   padding: 10px 15px;
+   font-weight: 700;
+   font-size: var(--fs-5);
+   border: none;
+   border-radius: 10px;
+   color: #ffff;
+   cursor: pointer;
+}
+.previousButton{
+    background-color: #7EFF73;
+}
+.nextButton{
+    background-color: #73ABFF;
+}
+.postButton{
+    background-color: var(--primary-color);
+}
+.inputContainer{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+
+}
+.slide{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.labelContainer{
+    width: 40%;
+    display: flex;
+    align-items: flex-start;
+}
+.selectContainer{
+    padding: 5px 10px;
+    width: max-content;
+    color: #474141;
+    font-weight: 700;
+
+
+}
+.selectContainer option{
+    padding: 50px 10px;
+    width: max-content;
+}
+.inputcontainers>input{
+    padding: 5px 10px;
+}
+.SlideButtonContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.validationErrorContainer{
+    width: 100%;
+    color: #FF0E0E;
+}

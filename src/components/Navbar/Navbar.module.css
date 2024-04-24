@@ -1,0 +1,27 @@
+.nav_bar_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    font-size: var(--fs-4);
+    font-weight: var(--font-bold);
+    box-shadow: 0px 4px 15px 0px #00000026;
+    line-height: 1rem;
+    max-height: 5rem;
+
+}
+.nav_bar_container>h1{
+    cursor: pointer;
+    font-size: var(--fs-2);
+    
+}
+.nav_bar_container{
+    font-weight: var(--font-bold);
+    font-size: var(--fs-2);
+}
+.nav_bar_container_right_side{
+    display: flex;
+    gap:2rem;
+    align-items: center;
+    
+}
