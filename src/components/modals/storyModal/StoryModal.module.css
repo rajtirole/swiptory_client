@@ -1,0 +1,177 @@
+.Overlay {
+    z-index: 200;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9));
+  }
+  .modalContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: none;
+  }
+  .previousStoryContainer{
+    min-width: 20%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: ;
+    
+  }
+  .previousStoryContainer>button{
+    color: #ffff;
+    font-weight: var(--fs-bold);
+    background: none;
+    border: none;
+  font-size: 3rem;
+  cursor: pointer;
+    
+  }
+  .nextStoryContainer>button{
+    color: #ffff;
+    font-weight: var(--fs-bold);
+    background: none;
+    border: none;
+  font-size: 3rem;
+  cursor: pointer;
+    
+  }
+  .nextStoryContainer{
+
+    min-width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    height: 100%;
+   
+  }
+  .storyContainer{
+    flex: 1; /* Take up remaining space */
+    justify-content: center;
+    align-items: center;
+    /* min-width: 20%; */
+    display: flex;
+    position: relative;
+
+    
+  }
+  .postContainer{
+    width: 60%;
+        height: 100%;
+   border-radius: 10px;
+   position: relative;
+    box-shadow: 0px 4px 12px rgba(234, 232, 232, 0.9); /* Add this line for shadow */
+  }
+    .postContainer img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* This ensures the image covers the entire container without stretching */
+        border-radius: 10px;
+      }
+ 
+  .storyNavigationContainer{
+   position: absolute;
+   color: #ffff;
+   font-weight: var(--fs-bold);
+   font-size: var(--fs-4);
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   top: 0;
+   width: 100%;
+   padding: 0 5px;
+
+
+  }
+  .storyContentContainer{
+   position: absolute;
+   color: #ffff;
+   font-weight: var(--fs-bold);
+   font-size: var(--fs-5);
+   bottom: 5px;
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+    padding: 5px 5px;
+    width: 100%;
+
+  }
+
+  .bookmarkContainer{
+    height: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+  .bookmarkContainer>img{
+    height: 100%;
+    width: 100%;
+    object-fit:contain;
+
+
+  }
+ .shareContainer{
+    display: flex;
+    height: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100%;
+ }
+ .shareContainer>img{
+   height: 100%;
+   width: 100%;
+   object-fit: contain;
+   margin: 0;
+   padding: 0;
+   width: fit-content;
+   padding: 4px;
+   cursor: pointer;
+ }
+ .storyContent{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+ }
+
+
+
+
+ .likeIcon {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .liked {
+    transform: scale(1.2); /* Makes the heart slightly bigger when liked */
+  }
+  
+  .liked img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(100deg) brightness(100%) contrast(100%);
+  }
+
+.bookmarkContainer>img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    width: fit-content;
+
+}
+.copyLinkToClipboardContainer{
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: none;
+    font-weight: 700;
+    font-size: var(--fs-5);
+    color: #FF0000;
+}

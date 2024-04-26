@@ -34,6 +34,7 @@ export function PostsProvider({ children }) {
       const response = await getStories();
       if (response?.data) {
         setPosts(response.data);
+        console.log(posts);
         return true;
     }
     } catch (error) {
@@ -43,13 +44,12 @@ export function PostsProvider({ children }) {
     }
   };
   const fetchNextPosts = async (userId = null,postIndex,postIndexLimit,category) => {
-    console.log('jfkjaslkjf');
     setIsLoading(true);
     try {
       // Fetch posts from your backend or database
       const response = await getNextStories( userId = null,postIndex,postIndexLimit,category);
-      if (response?.data) {
-        setPosts(response.data);
+        if (response?.data) {
+        setPosts({...posts,[category]:[...posts[category],...response.data.posts]}  );
         return true;
     }
     } catch (error) {

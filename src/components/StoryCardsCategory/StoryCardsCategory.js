@@ -5,17 +5,22 @@ import { usePostsContext } from "../../context/PostContext";
 import style from "./StoryCardsCategory.module.css";
 import foodImage from "../../assets/Food (4).png";
 import editIcon from "../../assets/Group (2).png";
-const StoryCardsCategory = ({ stories: posts }) => {
+import { useNavigate } from 'react-router-dom';
+
+import StoryModal from "../modals/storyModal/StoryModal";
+
+const StoryCardsCategory = ({ stories: posts,Categorie }) => {
   const { isAuthenticated, user } = useUserContext();
   const { fetchPosts, fetchNextPosts } = usePostsContext();
+  
 
   const [displayedPosts, setDisplayedPosts] = useState(4); // Number of stories to display initially
-  const [displayedStory, setDisplayedStory] = useState(displayedPosts[0]); // Number of stories to display initially
+  const [displayedStory, setDisplayedStory] = useState(''); // Number of stories to display initially
   const handleSeeMore = () => {
     setDisplayedPosts((prev) => prev + 4);
     const postIndex = posts.length;
     const postIndexLimit = postIndex + 4;
-    const category = posts?.[0].category;
+    const category = Categorie.name;
     console.log(postIndex, postIndexLimit, category);
     fetchNextPosts(user.id, postIndex, postIndexLimit, category); // Increase the number of stories to display by 4
   };
@@ -24,14 +29,28 @@ const StoryCardsCategory = ({ stories: posts }) => {
     return isAuthenticated && user.id === postId;
   };
   console.log(posts);
+  const navigate = useNavigate();
+
+  const handleCardClick = (post) => {
+    openModal();
+    setDisplayedStory(post)
+  };
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <>
       {posts && posts.length ? (
-        <div className={style.StoriesCardContainer}>
+        <div className={style.StoriesCardContainer}>   
           <div className={style.StoryCardsContainer}>
             {posts.slice(0, displayedPosts).map((post) => (
-              <div className={style.storyCard}>
+              <div className={style.storyCard} onClick={() => handleCardClick(post)}>
                 <img
                   src={post?.stories?.[0].image}
                   onError={(e) => {
@@ -51,7 +70,9 @@ const StoryCardsCategory = ({ stories: posts }) => {
                   </div>
                 )}    
               </div>
+              
             ))}
+            <StoryModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} displayedStory={displayedStory} setDisplayedStory={setDisplayedStory}></StoryModal>
           </div>
           
           <div>

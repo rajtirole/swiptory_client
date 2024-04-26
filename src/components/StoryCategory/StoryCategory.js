@@ -5,7 +5,7 @@ const StoryCategory = ({ Categorie ,stories=[]}) => {
   return (
     <div className={style.StoryCategoryContainer}>
       <h2>{`Top Stories About ${Categorie.name}`}</h2>
-      <StoryCardsCategory stories={stories}></StoryCardsCategory>
+      <StoryCardsCategory stories={stories} Categorie={Categorie}></StoryCardsCategory>
     </div>
   );
 };

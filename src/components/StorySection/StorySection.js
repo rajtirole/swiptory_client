@@ -10,7 +10,7 @@ console.log(Categorie);
 const StorySection = () => {
   const { posts } = usePostsContext()
   const [categoriesPosts,setCategoriesPosts]=useState(null)
-console.log(categoriesPosts);
+console.log(posts);
 
   return (
     <div>

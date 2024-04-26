@@ -2,6 +2,7 @@ import { BACKEND_URL } from "../constants/apiConstant"
 import Cookies from 'js-cookie';
 import axios from 'axios'
 
+
 axios.defaults.withCredentials = true;
 
 export const getCurrentUser=async()=>{
@@ -125,7 +126,11 @@ export const getStories=async()=>{
       }
 
 }
+
 export const getNextStories=async(userId = null,postIndex,postIndexLimit,category)=>{
+    console.log( postIndex,
+      postIndexLimit,
+      category);
       try {
           let options = {
               method: "POST",
@@ -139,11 +144,67 @@ export const getNextStories=async(userId = null,postIndex,postIndexLimit,categor
                 category
               }
             };
-            let queryString = new URLSearchParams(options.params).toString();
 
-// Append the query string to the URL
-options.url = `${options.url}?${queryString}`;
-console.log(options);
+          const res =await axios(options)
+          console.log(res);
+          return res?.data;
+      } catch (error) {
+        console.log(error);
+        throw error.response
+        
+      }
+
+}
+
+export const getStory=async({id})=>{
+      try {
+          let options = {
+              method: "GET",
+              headers: { "content-type": "application/json" },
+              url:`${BACKEND_URL}/stories/getStory/${id}`,
+              // withCookies:true,
+              // withCredentials:true,
+             
+            };
+
+          const res =await axios(options)
+          return res?.data;
+      } catch (error) {
+        console.log(error);
+        throw error.response
+        
+      }
+
+}
+export const likeStory=async({id})=>{
+      try {
+          let options = {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              url:`${BACKEND_URL}/stories/likeStory/${id}`,
+              withCookies:true,
+              withCredentials:true,
+            };
+
+          const res =await axios(options)
+          console.log(res);
+          return res?.data;
+      } catch (error) {
+        console.log(error);
+        throw error.response
+        
+      }
+
+}
+export const saveStory=async({id})=>{
+      try {
+          let options = {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              url:`${BACKEND_URL}/stories/bookmarkStory/${id}`,
+              withCookies:true,
+              withCredentials:true,
+            };
 
           const res =await axios(options)
           console.log(res);

@@ -89,7 +89,7 @@
   bottom: 0; /* Position the button at the bottom */
   left: 50%; /* Center the button horizontally */
   transform: translateX(-50%); /* Adjust position to center the button */
-  z-index: 1000; /* Ensure the button appears above the image */
+  z-index: 50; /* Ensure the button appears above the image */
   display: flex;
   align-items: center; 
   padding: 10px 20px;
@@ -99,7 +99,7 @@
   /* width: 20%; */
   box-shadow: 0px 4px 4px 0px #00000040;
 
-  background-color: red;
+  background-color: red; 
 
 }
 .buttonContainer>img{
