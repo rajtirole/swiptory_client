@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import style from "./Categories.module.css";
 import CategoryCard from "../CategoryCard/CategoryCard";
-import { Categorie } from "../../constants/Categories";
+import { categorieOption } from "../../constants/Categories";
 const Categories = ({setCategoriesPosts}) => {
     const [isSelected, setisSelected] = useState(null);
 
@@ -28,7 +28,7 @@ const Categories = ({setCategoriesPosts}) => {
   return (
    
      <div className={style.carousel_item}>
-      {Categorie.map((ele,index) => {
+      {categorieOption.map((ele,index) => {
         return <CategoryCard key={index} setCategoriesPosts={setCategoriesPosts} ele={ele}selected={isSelected === index} onChange = {() => setisSelected(index)}></CategoryCard>;
       })}
      </div>

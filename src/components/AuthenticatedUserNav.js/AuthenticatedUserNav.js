@@ -5,13 +5,19 @@ import bookmarkIcon from '../../assets/Vectorbookmark.png'
 import style from './AuthenticatedUserNav.module.css'
 import ProfileModal from '../modals/profile_modal/Profile_modal'
 import AddStoryModal from '../modals/AddStoryModal/AddStoryModal'
+import { useNavigate } from 'react-router-dom'
 
 const AuthenticatedUserNav = () => {
+  const navigate=useNavigate()
+  const handleBookmarkClick = () => {
+ navigate('/bookmarks')
+};
+
   return (
     <>
           <div className={style.bookmarkContainer}>
             <img src={bookmarkIcon}></img>
-            <button>Bookmarks</button>
+            <button onClick={handleBookmarkClick}>Bookmarks</button>
           </div>
           <div className={style.addStoryContainer}>
             <AddStoryModal></AddStoryModal>

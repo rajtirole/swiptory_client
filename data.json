@@ -1,0 +1,366 @@
+[
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Travel",
+      "stories": [
+        {
+          "heading": "Beach Sunset",
+          "description": "Watching a beautiful sunset by the beach",
+          "image": "https://cdn.pixabay.com/photo/2015/02/18/11/50/beach-640627_960_720.jpg",
+          "category": "Travel"
+        },
+        {
+          "heading": "Mountain Hike",
+          "description": "Exploring scenic trails in the mountains",
+          "image": "https://cdn.pixabay.com/photo/2014/09/07/22/17/forest-438432_960_720.jpg",
+          "category": "Travel"
+        },
+        {
+          "heading": "City Exploration",
+          "description": "Discovering new places in a vibrant city",
+          "image": "https://cdn.pixabay.com/photo/2016/11/18/18/55/architecture-1836070_960_720.jpg",
+          "category": "Travel"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:39:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Food",
+      "stories": [
+        {
+          "heading": "Delicious Pizza",
+          "description": "Enjoying a hot and cheesy pizza",
+          "image": "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg",
+          "category": "Food"
+        },
+        {
+          "heading": "Fresh Salad",
+          "description": "Savoring a healthy and refreshing salad",
+          "image": "https://cdn.pixabay.com/photo/2014/10/17/16/57/salad-491357_960_720.jpg",
+          "category": "Food"
+        },
+        {
+          "heading": "Homemade Pasta",
+          "description": "Indulging in delicious homemade pasta",
+          "image": "https://cdn.pixabay.com/photo/2016/11/22/18/52/spaghetti-1859489_960_720.jpg",
+          "category": "Food"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:40:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Health and fitness",
+      "stories": [
+        {
+          "heading": "Morning Jog",
+          "description": "Starting the day with a refreshing morning jog",
+          "image": "https://cdn.pixabay.com/photo/2016/03/09/15/10/running-1246581_960_720.jpg",
+          "category": "Health and fitness"
+        },
+        {
+          "heading": "Yoga Session",
+          "description": "Relaxing the mind and body with a yoga session",
+          "image": "https://cdn.pixabay.com/photo/2017/03/14/14/49/yoga-2140605_960_720.jpg",
+          "category": "Health and fitness"
+        },
+        {
+          "heading": "Healthy Diet",
+          "description": "Maintaining a balanced and nutritious diet",
+          "image": "https://cdn.pixabay.com/photo/2016/11/29/07/08/apple-1868719_960_720.jpg",
+          "category": "Health and fitness"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:41:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Movies",
+      "stories": [
+        {
+          "heading": "Movie Night",
+          "description": "Enjoying a cozy movie night at home",
+          "image": "https://cdn.pixabay.com/photo/2018/07/03/20/45/smartphone-3511996_960_720.jpg",
+          "category": "Movies"
+        },
+        {
+          "heading": "Blockbuster Premiere",
+          "description": "Excited for the premiere of the latest blockbuster film",
+          "image": "https://cdn.pixabay.com/photo/2015/07/02/10/44/cinema-828584_960_720.jpg",
+          "category": "Movies"
+        },
+        {
+          "heading": "Classic Movie Marathon",
+          "description": "Reliving the magic of classic movies with a marathon",
+          "image": "https://cdn.pixabay.com/photo/2016/01/04/11/55/film-1118499_960_720.jpg",
+          "category": "Movies"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:42:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Education",
+      "stories": [
+        {
+          "heading": "Learning New Skills",
+          "description": "Acquiring new knowledge and skills",
+          "image": "https://cdn.pixabay.com/photo/2016/03/23/08/34/board-1273114_960_720.jpg",
+          "category": "Education"
+        },
+        {
+          "heading": "Study Group",
+          "description": "Collaborating with peers in a study group",
+          "image": "https://cdn.pixabay.com/photo/2015/11/19/08/52/class-1057587_960_720.jpg",
+          "category": "Education"
+        },
+        {
+          "heading": "Online Courses",
+          "description": "Enrolling in online courses for continuous learning",
+          "image": "https://cdn.pixabay.com/photo/2017/06/28/13/44/online-education-2449530_960_720.jpg",
+          "category": "Education"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:43:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Travel",
+      "stories": [
+        {
+          "heading": "Adventure Expedition",
+          "description": "Embarking on an adventure expedition",
+          "image": "https://cdn.pixabay.com/photo/2017/09/08/16/10/wanderlust-2733321_960_720.jpg",
+          "category": "Travel"
+        },
+        {
+          "heading": "Cultural Exploration",
+          "description": "Immersing in the culture of a foreign land",
+          "image": "https://cdn.pixabay.com/photo/2017/08/17/22/25/san-pedro-de-atacama-2659612_960_720.jpg",
+          "category": "Travel"
+        },
+        {
+          "heading": "Scenic Views",
+          "description": "Capturing breathtaking scenic views",
+          "image": "https://cdn.pixabay.com/photo/2016/10/20/18/35/sunrise-1756274_960_720.jpg",
+          "category": "Travel"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:44:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Food",
+      "stories": [
+        {
+          "heading": "Gourmet Cuisine",
+          "description": "Indulging in gourmet cuisine",
+          "image": "https://cdn.pixabay.com/photo/2017/03/27/14/33/plate-2172308_960_720.jpg",
+          "category": "Food"
+        },
+        {
+          "heading": "Street Food Delight",
+          "description": "Exploring the flavors of street food",
+          "image": "https://cdn.pixabay.com/photo/2015/08/27/20/26/coffee-909771_960_720.jpg",
+          "category": "Food"
+        },
+        {
+          "heading": "Exotic Fruits",
+          "description": "Tasting exotic fruits from around the world",
+          "image": "https://cdn.pixabay.com/photo/2017/06/02/18/24/fruit-2367029_960_720.jpg",
+          "category": "Food"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:45:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Health and fitness",
+      "stories": [
+        {
+          "heading": "Healthy Lifestyle",
+          "description": "Embracing a healthy and active lifestyle",
+          "image": "https://cdn.pixabay.com/photo/2016/10/20/20/13/heart-1751816_960_720.jpg",
+          "category": "Health and fitness"
+        },
+        {
+          "heading": "Fitness Motivation",
+          "description": "Finding motivation to stay fit and active",
+          "image": "https://cdn.pixabay.com/photo/2016/10/16/17/41/yoga-1745708_960_720.jpg",
+          "category": "Health and fitness"
+        },
+        {
+          "heading": "Workout Routine",
+          "description": "Following a consistent workout routine",
+          "image": "https://cdn.pixabay.com/photo/2015/07/30/19/31/barbell-868706_960_720.jpg",
+          "category": "Health and fitness"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:46:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Movies",
+      "stories": [
+        {
+          "heading": "Film Festival",
+          "description": "Attending a film festival for a cinematic experience",
+          "image": "https://cdn.pixabay.com/photo/2016/01/29/21/47/hall-1169824_960_720.jpg",
+          "category": "Movies"
+        },
+        {
+          "heading": "Movie Marathon",
+          "description": "Binge-watching favorite movies in a marathon",
+          "image": "https://cdn.pixabay.com/photo/2016/09/07/20/28/movies-1655203_960_720.jpg",
+          "category": "Movies"
+        },
+        {
+          "heading": "Film Critique",
+          "description": "Analyzing and critiquing films for insights",
+          "image": "https://cdn.pixabay.com/photo/2017/06/22/22/19/film-2437056_960_720.jpg",
+          "category": "Movies"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:47:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Education",
+      "stories": [
+        {
+          "heading": "Library Visit",
+          "description": "Exploring the vast collection of books at the library",
+          "image": "https://cdn.pixabay.com/photo/2016/03/27/18/54/bookworm-1282959_960_720.jpg",
+          "category": "Education"
+        },
+        {
+          "heading": "Research Project",
+          "description": "Conducting research for an academic project",
+          "image": "https://cdn.pixabay.com/photo/2016/11/29/08/32/book-1867473_960_720.jpg",
+          "category": "Education"
+        },
+        {
+          "heading": "Learning Resources",
+          "description": "Accessing various learning resources for knowledge enhancement",
+          "image": "https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_960_720.jpg",
+          "category": "Education"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:48:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    },
+    {
+      "owner": {
+        "_id": "6620feac5acd5a4b3a0f730b",
+        "createdAt": "2024-04-27T06:39:21.485+00:00",
+        "updatedAt": "2024-04-27T06:39:21.485+00:00"
+      },
+      "category": "Travel",
+      "stories": [
+        {
+          "heading": "Nature Retreat",
+          "description": "Retreating into the tranquility of nature",
+          "image": "https://cdn.pixabay.com/photo/2017/09/02/11/53/mountain-2708557_960_720.jpg",
+          "category": "Travel"
+        },
+        {
+          "heading": "Backpacking Adventure",
+          "description": "Embarking on an epic backpacking adventure",
+          "image": "https://cdn.pixabay.com/photo/2015/12/14/10/34/forest-1093981_960_720.jpg",
+          "category": "Travel"
+        },
+        {
+          "heading": "Wildlife Safari",
+          "description": "Spotting exotic wildlife on a thrilling safari",
+          "image": "https://cdn.pixabay.com/photo/2018/07/31/22/08/wildlife-3578031_960_720.jpg",
+          "category": "Travel"
+        }
+      ],
+      "likedBy": [],
+      "savedBy": [],
+      "createdAt": "2024-04-27T06:49:21.485+00:00",
+      "updatedAt": "2024-04-27T06:50:05.998+00:00",
+      "__v": 5
+    }]
+       
+  

@@ -2,48 +2,43 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../context/AuthContext";
 import { usePostsContext } from "../../context/PostContext";
-import style from "./StoryCardsCategory.module.css";
+import style from "./Bookmarks.module.css";
 import foodImage from "../../assets/Food (4).png";
 import editIcon from "../../assets/Group (2).png";
 import { useNavigate } from 'react-router-dom';
+import {getNextBookmarked} from '../../api/api'
 
 import StoryModal from "../modals/storyModal/StoryModal";
-import UpdateStoryModal from "../modals/EditStoryModal/UpdateStoryModal";
 
-const StoryCardsCategory = ({ stories: posts,Categorie,userCreatedposts }) => {
+const Bookmarks = ({ posts,setPosts,Categorie ,redirect}) => {
+    console.log(posts);
   const { isAuthenticated, user } = useUserContext();
-  const { fetchPosts, fetchNextPosts ,currentStory,setcurrentStory,fetchNextUserCreatedPosts} = usePostsContext();
-  
-
+  const { fetchPosts, fetchNextPosts } = usePostsContext();
   const [displayedPosts, setDisplayedPosts] = useState(4); // Number of stories to display initially
   const [displayedStory, setDisplayedStory] = useState(''); // Number of stories to display initially
-  const handleSeeMore =async () => {
+  const handleSeeMore = async() => {
     setDisplayedPosts((prev) => prev + 4);
     const postIndex = posts.length;
     const postIndexLimit = postIndex + 4;
-    const category = Categorie.name;
-    console.log(postIndex, postIndexLimit, category);
-    if(userCreatedposts){
-      const userCreatedPostIndex=userCreatedposts.length;
-    const UserCreatedPostIndexLimit = postIndex + 4;
-      await fetchNextUserCreatedPosts({userCreatedPostIndex,UserCreatedPostIndexLimit});
-    }else {
-      await fetchNextPosts(user.id, postIndex, postIndexLimit, category); // Increase the number of stories to display by 4
+    const response=await getNextBookmarked(postIndex, postIndexLimit); // Increase the number of stories to display by 4
+    if(response.success){
+        setPosts([...posts,...response?.data])
+
     }
+    
+    
   };
   const isAuthor = (postId) => {
+    return true 
     return isAuthenticated && user.id === postId;
   };
   console.log(posts);
   const navigate = useNavigate();
 
   const handleCardClick = (post) => {
-    console.log(post);
-    setDisplayedStory(post)
     openModal();
-
+    setDisplayedStory(post)
   };
-
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
@@ -59,8 +54,8 @@ const StoryCardsCategory = ({ stories: posts,Categorie,userCreatedposts }) => {
         <div className={style.StoriesCardContainer}>   
           <div className={style.StoryCardsContainer}>
             {posts.slice(0, displayedPosts).map((post) => (
-              <div className={style.storyCard}>
-                <img  onClick={() => handleCardClick(post)}
+              <div className={style.storyCard} onClick={() => handleCardClick(post)}>
+                <img
                   src={post?.stories?.[0].image}
                   onError={(e) => {
                     e.target.src = foodImage;
@@ -72,19 +67,16 @@ const StoryCardsCategory = ({ stories: posts,Categorie,userCreatedposts }) => {
                   <h3>{post?.stories?.[0].heading}</h3>
                   <p>{post?.stories?.[0].description}</p>
                 </div>  
-                {isAuthor(post.owner) && (
-                  <div className={style.buttonContainer} onClick={(e)=>{
-                    e.stopPropagation();
-                    setcurrentStory(post)
-                  }}>
+                {isAuthor(post.authorId) && (
+                  <div className={style.buttonContainer}>
                       <img src={editIcon}></img>
-                      <UpdateStoryModal></UpdateStoryModal>
+                      <div>Edit</div>
                   </div>
                 )}    
               </div>
               
             ))}
-            <StoryModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} displayedStory={displayedStory} setDisplayedStory={setDisplayedStory}></StoryModal>
+            <StoryModal modalIsOpen={modalIsOpen} redirect={redirect} setIsOpen={setIsOpen} displayedStory={displayedStory} setDisplayedStory={setDisplayedStory}></StoryModal>
           </div>
           
           <div>
@@ -104,4 +96,4 @@ const StoryCardsCategory = ({ stories: posts,Categorie,userCreatedposts }) => {
   );
 };
 
-export default StoryCardsCategory;
+export default Bookmarks;

@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
+    z-index: 600;
     /* width: 100%; */
 }
 .slideContainer{

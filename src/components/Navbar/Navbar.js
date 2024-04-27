@@ -6,15 +6,17 @@ import {Sign_up_modal} from '../modals/sign_up_modal/Sign_up_modal'
 import {useUserContext} from '../../context/AuthContext'
 import { useContext } from "react";
 import AuthenticatedUserNav from '../AuthenticatedUserNav.js/AuthenticatedUserNav'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const Navbar = () => {
+  const navigate=useNavigate()
   const logoHandler=async()=>{
+    navigate('/')
     
   }
   const {isAuthenticated,user}=useUserContext()
-  console.log(isAuthenticated,user);
   return (
     <div className={style.nav_bar_container}>
         <h1 onClick={logoHandler}>SwipTory</h1>

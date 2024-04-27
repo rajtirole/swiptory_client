@@ -107,12 +107,50 @@ export const postStories=async(validPosts)=>{
       }
 
 }
+export const updateStories=async({validPosts,id})=>{
+      try {
+          let options = {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+            url:`${BACKEND_URL}/stories/updateStories/${id}`,
+              withCookies:true,
+              withCredentials:true,
+              data:validPosts
+            };
+          const res =await axios(options)
+          return res?.data;
+      } catch (error) {
+        console.log(error);
+        throw error.response
+        
+      }
+
+}
 export const getStories=async()=>{
       try {
           let options = {
               method: "POST",
               headers: { "content-type": "application/json" },
               url:`${BACKEND_URL}/stories/getStories`,
+              withCookies:true,
+              withCredentials:true,
+            };
+          const res =await axios(options)
+          console.log(res);
+          return res?.data;
+      } catch (error) {
+        console.log(error);
+        throw error.response
+        
+      }
+
+}
+export const getUserCreatedStory=async()=>{
+      try {
+          let options = {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              url:`${BACKEND_URL}/stories/getuserCreatedposts`,
               withCookies:true,
               withCredentials:true,
             };
@@ -155,6 +193,60 @@ export const getNextStories=async(userId = null,postIndex,postIndexLimit,categor
       }
 
 }
+export const getNextBookmarked=async(postIndex,postIndexLimit)=>{
+    console.log( postIndex,
+      postIndexLimit,
+      );
+      try {
+          let options = {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              url:`${BACKEND_URL}/stories/getNextBookmarked`,
+              withCookies:true,
+              withCredentials:true,
+              params:{
+                postIndex,
+                postIndexLimit,
+              }
+            };
+
+          const res =await axios(options)
+          console.log(res);
+          return res?.data;
+      } catch (error) {
+        console.log(error);
+        throw error.response
+        
+      }
+
+}
+export const getNextUserCreatedStory=async({userCreatedPostIndex,UserCreatedPostIndexLimit})=>{ 
+    console.log( userCreatedPostIndex,
+      UserCreatedPostIndexLimit,
+      );
+      try {
+          let options = {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              url:`${BACKEND_URL}/stories/getNextUserCreatedStory`,
+              withCookies:true,
+              withCredentials:true,
+              params:{
+                userCreatedPostIndex,
+                UserCreatedPostIndexLimit,
+              }
+            };
+
+          const res =await axios(options)
+          console.log(res);
+          return res?.data;
+      } catch (error) {
+        console.log(error);
+        throw error.response
+        
+      }
+
+}
 
 export const getStory=async({id})=>{
       try {
@@ -164,6 +256,26 @@ export const getStory=async({id})=>{
               url:`${BACKEND_URL}/stories/getStory/${id}`,
               // withCookies:true,
               // withCredentials:true,
+             
+            };
+
+          const res =await axios(options)
+          return res?.data;
+      } catch (error) {
+        console.log(error);
+        throw error.response
+        
+      }
+
+}
+export const getBookmarkedPosts=async()=>{
+      try {
+          let options = {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              url:`${BACKEND_URL}/stories/getBookmarkedPosts`,
+              withCookies:true,
+              withCredentials:true,
              
             };
 

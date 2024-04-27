@@ -1,9 +1,10 @@
+
+
 import React from 'react'
-import style from './AddStoryModal.module.css'
+import style from './UpdateStoryModal.module.css'
 import Modal from "react-modal";
 import MultiSlideForm from '../MultiSlideFormModal/MultiSlideForm';
 import FormModal from '../MultiSlideFormModal/FormModal';
-import FormModall from '../MultiSlideFormModal/FormModall';
 
 const customStyles = {
     content: {
@@ -17,7 +18,7 @@ const customStyles = {
       padding: "1rem 2rem",
     },
   };
-const AddStoryModal = () => {
+const UpdateStoryModal = () => {
 const [modalIsOpen, setIsOpen] = React.useState(false);
 Modal.setAppElement("#root");
     function openModal() {
@@ -33,7 +34,9 @@ Modal.setAppElement("#root");
     
   return (
     <>
-            <button onClick={openModal}>Add Story</button>
+            <button onClick={(e)=>{
+                openModal();
+            }} className={style.buttonContainer}>Edit</button>
             <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -42,13 +45,11 @@ Modal.setAppElement("#root");
         contentLabel="Example Modal"
         overlayClassName={style.Overlay}
       >
-        <FormModal closeModal={closeModal}></FormModal>
-        {/* <FormModall></FormModall> */}
-       {/* <MultiSlideForm></MultiSlideForm> */}
+        <FormModal EditmModal={true} closeModal={closeModal}></FormModal>
       </Modal>
     
     </>
   )
 }
 
-export default AddStoryModal
+export default UpdateStoryModal

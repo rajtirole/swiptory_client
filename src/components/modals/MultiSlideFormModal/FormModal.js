@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./MultiSlideForm.module.css"; // Import module CSS
 import { StoryCreationCategory } from "../../../constants/Categories";
 import declineIcon from "../../../assets/Vector (9).png";
 import { postSchema } from "../../../lib/zod/userValidation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { postStories } from "../../../api/api";
+import { postStories,updateStories } from "../../../api/api";
+import { usePostsContext } from "../../../context/PostContext";
 export const SlideCard = ({
   formCurrent,
   form,
@@ -111,8 +112,10 @@ export const SlideCard = ({
     </>
   );
 };
-function FormModall() {
+function FormModal({EditmModal,closeModal}) {
   const [selectedCategory, setSelectedCategory] = useState("");
+  const {currentStory,setCurrentStory}=usePostsContext()
+  console.log(currentStory);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -130,6 +133,30 @@ function FormModall() {
     }))
   );
 
+
+  useEffect(() => {
+    if (EditmModal && currentStory) {
+      let formss = forms.map((e, i) => {
+        if (i < currentStory.stories.length) {
+          return currentStory.stories[i];
+        }
+        return e;
+      });
+      setforms([...formss]);
+    }
+  }, [EditmModal, currentStory]);
+  // if(EditmModal){
+  //   console.log(currentStory);
+  //   let formss = forms.map((e, i) => {
+  //     if(i<currentStory.stories.length){
+  //       return currentStory.stories[i]}
+  //       return e
+  //   });
+  //   console.log(formss);
+  //   // setforms([...formss]);
+    
+  // }
+
   const submitHandler =async () => {
     const validPosts = forms.slice(0, slides);
     console.log(forms);
@@ -141,7 +168,14 @@ function FormModall() {
       console.log("Valid posts:", parsedPosts);
       if(parsedPosts){
           try {
-            let postResponse = await postStories(validPosts);
+            let postResponse;
+            if(EditmModal){
+              postResponse = await updateStories({validPosts,id:currentStory._id});
+            }
+            else{
+            postResponse = await postStories(validPosts);
+
+            }
             console.log(postResponse);
         } catch (error) {
             console.log(error);
@@ -154,6 +188,7 @@ function FormModall() {
       });
       console.error("Invalid posts:", error);
     }
+    closeModal()
   };
 
   const navigateSlide = (direction) => {
@@ -245,4 +280,4 @@ function FormModall() {
   );
 }
 
-export default FormModall;
+export default FormModal;

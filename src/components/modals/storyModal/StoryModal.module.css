@@ -1,5 +1,5 @@
 .Overlay {
-    z-index: 200;
+    z-index: 100;
     position: fixed;
     top: 0;
     left: 0;
@@ -175,3 +175,49 @@
     font-size: var(--fs-5);
     color: #FF0000;
 }
+.likeContainer{
+    margin-right: 5px;
+ display: flex;
+}
+
+
+
+.statusContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    max-width: 100%;
+    
+   
+  }
+  .statusBar{
+    background-color: bisque;
+    flex: 1;
+    height: 10px; /* Adjust height as needed */
+    background-color: #ddd; /* Background color of the status bar */
+    position: relative;
+    
+  }
+  
+  .timer {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* width: 0%; */
+    background-color: #4CAF50; /* Color of the timer line */
+    /* animation: timer 3s linear forwards;  */
+  }
+  
+  /* @keyframes timer {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+   */
+  
+  
