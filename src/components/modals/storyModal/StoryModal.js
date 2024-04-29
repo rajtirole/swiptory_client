@@ -25,6 +25,8 @@ const StoryModal = ({
 }) => {
   const { user } = useUserContext();
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+//   const [currentStory, setCurrentStory] = useState(displayedStory?.stories?.[0]);
+  console.log(displayedStory);
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isCopied, setisCopied] = useState(false);
@@ -40,14 +42,14 @@ const StoryModal = ({
   const goToNextStory = () => {
     if (currentStoryIndex < displayedStory.stories.length - 1) {
       setCurrentStoryIndex((prevIndex) => prevIndex + 1);
-      setProgress(false);
+    //   setProgress(false);
     }
   };
 
   const goToPreviousStory = () => {
+    // setProgress(true);
     if (currentStoryIndex > 0) {
       setCurrentStoryIndex((prevIndex) => prevIndex - 1);
-      setProgress(true);
     }
   };
 
@@ -61,9 +63,14 @@ const StoryModal = ({
       transform: "translate(-50%, -50%)",
       borderRadius: "20px",
       border: "none",
-      width: "70vw",
-      height: "80vh",
+      width: "100%",
+      height: "100%",
       background: "none",
+      padding:'0',
+      display:'flex',
+      justifyContent:'center',
+      alignItems:'center'
+
     },
     backgroundColor: "none",
   };
@@ -119,7 +126,7 @@ const StoryModal = ({
   useEffect(() => {
     // Check if displayedStory is available and if the user has liked the story
     if (displayedStory) {
-      setIsLiked(displayedStory.likedBy.includes(user.id)); // Set isLiked based on the likedBy array
+      setIsLiked(displayedStory?.likedBy?.includes(user.id)); // Set isLiked based on the likedBy array
     } else {
       setIsLiked(false); // If displayedStory is not available, set isLiked to false
     }
@@ -127,7 +134,7 @@ const StoryModal = ({
   useEffect(() => {
     // Check if displayedStory is available and if the user has liked the story
     if (displayedStory) {
-      setIsBookmarked(displayedStory.savedBy.includes(user.id)); // Set isLiked based on the likedBy array
+      setIsBookmarked(displayedStory?.savedBy?.includes(user.id)); // Set isLiked based on the likedBy array
     } else {
       setIsBookmarked(false); // If displayedStory is not available, set isLiked to false
     }
@@ -136,6 +143,12 @@ const StoryModal = ({
   const bookmarkHandler = async () => {
     try {
       const response = await saveStory({ id: displayedStory._id });
+      console.log(response);
+      if(response?.success){
+        toast.success(response?.message || "success", {
+            position: "top-center",
+          });
+      }
       setDisplayedStory(response.data); // Update the displayed story with the latest data
 
       // Check if the user ID is in the savedBy array to determine the bookmark state
@@ -143,6 +156,9 @@ const StoryModal = ({
       setIsBookmarked(savedByCurrentUser); // Update the isBookmarked state based on the response
     } catch (error) {
       console.error("Error:", error);
+      toast.error(error?.message || "Failed", {
+        position: "top-center",
+      });
       // Handle errors if necessary
     }
   };
@@ -151,12 +167,15 @@ const StoryModal = ({
     try {
       const response = await likeStory({ id: displayedStory._id });
       setDisplayedStory(response.data); // Update the displayed story with the latest data
-
+      
       // Check if the user ID is in the likedBy array to determine the like state
       const likedByCurrentUser = response.data.likedBy.includes(user.id);
       setIsLiked(likedByCurrentUser); // Update the isLiked state based on the response
     } catch (error) {
       console.error("Error:", error);
+       toast.error(error?.message || "Failed", {
+        position: "top-center",
+      });
       // Handle errors if necessary
     }
   };
@@ -211,6 +230,125 @@ const StoryModal = ({
 //       return () => clearTimeout(timer);
 //     }, [progress, currentStoryIndex, displayedStory, closeModal]);
 
+// useEffect(() => {
+//     let timer;
+//     // setCurrentStoryIndex(0);
+//     if (modalIsOpen) {
+//       timer = setTimeout(() => {
+//         if (currentStoryIndex < displayedStory?.stories?.length - 1) {
+//           setCurrentStoryIndex((prevIndex) => prevIndex + 1);
+//           setProgress(false);
+//         } else {
+//           // If the current story is the last one, close the modal as not mentioned to to it otherwise a good feature
+//         //   setIsOpen(false);
+
+
+//         }
+//       }, 3000); // Adjust the delay (in milliseconds) as needed
+//     }
+//     return () => clearTimeout(timer); // Clear the timer when the component unmounts or modalIsOpen changes
+//   }, [currentStoryIndex, modalIsOpen]);
+
+// useEffect(() => {
+//     let timer;
+  
+//     // Function to handle moving to the next story
+//     const goToNextStory = () => {
+//       if (currentStoryIndex < displayedStory?.stories?.length - 1) {
+//         setCurrentStoryIndex((prevIndex) => prevIndex + 1);
+//         setProgress(false);
+//       }
+//     };
+  
+//     // Function to start the timer for moving to the next story
+//     const startTimer = () => {
+//       timer = setTimeout(goToNextStory, 3000); // Adjust the delay (in milliseconds) as needed
+//     };
+  
+//     // Start the timer when the modal is open
+//     if (modalIsOpen) {
+//         setCurrentStoryIndex(0)
+//       startTimer();
+//     }
+  
+//     // Clear the timer when the component unmounts or modalIsOpen changes
+//     return () => {
+//       clearTimeout(timer);
+//     };
+//   }, [currentStoryIndex, displayedStory?.stories?.length, modalIsOpen]);
+  
+//   useEffect(() => {
+//     // Reset the progress bar to 0 when the story changes
+//     setProgress(false);
+//   }, [currentStoryIndex]);
+  
+//   // Start the progress bar animation when modalIsOpen and currentStoryIndex is not 0
+//   useEffect(() => {
+//     // setCurrentStoryIndex(0)
+//     modalIsOpen&&setCurrentStoryIndex(0)
+
+    
+//   }, [modalIsOpen]);
+
+
+
+useEffect(() => {
+    let timer;
+  
+    // Function to handle moving to the next story
+    const goToNextStory = () => {
+      if (currentStoryIndex < displayedStory?.stories?.length - 1) {
+        console.log(currentStoryIndex,progress);
+        setCurrentStoryIndex((prevIndex) => prevIndex + 1);
+        setProgress(false);
+      }
+    };
+  
+    // Function to start the timer for moving to the next story
+    const startTimer = () => {
+      timer = setTimeout(goToNextStory, 3000); // Adjust the delay (in milliseconds) as needed
+    };
+  
+    // Start the timer when the modal is open
+    if (modalIsOpen) {
+        // setCurrentStoryIndex(0)
+      startTimer();
+    }
+  
+    // Clear the timer when the component unmounts or modalIsOpen changes
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [currentStoryIndex, displayedStory?.stories?.length, modalIsOpen]);
+  
+  useEffect(() => {
+    // Reset the progress bar to 0 when the story changes
+    setProgress(false);
+  }, [currentStoryIndex]);
+  
+  // Start the progress bar animation when modalIsOpen and currentStoryIndex is not 0
+  useEffect(() => {
+    if (modalIsOpen && currentStoryIndex !== 0) {
+      setProgress(true);
+    }
+  }, [modalIsOpen, currentStoryIndex]);
+  useEffect(() => {
+    // Reset currentStoryIndex to 0 when a new post is displayed
+    setCurrentStoryIndex(0);
+  }, [displayedStory]);
+  const [previousDisplayedStory, setPreviousDisplayedStory] = useState(null);
+
+useEffect(() => {
+  if (displayedStory !== previousDisplayedStory) {
+    // Reset currentStoryIndex to 0 when a new story is displayed
+    setCurrentStoryIndex(0);
+    // Update the previousDisplayedStory to the current displayedStory
+    setPreviousDisplayedStory(displayedStory);
+  }
+}, [displayedStory, previousDisplayedStory]);
+
+  
+  
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -221,17 +359,24 @@ const StoryModal = ({
       shouldCloseOnOverlayClick={false}
     >
       <div className={style.modalContainer}>
+        <div className={style.previousStoryContainerButton} onClick={goToPreviousStory}></div>
+        <div className={style.nextStoryContainerButton} onClick={goToNextStory}></div>
         <div className={style.previousStoryContainer}>
           <button onClick={goToPreviousStory}>{"<"}</button>
         </div>
         <div className={style.storyContainer}>
-          <div className={style.postContainer}>
+        <div className={style.postContainer} >
+  {/* Other content */}
+            
+
+
+
             {displayedStory?.stories?.[currentStoryIndex].image && (
-              <img src={displayedStory.stories[currentStoryIndex].image}></img>
+              <img className={style.imageContainer} src={displayedStory?.stories?.[currentStoryIndex]?.image}></img>
             )}
             <div className={style.storyNavigationContainer}>
                 <div className={style.statusContainer}>
-                {displayedStory?.stories &&
+                {/* {displayedStory?.stories &&
                 displayedStory?.stories?.map((e,index) => {
                   console.log(displayedStory);
                   return (
@@ -241,11 +386,22 @@ const StoryModal = ({
                     // backgroundColor: `red`, // Adjust width calculation for two bars
                     width: `${(currentStoryIndex === index?'100%':(progress&&(currentStoryIndex+1 === index)&&'0%'))}`, // Set width to 100% if currentStoryIndex matches the index, otherwise 0%
         transition: `${(currentStoryIndex === index)&&'width 3s ease-in-out'}`, // Add CSS transition for smooth animation over 3 seconds
-                  }}>fds</div>
+                  }}></div>
                       </div>
                     </>
                   );
-                })}
+                })} */}
+                {displayedStory?.stories && displayedStory?.stories.map((story, index) => {
+                    console.log(currentStoryIndex,index);
+    return (
+        <div className={style.statusBar} key={index}>
+            <div className={style.timer} style={{
+                width: `${(currentStoryIndex === index ? '100%' : '0%')}`,
+                transition: `${(currentStoryIndex === index ? 'width 3s linear' : '')}`,
+            }}></div>
+        </div>
+    );
+})}
                 </div>
 
               <div className={style.shareContainer}>
@@ -289,11 +445,16 @@ const StoryModal = ({
                     onClick={likeHandler}
                   ></img>
                   <div>
-                    {displayedStory ? displayedStory.likedBy.length : 0}
+                    {displayedStory ? displayedStory?.likedBy?.length: 0}
                   </div>
                 </div>
               </div>
             </div>
+
+
+
+
+
           </div>
         </div>
         <div className={style.nextStoryContainer}>

@@ -78,6 +78,8 @@ console.log(user);
     style={customStyles}
           contentLabel="Example Modal"
           overlayClassName={style.Overlay}
+          className={style.modalContainer}
+          
   >
     <div  className={style.profile_container}>
     <div>{user?.userName}</div>

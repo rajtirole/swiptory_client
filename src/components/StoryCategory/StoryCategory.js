@@ -3,22 +3,19 @@ import style from "./StoryCategory.module.css";
 import { useEffect } from "react";
 import StoryCardsCategory from "../StoryCardsCategory/StoryCardsCategory";
 import { usePostsContext } from "../../context/PostContext";
+import {getNextBookmarked} from '../../api/api'
 const StoryCategory = ({ Categorie ,stories=[]}) => {
-  const {userCreatedposts,userCreatedStory}=usePostsContext()
-useEffect(()=>{
- (async()=>{await userCreatedStory()})()
+  // const {userCreatedposts,fetchNextUserCreatedPosts}=usePostsContext()
+// useEffect(()=>{
+//  (async()=>{await fetchNextUserCreatedPosts()})()
 
-},[])
-console.log(userCreatedposts);
+// },[])
+console.log((Categorie!=='bookmarkedPosts'));
 
   return (
    <>
-    {userCreatedposts&&<div className={style.StoryCategoryContainer}>
-      <h2>{`Your Stories`}</h2>
-      <StoryCardsCategory stories={userCreatedposts} userCreatedposts={true}></StoryCardsCategory>
-    </div>}
     <div className={style.StoryCategoryContainer}>
-      <h2>{`Top Stories About ${Categorie.name}`}</h2>
+      {(Categorie!=='bookmarkedPosts')&&(Categorie==='userCreatedPosts'?<h2>{'Your Stories'}</h2>:<h2>{`Top Stories About ${Categorie.name}`}</h2>)}
       <StoryCardsCategory stories={stories} Categorie={Categorie}></StoryCardsCategory>
     </div>
     </>

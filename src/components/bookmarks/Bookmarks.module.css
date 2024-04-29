@@ -133,9 +133,69 @@
     
   }
   
-  .bookmarkPageContainer>div{
+  .bookmark{
     font-weight: 700;
-    font-size: var(--fs-3);
+    font-size: var(--fs-1);
     
   }
   
+  /* .Container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+} */
+
+.bookmarkPageContainer{
+    padding: 1rem 3rem;
+
+    }
+/* Extra small devices (phones, 0px and up) */
+  
+@media (min-width: 0px) {
+  /* CSS rules */
+  .bookmarkPageContainer{
+      padding: 1rem 0.5rem;
+
+      }
+      .bookmark{
+        font-weight: 700;
+        font-size: var(--fs-2);
+        
+      }
+}
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) {
+    /* CSS rules */
+    .bookmarkPageContainer{
+        padding: 1rem 1rem;
+  
+        }
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .bookmarkPageContainer{
+        padding: 1rem 2rem;
+  
+        }
+    /* CSS rules */
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    /* CSS rules */
+    .bookmarkPageContainer{
+        padding: 1rem 2rem;
+
+  
+        }
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+      /* CSS rules */
+      .bookmarkPageContainer{
+      padding: 1rem 3rem;
+
+      }
+  }

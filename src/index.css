@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 html,
@@ -157,6 +157,112 @@ html {
     /* --h1: 1.75rem;
     --h2: 1.5rem;
     --h3: 1.25rem;
-    --h4: 1rem; */
-  }
+    --h4: 1rem; 
+  } 
 }
+*/
+/* Global reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography */
+html {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5rem;
+  text-align: center;
+  word-wrap: break-word;
+  text-wrap: wrap;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Root variables */
+:root {
+  --fs-1: 3rem;
+  --fs-2: 2.25rem;
+  --fs-3: 1.5rem;
+  --fs-4: 1.25rem;
+  --fs-5: 1rem;
+  --fs-6: 0.875rem;
+  --fs-7: 0.75rem;
+  --font-bold: 700;
+  --color-text: #000000;
+  --primary-color: #FF7373;
+  --secondary-color: #73ABFF;
+  --primary-font-color: #ffff;
+  --secondary-font-color: #474141;
+  --tertiary-font-color: #8E8E8E;
+}
+
+/* Body styles */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: #fff;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #09090a;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #5c5c7b;
+  border-radius: 50px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #7878a3;
+}
+
+/* Media query for small devices */
+@media (max-width: 767px) {
+  /* Adjust root variables or add specific styles for small devices */
+}
+/* CSS styles */
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure the overlay is above other content */
+}
+
+.loader {
+  border: 4px solid #f3f3f3; /* Light color for loader */
+  border-top: 4px solid var(--primary-color); /* Blue color for loader */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite; /* Apply rotating animation */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+

@@ -12,7 +12,7 @@ const CategoryCard = ({ele,selected, onChange,setCategoriesPosts}) => {
       }
       setCategoriesPosts({name:ele.name})
     }}>
-        <img src={ele.image }className={``}></img>
+        <img src={ele.image } className={``}></img>
         <h2>{ele.name}</h2>
     </div>
   )

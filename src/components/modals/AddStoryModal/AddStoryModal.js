@@ -41,6 +41,8 @@ Modal.setAppElement("#root");
         style={customStyles}
         contentLabel="Example Modal"
         overlayClassName={style.Overlay}
+        className={style.modalContainer}
+        // className={style.modalContainer}
       >
         <FormModal closeModal={closeModal}></FormModal>
         {/* <FormModall></FormModall> */}

@@ -46,6 +46,9 @@ export const SlideCard = ({
           <div className={style.labelContainer}>
             <label id="heading">Heading :</label>
           </div>
+          <div className={style.smallDeviceLabelContainer}>
+            <label id="heading">Heading</label>
+          </div>
           <div className={style.inputcontainers}>
             <input
               value={form[formCurrent].heading}
@@ -58,6 +61,9 @@ export const SlideCard = ({
         <div className={style.feilds}>
           <div className={style.labelContainer}>
             <label id="description">Description :</label>
+          </div>
+          <div className={style.smallDeviceLabelContainer}>
+            <label id="description">Description</label>
           </div>
           <div className={style.inputcontainers}>
             <input
@@ -72,6 +78,9 @@ export const SlideCard = ({
           <div className={style.labelContainer}>
             <label id="image">Image :</label>
           </div>
+          <div className={style.smallDeviceLabelContainer}>
+            <label id="image">Image</label>
+          </div>
           <div className={style.inputcontainers}>
             <input
               value={form[formCurrent].image}
@@ -84,6 +93,9 @@ export const SlideCard = ({
         <div className={style.feilds}>
           <div className={style.labelContainer}>
             <label id="image">Category :</label>
+          </div>
+          <div className={style.smallDeviceLabelContainer}>
+            <label id="image">Category</label>
           </div>
           <div className={style.inputcontainers}>
             <select
@@ -171,14 +183,24 @@ function FormModal({EditmModal,closeModal}) {
             let postResponse;
             if(EditmModal){
               postResponse = await updateStories({validPosts,id:currentStory._id});
+              toast.success(postResponse?.message || "success", {
+                position: "top-center",
+              });
             }
             else{
             postResponse = await postStories(validPosts);
+            toast.success(postResponse?.message || "success", {
+              position: "top-center",
+            });
 
             }
             console.log(postResponse);
+            
         } catch (error) {
-            console.log(error);
+            console.log(error); 
+            toast.error(error?.data?.message || "something went wrong", {
+              position: "top-center",
+            });
             
         }
       }
@@ -188,7 +210,6 @@ function FormModal({EditmModal,closeModal}) {
       });
       console.error("Invalid posts:", error);
     }
-    closeModal()
   };
 
   const navigateSlide = (direction) => {
@@ -204,10 +225,67 @@ function FormModal({EditmModal,closeModal}) {
     slides < 6 && setSlides((prev) => prev + 1);
   };
   const declineChangeHandler = (i) => {};
+  const [selectedSlide,setSelectedSlide]=useState(null)
 
   return (
     <>
       <div className={style.formContainer}>
+        <img src={declineIcon} onClick={closeModal}></img>
+        <h3 className={style.smallDeviceHeading}>Add story to feed</h3>
+        <div className={style.smallDeviceContainer}>
+          <div className={style.smallDeviceSlideContainer}>
+              
+          <p>Add upto 6 slides</p>
+          <div className={style.SlideButtonContainer}>
+  {Array.from({ length: slides }, (_, i) => (
+    <div className={`${style.slide} ${selectedSlide === i ? style.selectedSlide : ''}`}>
+      <button
+        key={i}
+        onClick={() => {
+          setFromCurrent(i);
+          setSelectedSlide(i);
+        }}
+      >
+        Slide {i + 1}
+      </button>
+      {i > 2 && (
+        <img
+          src={declineIcon}
+          onClick={() => {
+            declineChangeHandler(i);
+          }}
+        />
+      )}
+    </div>
+  ))}
+  <div>
+    {slides < 6 && <button onClick={addSlideHandler}>Add +</button>}
+  </div>
+</div>
+
+
+          </div>
+          <div className={style.smallDeviceInputContainer}>
+          {
+            <SlideCard
+              form={forms}
+              setform={setforms}
+              formCurrent={formCurrent}
+              validationError={validationError}
+              setValidationError={setValidationError}
+              selectedCategory={selectedCategory}
+              onCategoryChange={handleCategoryChange}
+            />
+          }
+          </div>
+        </div>
+       
+        <div className={style.smallDeviceNavigationContainer}>
+        <button className={style.postButton} onClick={submitHandler}>
+              Post
+            </button>
+        </div>
+
         <div className={style.slideContainer}>
           <p>Add upto 6 slides</p>
           <div className={style.SlideButtonContainer}>
@@ -217,6 +295,7 @@ function FormModal({EditmModal,closeModal}) {
                   key={i}
                   onClick={() => {
                     setFromCurrent(i);
+                    setSelectedSlide(i)
                   }}
                 >
                   Slide {i + 1}

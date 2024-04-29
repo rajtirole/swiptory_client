@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { createContext, useContext, useEffect, useState } from "react";
 import { getCurrentUser } from "../api/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const INITIAL_USER = {
   id: "",
@@ -28,13 +30,14 @@ export function AuthProvider({ children } ){
     setIsLoading(true);
     try {
       const currentAccount = await getCurrentUser();
-      if (currentAccount) {
-        setUser({...user,id:currentAccount?.data?.id, userName: currentAccount?.data?.userName});
+      if (currentAccount.success) {
+        console.log(currentAccount);
+        setUser({...currentAccount?.data,id:currentAccount?.data?.id, userName: currentAccount?.data?.userName});
         setIsAuthenticated(true);
-
+        console.log(isAuthenticated);
+        console.log(user);
         return true;
       }
-
       return false;
     } catch (error) {
       console.error(error);
@@ -45,7 +48,9 @@ export function AuthProvider({ children } ){
   };
 
   useEffect(() => {
-    checkAuthUser();
+    (async()=>{
+      await checkAuthUser();
+    })()
   }, []);
 
   const value = {

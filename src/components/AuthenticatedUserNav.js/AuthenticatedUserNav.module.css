@@ -36,9 +36,7 @@
     border-radius: 15px;
 
 }
-.menuContainer{
 
-}
 .profileImageContainer{
     cursor: pointer;
  display: flex;  
@@ -47,6 +45,99 @@
 .profileImageContainer>img{
     width: 100%;
   height: 100%;
-  object-fit: cover; /* This will make the image cover the entire container without stretching */
+  object-fit: cover; 
 
+} 
+
+
+
+.mobileDeviceNavbarContainer{
+    display: none;
 }
+  @media (max-width: 768px) {
+    .menuIconContainer {
+      display: block; /* Show menu icon on mobile */
+      cursor: pointer;
+    }
+    .mobileDeviceNavbarContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        color: #ffff;
+        font-weight: var(--font-bold);
+        font-size: var(--fs-5);
+
+    }
+    .mobileDeviceNavbarContainer>div{
+        display: block;
+    }
+
+
+
+    .menuContent {
+      display: flex; /* Show menu content when menu is open */
+      flex-direction: column; /* Align menu items vertically */
+      gap: 10px; /* Add gap between menu items */
+    }
+    .largeDeviceMenu{
+        display: none;
+    }
+  
+   .bookmarkContainer {
+    display: none;
+   }
+   .addStoryContainer {
+    display: none;
+   }
+   .profileImageContainer {
+    display: none;
+   }
+   .menuContainer {
+    display: none;
+   }
+  }
+  
+
+
+  /* Extra small devices (phones, 0px and up) */
+@media (min-width: 0px) {
+   
+    /* CSS rules */
+  }
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) {
+    
+    /* CSS rules */
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .userContainer{
+        display: none;
+    }
+    /* CSS rules */
+   
+   
+    .profileImageContainer>img{
+        /* height: 1rem;
+        width: 1rem; */
+
+    }
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .profileImageContainer>img{
+        height: 4rem;
+        width: 4rem;
+
+    }
+    /* CSS rules */
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    /* CSS rules */
+  }
+  

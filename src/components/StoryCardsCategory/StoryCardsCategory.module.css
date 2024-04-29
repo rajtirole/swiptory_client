@@ -2,9 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  width: 100%;
 }
-
 .StoriesCardContainer {
   width: 100%;
   display: flex;
@@ -12,7 +10,6 @@
   align-items: center;
   gap: 2rem;
 }
-
 .containers {
   min-height: 60vh;
   width: 100%;
@@ -20,13 +17,16 @@
   align-items: center;
   display: flex;
   font-weight: var(--fs-bold);
-  font-size: var(--fs-4);
+  /* font-size: var(--fs-4); */
   color: #8E8E8E;
+  background-color: red;
 }
+
 
 .storyCard {
   flex: 0 0 calc(25% - 2rem);
   position: relative;
+  max-height: 60vh;
   min-height: 60vh;
   width: 100%;
   background-image: 
@@ -35,7 +35,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .storyCard img {
@@ -49,7 +49,7 @@
   right: 0;
   left: 0;
   bottom: -10px;
-  z-index: 50;
+  z-index: 10;
   /* margin-bottom: 10%; */
 }
 .storyContent {
@@ -60,8 +60,8 @@
   margin-left: 10%;
   color: white;
   font-weight: var(--fs-bold);
-  font-size: var(--fs-4);
-  z-index: 50;
+  /* font-size: var(--fs-4); */
+  z-index: 10;
   text-align: start;
 }
 
@@ -71,8 +71,9 @@
   position: absolute;
   left: 0;
   right: 0;
-  height: 25%; /* Increased height for more prominent shadow */
+  height: 50%; /* Increased height for more prominent shadow */
   z-index: 1;
+  border-radius: 10px;
 }
 
 .storyCard::before {
@@ -86,14 +87,13 @@
 }
 .buttonContainer {
   align-items: center;
-    background-color: #fff;
+    /* background-color: #fff;
     border-radius: 2rem;
-    box-shadow: 0 4px 15px 0 #00000040;
-    color: #000;
+    box-shadow: 0 4px 15px 0 #00000040; */
+    /* color: #000; */
     cursor: pointer;
-    display: flex;
-    font-size: 1.4rem;
-    font-weight: 700;
+    /* display: flex;
+    font-weight: 700; */
     height: 34px;
     justify-content: center;
     left: 50%;
@@ -112,10 +112,10 @@
 .buttonContainer button {
   /* Additional styles for the button if needed */
   position: relative; /* Ensure z-index works */
-  z-index: 50;
+  z-index: 1;
   
   font-weight: var(--fs-bold);
-  font-size: var(--fs-4);
+  /* font-size: var(--fs-4); */
 }
 .loadStories{
   padding: 10px 15px;
@@ -124,6 +124,136 @@
   background-color: #FF7373;
   color: #fff;
   font-weight: var(--fs-bold);
-  font-size: var(--fs-4);
+  font-size: inherit;
   cursor: pointer;
 }
+.StoryCardContainer{
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+.storyCard{
+  /* width: 100%; */
+  min-width: 20vw;
+  cursor: pointer;
+  margin: 0;
+}
+
+
+
+@media (min-width: 0px) {
+  /* CSS rules */
+  .StoriesCardContainer{
+      
+     font-size: var(--fs-7);
+     
+  }
+  .loadStories{
+    font-size: var(--fs-7);
+  }
+  .StoryCardContainer{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+  }
+  .storyCard{
+    min-width: 100%;
+    min-height: 70vh;
+
+  }
+ 
+}
+@media (max-width: 426px) {
+  /* CSS rules */
+ 
+  .StoryCardContainer{
+    padding: 2rem;
+
+  }
+  
+ 
+}
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 426px) {
+    /* CSS rules */
+    .StoriesCardContainer{
+      font-size: var(--fs-6);
+      
+   }
+   .loadStories{
+    font-size: var(--fs-7);
+  }
+  .storyCard{
+    min-width: 40%;  
+    min-height: 70vh;
+
+
+  }
+  }
+  @media (min-width: 576px) {
+    /* CSS rules */
+    .StoriesCardContainer{
+      font-size: var(--fs-6);
+      
+   }
+   .loadStories{
+    font-size: var(--fs-7);
+  }
+  .storyCard{
+    min-width: 20%;  
+    min-height: 50vh;
+  }
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+     
+    /* CSS rules */
+    .StoriesCardContainer{
+      font-size: var(--fs-7);
+      
+   }
+    .StoriesCardContainer{
+      
+    flex-wrap: wrap;
+
+      
+   }
+   .storyCard{
+    min-width: 20%;  
+    min-height: 60vh;
+    font-size: var(--fs-6);
+
+  }
+
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    /* CSS rules */
+    .StoriesCardContainer{
+      
+    flex-wrap: wrap;
+
+      
+   }
+ 
+   .loadStories{
+    font-size: var(--fs-5);
+  }
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+      /* CSS rules */
+      .StoriesCardContainer{
+      
+        font-size: var(--fs-4);
+        
+     }
+     .loadStories{
+      font-size: var(--fs-4);
+    }
+  }
+  

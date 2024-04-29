@@ -1,5 +1,43 @@
 .buttonContainer{
     background:none;
     border: none;
-    
+
 }
+.Overlay {
+    z-index: 50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.8))
+
+  }
+  .modalContainer{
+    inset: 50% auto auto 50%;
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    outline: none;
+   
+  }
+  @media (max-width: 426px) {
+    /* CSS rules */
+   
+    .modalContainer{
+        padding: 0;
+        width: 80%;
+        max-height: 80%;
+        padding: 0;
+       }
+         
+     
+      
+   
+  }

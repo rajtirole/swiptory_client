@@ -41,10 +41,19 @@ import BookmarkPage from "./pages/BookmarkPage";
 import StoryPage from "./pages/StoryPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useUserContext } from "./context/AuthContext";
+import { usePostsContext } from "./context/PostContext";
 
 const App = () => {
+  // const {isLoading}=useUserContext()
+  const {isLoading}=usePostsContext()
+  console.log(isLoading);
   return (
     <main>
+      {isLoading&&<div class="loadingOverlay">
+  <div class="loader"></div>
+</div>
+}
         <Routes>
           {/* Route to the specific story page */}
           <Route path="/stories/:id" element={<StoryPage />} />
