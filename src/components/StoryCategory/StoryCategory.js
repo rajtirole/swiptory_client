@@ -10,7 +10,6 @@ const StoryCategory = ({ Categorie ,stories=[]}) => {
 //  (async()=>{await fetchNextUserCreatedPosts()})()
 
 // },[])
-console.log((Categorie!=='bookmarkedPosts'));
 
   return (
    <>

@@ -33,7 +33,6 @@ const Profile_modal = () => {
     const navigate=useNavigate()
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const {isAuthenticated,user,setUser,setIsAuthenticated}=useUserContext()
-console.log(user);
 
     function openModal() {
       setIsOpen(true);

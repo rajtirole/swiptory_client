@@ -65,12 +65,40 @@
         gap: 1rem;
         color: #ffff;
         font-weight: var(--font-bold);
-        font-size: var(--fs-5);
+        font-size: var(--fs-6);
+        width: 100%;
+        align-items: center;
 
     }
     .mobileDeviceNavbarContainer>div{
         display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--fs-4);
+        align-content: center;
+        width: 60%;
     }
+   .userContainer{
+    /* height: 20%; */
+    /* width: 50%; */
+    width: 100%;
+    justify-content: space-between;
+   }
+   .ImageContainer>img{
+    /* height: 20%; */
+    /* width: 50%; */
+    /* width: 50%; */
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+   }
+   .usernameContainer{
+    width: 40%;
+    color: #000000;
+    font-weight: 700;
+    font-size: var(--fs-7);
+   }
 
 
 

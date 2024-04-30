@@ -22,11 +22,11 @@ const StoryModal = ({
   setIsOpen,
   setDisplayedStory,
   redirect,
+  Categorie
 }) => {
-  const { user } = useUserContext();
+  const { user,isAuthenticated } = useUserContext();
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
 //   const [currentStory, setCurrentStory] = useState(displayedStory?.stories?.[0]);
-  console.log(displayedStory);
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isCopied, setisCopied] = useState(false);
@@ -37,7 +37,6 @@ const StoryModal = ({
   //     console.log(like);
   //     return like
   // })
-  console.log(displayedStory);
 
   const goToNextStory = () => {
     if (currentStoryIndex < displayedStory.stories.length - 1) {
@@ -87,14 +86,12 @@ const StoryModal = ({
 
   const copyLinkToClipboard = () => {
     const postId = displayedStory._id; // Assuming the post ID is stored in displayedStory._id
-    console.log(displayedStory._id);
     const postUrl = `${FRONTEND_URL}/stories/${postId}`;
 
     // Copy post URL to clipboard
     navigator.clipboard
       .writeText(postUrl)
       .then(() => {
-        console.log("Post URL copied to clipboard:", postUrl);
         toast.success("Link copied to clipboard", {
           position: "top-center",
         });
@@ -115,9 +112,10 @@ const StoryModal = ({
     // Optionally, show a loading indicator or message while copying the link
   };
   const declineIconClicked = () => {
-    if (redirect) {
-      navigate(redirect);
-    } else {
+    if(Categorie=='bookmarkedPosts'){
+      closeModal()
+    }
+   else {
       navigate("/");
     }
     setIsOpen(false);
@@ -143,7 +141,6 @@ const StoryModal = ({
   const bookmarkHandler = async () => {
     try {
       const response = await saveStory({ id: displayedStory._id });
-      console.log(response);
       if(response?.success){
         toast.success(response?.message || "success", {
             position: "top-center",
@@ -164,6 +161,8 @@ const StoryModal = ({
   };
 
   const likeHandler = async () => {
+
+    if(isAuthenticated){
     try {
       const response = await likeStory({ id: displayedStory._id });
       setDisplayedStory(response.data); // Update the displayed story with the latest data
@@ -178,6 +177,11 @@ const StoryModal = ({
       });
       // Handle errors if necessary
     }
+   
+  }
+  else{toast.error("Please Login", {
+    position: "top-center",
+  });}
   };
 
   //   const bookmarkHandler = async() => {
@@ -298,7 +302,6 @@ useEffect(() => {
     // Function to handle moving to the next story
     const goToNextStory = () => {
       if (currentStoryIndex < displayedStory?.stories?.length - 1) {
-        console.log(currentStoryIndex,progress);
         setCurrentStoryIndex((prevIndex) => prevIndex + 1);
         setProgress(false);
       }
@@ -392,7 +395,6 @@ useEffect(() => {
                   );
                 })} */}
                 {displayedStory?.stories && displayedStory?.stories.map((story, index) => {
-                    console.log(currentStoryIndex,index);
     return (
         <div className={style.statusBar} key={index}>
             <div className={style.timer} style={{

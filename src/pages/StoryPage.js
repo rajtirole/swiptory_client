@@ -8,11 +8,9 @@ const StoryPage = () => {
     const [modalIsOpen, setIsOpen] = React.useState(true);
     const [displayedStory, setDisplayedStory] = React.useState('');
     const { id } = useParams(); 
-    console.log(id);
     useEffect(()=>{
         (async()=>{
             const response= await getStory({id});
-        console.log(response);
         if(response.success){
         setDisplayedStory(response?.data)
     }

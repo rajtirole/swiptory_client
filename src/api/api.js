@@ -19,7 +19,6 @@ export const getCurrentUser = async () => {
     res?.data?.data?.success&&toast.success(res?.data?.data?.message || "success", {
       position: "top-center",
     });
-    console.log(res);
     return res?.data;
   } catch (error) {
     toast.error(error?.data?.message || "something went wrong", {
@@ -77,7 +76,6 @@ export const logoutUser = async () => {
       withCredentials: true,
     };
     const res = await axios(options);
-    console.log(res);
     console.log(res.cookies);
     return res ? res?.data : null;
   } catch (error) {
@@ -158,7 +156,6 @@ export const getNextStories = async (
   postIndexLimit,
   category
 ) => {
-  console.log(postIndex, postIndexLimit, category);
   try {
     let options = {
       method: "POST",
@@ -174,7 +171,6 @@ export const getNextStories = async (
     };
 
     const res = await axios(options);
-    console.log(res);
     return res?.data;
   } catch (error) {
     console.log(error);
@@ -182,7 +178,6 @@ export const getNextStories = async (
   }
 };
 export const getNextBookmarkedStory = async (postIndex, postIndexLimit) => {
-  console.log(postIndex, postIndexLimit);
   try {
     let options = {
       method: "POST",
@@ -197,7 +192,6 @@ export const getNextBookmarkedStory = async (postIndex, postIndexLimit) => {
     };
 
     const res = await axios(options);
-    console.log(res);
     return res?.data;
   } catch (error) {
     console.log(error);
@@ -208,7 +202,6 @@ export const getNextUserCreatedStory = async (
   userCreatedPostIndex,
   UserCreatedPostIndexLimit,
 ) => {
-  console.log(userCreatedPostIndex, UserCreatedPostIndexLimit);
   try {
     let options = {
       method: "POST",
@@ -221,10 +214,8 @@ export const getNextUserCreatedStory = async (
         UserCreatedPostIndexLimit:UserCreatedPostIndexLimit,
       },
     };
-    console.log(options.params);
 
     const res = await axios(options);
-    console.log(res);
     return res?.data;
   } catch (error) {
     console.log(error);
@@ -277,7 +268,6 @@ export const likeStory = async ({ id }) => {
     };
 
     const res = await axios(options);
-    console.log(res);
     return res?.data;
   } catch (error) {
     console.log(error);

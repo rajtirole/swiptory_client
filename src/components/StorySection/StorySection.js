@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import StoryCategory from "../StoryCategory/StoryCategory";
 import { Categorie } from "../../constants/Categories";
 import Categories from "../Categories/Categories";
@@ -6,6 +6,13 @@ import style from "./StorySection.module.css";
 import { usePostsContext } from "../../context/PostContext";
 
 const StorySection = () => {
+  const { fetchPosts,categoriesPosts ,posts,userCreatedposts} = usePostsContext(); // Using the fetchPosts function from PostsContext
+  useEffect(() => {
+    // Fetch posts when the component mounts
+      (async()=>{
+        await fetchPosts();
+      })()
+  }, [categoriesPosts]); // Dependency array to prevent unnecessary fetches
 
 
 
@@ -15,34 +22,54 @@ const StorySection = () => {
 
 
     // const [categoriesPosts, setCategoriesPosts] = useState(null);
-    const { posts,userCreatedposts ,categoriesPosts,setCategoriesPosts} = usePostsContext();
-    console.log(categoriesPosts);
-  
+  // setCategoriesPosts={setCategoriesPosts} categories
   return (
     <div className={style.StorySectionContainer}>
       <div>
-        <Categories setCategoriesPosts={setCategoriesPosts}></Categories>
+        <Categories ></Categories>
       </div>
-      {userCreatedposts?.length&&!categoriesPosts&&<StoryCategory
+      {/* {(userCreatedposts?.length&&!categoriesPosts)&&
+      <StoryCategory
                 Categorie={'userCreatedPosts'}
                 stories={userCreatedposts}
-              ></StoryCategory>}
+              ></StoryCategory>
+              } */}
+            {(userCreatedposts?.length>0 && !categoriesPosts )&& (
+  <StoryCategory
+    Categorie={'userCreatedPosts'}
+    stories={userCreatedposts}
+  />
+)}
+
         {!categoriesPosts ? (
           Categorie.map((Categorie, index) => {
             return (
               <StoryCategory
                 key={index}
                 Categorie={Categorie}
-                stories={posts[Categorie.name]}
+                stories={posts[Categorie?.name]}
               ></StoryCategory>
             );
           })
         ) : (
-          <>
-            <StoryCategory
+        // {!categoriesPosts ? (
+        //   Categorie.map((Categorie, index) => {
+        //     return (
+        //       <StoryCategory
+        //         key={index}
+        //         Categorie={Categorie}
+        //         stories={posts[Categorie.name]}
+        //       ></StoryCategory>
+        //     );
+        //   })
+        // ) : (
+          <><div>fsdkfksjdlkj</div>
+            {
+              
+              <StoryCategory
               Categorie={categoriesPosts}
-              stories={posts[categoriesPosts.name]}
-            ></StoryCategory>
+              stories={posts[categoriesPosts?.name]}
+            ></StoryCategory>}
           </>
         )}
       {/* </div> */}

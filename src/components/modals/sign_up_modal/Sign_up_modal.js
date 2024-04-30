@@ -45,12 +45,10 @@ export const Sign_up_modal = () => {
     } else {
       // Handle validation errors
       setValidationError(result.error.formErrors.fieldErrors);
-      console.log(validationError);
     }
   };
   const changeHandelr = async (e) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
-    console.log(formValue);
     setValidationError(false);
   };
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -73,9 +71,12 @@ export const Sign_up_modal = () => {
   }
 
   return (
-    <div>
+    <div className={style.Sign_up_button_container}>
       <button onClick={openModal} className={style.Sign_up_button}>
         Register Now
+      </button>
+      <button onClick={openModal} className={style.Sign_up_button_small_device}>
+        Register
       </button>
       <Modal
         isOpen={modalIsOpen}

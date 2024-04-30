@@ -43,11 +43,11 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserContext } from "./context/AuthContext";
 import { usePostsContext } from "./context/PostContext";
+import UserCreatedStory from "./pages/UserCreatedStory";
 
 const App = () => {
   // const {isLoading}=useUserContext()
   const {isLoading}=usePostsContext()
-  console.log(isLoading);
   return (
     <main>
       {isLoading&&<div class="loadingOverlay">
@@ -57,6 +57,7 @@ const App = () => {
         <Routes>
           {/* Route to the specific story page */}
           <Route path="/stories/:id" element={<StoryPage />} />
+          <Route path="/userCreatedStory" element={<UserCreatedStory />} />
 
           {/* Route to bookmark page */}
           <Route path="/bookmarks" element={<BookmarkPage />} />

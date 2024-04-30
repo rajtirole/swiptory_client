@@ -72,14 +72,11 @@ export function PostsProvider({ children }) {
     setIsLoading(true);
     try {
       const response = await getUserCreatedStory();
-      console.log(
-        response
-      );
+     
       if (response?.success) {
         setuserCreatedposts(response.data);
         return true;
       }
-      console.log(userCreatedposts);
     } catch (error) {
       console.error(error);
     } finally {
@@ -90,9 +87,7 @@ export function PostsProvider({ children }) {
     setIsLoading(true);
     try {
       const response = await getUserBookmarkedStory();
-      console.log(
-        response
-      );
+     
       if (response?.success) {
         setUserBookmarkedPosts(response.data);
         return true;
@@ -125,6 +120,7 @@ export function PostsProvider({ children }) {
         });
         return true;
       }
+
     } catch (error) {
       console.error(error);
     } finally {
@@ -140,7 +136,6 @@ export function PostsProvider({ children }) {
       // Fetch posts from your backend or database
       const response = await getNextUserCreatedStory(userCreatedPostIndex ,UserCreatedPostIndexLimit);
       if (response?.data) {
-        console.log(response.data);
         setuserCreatedposts([...userCreatedposts, ...response.data]);
         return true;
       }
@@ -159,8 +154,7 @@ export function PostsProvider({ children }) {
       // Fetch posts from your backend or database
       const response = await getNextBookmarkedStory(postIndex ,postIndexLimit);
       if (response?.data) {
-        console.log(response.data);
-        setUserBookmarkedPosts([...userCreatedposts, ...response.data]);
+        setUserBookmarkedPosts([...userBookmarkedPosts, ...response.data]);
         return true;
       }
     } catch (error) {

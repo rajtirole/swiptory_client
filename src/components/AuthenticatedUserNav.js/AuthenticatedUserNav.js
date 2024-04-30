@@ -39,17 +39,24 @@ const AuthenticatedUserNav = () => {
      
     }
    }
-
+   const yourStoryHandler=()=>{
+    navigate('/userCreatedStory')
+   }
   return (
     <>
 <div className={style.mobileDeviceNavbarContainer}>
 <div className={style.userContainer}>
-     <img src={profileImage}></img>
-     <div>{user.userName}</div>
+  <div className={style.ImageContainer}>
+  <img src={profileImage}></img>
+
+  </div>
+     <div className={style.usernameContainer}>
+      <h2>{user.userName}</h2>
+     </div>
   </div>
 
-  <div className={style.addStoryContainer}>
-        <div>your story</div>
+  <div className={style.addStoryContainer} >
+        <div  onClick={yourStoryHandler}>your story</div>
       </div>
   <div className={style.addStoryContainer}>
         <AddStoryModal></AddStoryModal>

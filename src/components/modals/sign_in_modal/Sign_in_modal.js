@@ -20,7 +20,6 @@ const customStyles = {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       borderRadius: "20px",
-    padding: "1rem 2rem",
 },
 
 };
@@ -83,7 +82,6 @@ export function Sign_in_modal() {
           setIsAuthenticated(true)
           navigate('/')
       } catch (error) {
-        console.log(error);
         toast.error(error?.data?.message || "something went wrong", {
           position: "top-center",
         });
@@ -91,19 +89,18 @@ export function Sign_in_modal() {
     } else {
       // Handle validation errors
       setValidationError(result.error.formErrors.fieldErrors);
-      console.log(validationError);
     }
   };
   const changeHandelr = async (e) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
-    console.log(formValue);
     setValidationError(false);
   };
 
   
     return (
-        <div>
+        <div className={style.Sign_button_container}>
         <button onClick={openModal} className={style.Sign_button}>Sign In</button>
+        <button onClick={openModal} className={style.Sign_in_button_small_device}>Login</button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -111,8 +108,9 @@ export function Sign_in_modal() {
           style={customStyles}
           contentLabel="Example Modal"
           overlayClassName={style.Overlay}
+          className={style.modalContainer}
         >
-          <div className={style.RegisterContainer}>
+          <div className={style.signInContainer}>
           <img
             src={declineImage}
             className={style.declineImageContainer}

@@ -265,4 +265,8 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-
+main{
+  word-wrap: break-word;
+  text-wrap: wrap;
+  
+}
