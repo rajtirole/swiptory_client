@@ -46,6 +46,7 @@ import { usePostsContext } from "./context/PostContext";
 import UserCreatedPostsPage from "./pages/UserCreatedPostsPage";
 const App = () => {
   const {isLoading}=usePostsContext()
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
     <main>
       {isLoading&&<div class="loadingOverlay">
