@@ -5,7 +5,8 @@ import style from './UpdateStoryModal.module.css'
 import Modal from "react-modal";
 import MultiSlideForm from '../MultiSlideFormModal/MultiSlideForm';
 import FormModal from '../MultiSlideFormModal/FormModal';
-import editIcon from '../../../assets/Group 89.png'
+// import editIcon from '../../../assets/Group 89.png'
+import editIcon from '../../../assets/tabler_edit.png'
 
 const customStyles = {
     content: {
@@ -36,9 +37,15 @@ Modal.setAppElement("#root");
     
   return (
     <>
-                    <img src={editIcon} onClick={(e)=>{
+                     {/* <img src={editIcon} onClick={(e)=>{
+                  openModal();
+              }} ></img> */}
+                   <div className={style.editIconContainer} onClick={(e)=>{
                 openModal();
-            }} ></img>
+            }} >
+                   <img src={editIcon} ></img>
+            <div>Edit</div>
+                   </div>
 
             {/* <button onClick={(e)=>{
                 openModal();

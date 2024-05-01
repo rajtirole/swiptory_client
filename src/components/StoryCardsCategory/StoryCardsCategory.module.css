@@ -51,6 +51,9 @@
   bottom: -10px;
   z-index: 10;
   /* margin-bottom: 10%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .storyContent {
   position: absolute;
@@ -179,7 +182,7 @@
 
   }
   .buttonContainer{
-    top: 97%;
+    top: 95%;
   }
   
  

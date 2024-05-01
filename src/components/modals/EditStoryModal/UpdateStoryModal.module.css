@@ -27,6 +27,26 @@
     outline: none;
    
   }
+  .editIconContainer{
+   width: 100%;
+   height: 100%;
+   background-color: #fff;
+   display: flex;
+   /* justify-content: space-around; */
+   padding: 5px 0;
+   flex: 1 1;
+   border-radius: 20px;
+   justify-content: center;
+   align-items: center;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+  }
+ 
+  .editIconContainer>img{
+   width: 50%;
+   height: 100%;
+   object-fit: contain;
+  }
+
   @media (max-width: 426px) {
     /* CSS rules */
    
@@ -38,6 +58,5 @@
        }
          
      
-      
-   
+    
   }
