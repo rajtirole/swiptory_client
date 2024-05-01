@@ -55,6 +55,9 @@ export const registerUser = async (formValue) => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
+      toast.error( "User Registration Failed", {
+        position: "top-center",
+      });
     }
     
     console.log(error);
@@ -80,7 +83,7 @@ export const signInUser = async (formValue) => {
     if (error.response) {
       // The server responded with a status other than 2xx
       console.log("Response data:", error.response.data);
-      toast.error(error.response.data.message || "User Registration Failed", {
+      toast.error(error.response.data.message || "User login Failed", {
         position: "top-center",
       });
       console.log("Status code:", error.response.status);
@@ -91,6 +94,9 @@ export const signInUser = async (formValue) => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
+      toast.error( "User login Failed", {
+        position: "top-center",
+      });
     }
 
    console.log(error);
@@ -109,10 +115,27 @@ export const logoutUser = async () => {
     console.log(res.cookies);
     return res ? res?.data : null;
   } catch (error) {
-    toast.error(error?.data?.message || "Logout Failed", {
-      position: "top-center",
-    });
+   
+
     console.log(error);
+    if (error.response) {
+      // The server responded with a status other than 2xx
+      console.log("Response data:", error.response.data);
+      toast.error(error.response.data.message || "Logout Failed", {
+        position: "top-center",
+      });
+      console.log("Status code:", error.response.status);
+      console.log("Status text:", error.response.statusText);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("Request error:", error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error("Error:", error.message);
+      toast.error( "Something went wrong", {
+        position: "top-center",
+      });
+    }
   }
 };
 export const postStories = async (validPosts) => {
@@ -130,9 +153,25 @@ export const postStories = async (validPosts) => {
   } catch (error) {
     console.log(error);
     // throw error.response;
-    toast.error(error?.data?.message || "Unable to create post", {
-      position: "top-center",
-    });
+    
+    if (error.response) {
+      // The server responded with a status other than 2xx
+      console.log("Response data:", error.response.data);
+      toast.error(error.response.data.message || "Unable to create post", {
+        position: "top-center",
+      });
+      console.log("Status code:", error.response.status);
+      console.log("Status text:", error.response.statusText);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("Request error:", error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error("Error:", error.message);
+      toast.error( "Something went wrong", {
+        position: "top-center",
+      });
+    }
   }
 };
 export const updateStories = async ({ validPosts, id }) => {
@@ -150,9 +189,27 @@ export const updateStories = async ({ validPosts, id }) => {
   } catch (error) {
     console.log(error);
     // throw error.response;
-    toast.error(error?.data?.message || "Unable to update post", {
-      position: "top-center",
-    });
+   
+    if (error.response) {
+      // The server responded with a status other than 2xx
+      console.log("Response data:", error.response.data);
+      toast.error(error.response.data.message || "Unable to update post", {
+        position: "top-center",
+      });
+      console.log("Status code:", error.response.status);
+      console.log("Status text:", error.response.statusText);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("Request error:", error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error("Error:", error.message);
+      toast.error( "Something went wrong", {
+        position: "top-center",
+      });
+    }
+
+    
   }
 };
 export const getStories = async () => {
@@ -312,9 +369,25 @@ export const likeStory = async ({ id }) => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    toast.error(error?.data?.message || "Unable to Like", {
-      position: "top-center",
-    });
+   
+    if (error.response) {
+      // The server responded with a status other than 2xx
+      console.log("Response data:", error.response.data);
+      toast.error(error.response.data.message || "Unable to Like", {
+        position: "top-center",
+      });
+      console.log("Status code:", error.response.status);
+      console.log("Status text:", error.response.statusText);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("Request error:", error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error("Error:", error.message);
+      toast.error( "Something went wrong", {
+        position: "top-center",
+      });
+    }
     // throw error.response;
   }
 };
@@ -347,6 +420,9 @@ export const saveStory = async ({ id }) => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
+      toast.error( "Something went wrong", {
+        position: "top-center",
+      });
     }
     // throw error.response;
   }

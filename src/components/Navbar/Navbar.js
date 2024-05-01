@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import style from './Navbar.module.css'
-import Button from '../ui/Button/Button'
 import { Sign_in_modal } from '../modals/sign_in_modal/Sign_in_modal'
 import {Sign_up_modal} from '../modals/sign_up_modal/Sign_up_modal'
 import {useUserContext} from '../../context/AuthContext'
 import closeMenuIcon from '../../assets/akar-icons_cross (1).png'
-import { useContext } from "react";
 import menuIcon from '../../assets/Vectorhamburger.png'
 import AuthenticatedUserNav from '../AuthenticatedUserNav.js/AuthenticatedUserNav'
 import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
-  const {isAuthenticated,user}=useUserContext()
+  const {isAuthenticated}=useUserContext()
   const [menuToggle,setMenuToggle]=useState(false)
   const navigate=useNavigate()
   const logoHandler=async()=>{
@@ -32,11 +30,6 @@ const Navbar = () => {
         </div>
         <div className={style.nav_bar_container_right_side_icon}>
           <img src={menuIcon} onClick={menuToggleHandler}></img>
-          
-
-       {/* { isAuthenticated?<AuthenticatedUserNav></AuthenticatedUserNav>:<>
-        <Sign_up_modal></Sign_up_modal>
-        <Sign_in_modal></Sign_in_modal></>} */}
         </div>
     </div>
     {menuToggle&&<div className={style.smallDeviceMenu}>

@@ -16,6 +16,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { likeStory, saveStory } from "../../../api/api";
 import { Sign_in_modal } from "../sign_in_modal/Sign_in_modal";
+import { usePostsContext } from "../../../context/PostContext";
+import { LikeAndBookmarkLoginModal } from "../likeAndBookmarkModal/LikeAndBookmarkLoginModal";
 
 const StoryModal = ({
   displayedStory,
@@ -23,24 +25,24 @@ const StoryModal = ({
   setIsOpen,
   setDisplayedStory,
   redirect,
-  Categorie
+  Categorie,
 }) => {
-  const { user,isAuthenticated } = useUserContext();
+  const { user, isAuthenticated } = useUserContext();
+  const { isPageReloadRequired, setisPageReloadRequired } = usePostsContext();
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [likeLogin, setLikeLogin] = useState(false);
-  let modallogin=false;
-//   const [currentStory, setCurrentStory] = useState(displayedStory?.stories?.[0]);
+  let modallogin = false;
+  //   const [currentStory, setCurrentStory] = useState(displayedStory?.stories?.[0]);
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isCopied, setisCopied] = useState(false);
 
   const [progress, setProgress] = useState(false);
- 
 
   const goToNextStory = () => {
     if (currentStoryIndex < displayedStory.stories.length - 1) {
       setCurrentStoryIndex((prevIndex) => prevIndex + 1);
-    //   setProgress(false);
+      //   setProgress(false);
     }
   };
 
@@ -64,11 +66,10 @@ const StoryModal = ({
       width: "100%",
       height: "100%",
       background: "none",
-      padding:'0',
-      display:'flex',
-      justifyContent:'center',
-      alignItems:'center'
-
+      padding: "0",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
     backgroundColor: "none",
   };
@@ -111,13 +112,11 @@ const StoryModal = ({
     // Optionally, show a loading indicator or message while copying the link
   };
   const declineIconClicked = () => {
-    if(Categorie=='bookmarkedPosts'){
-      closeModal()
-    }
-    else if(Categorie=='userCreatedPosts'){
-      closeModal()
-    }
-   else {
+    if (Categorie == "bookmarkedPosts") {
+      closeModal();
+    } else if (Categorie == "userCreatedPosts") {
+      closeModal();
+    } else {
       navigate("/");
     }
     setIsOpen(false);
@@ -143,10 +142,10 @@ const StoryModal = ({
   const bookmarkHandler = async () => {
     try {
       const response = await saveStory({ id: displayedStory._id });
-      if(response?.success){
+      if (response?.success) {
         toast.success(response?.message || "success", {
-            position: "top-center",
-          });
+          position: "top-center",
+        });
       }
       setDisplayedStory(response.data); // Update the displayed story with the latest data
 
@@ -154,160 +153,47 @@ const StoryModal = ({
       const savedByCurrentUser = response.data.savedBy.includes(user.id);
       setIsBookmarked(savedByCurrentUser); // Update the isBookmarked state based on the response
     } catch (error) {
+      closeModal()
+      navigate('/')
       console.error("Error:", error);
-      
+     
       // Handle errors if necessary
+
     }
+    setisPageReloadRequired(!isPageReloadRequired);
   };
 
   const likeHandler = async () => {
+    if (isAuthenticated) {
+      try {
+        const response = await likeStory({ id: displayedStory._id });
+        setDisplayedStory(response.data); // Update the displayed story with the latest data
 
-    if(isAuthenticated){
-    try {
-      const response = await likeStory({ id: displayedStory._id });
-      setDisplayedStory(response.data); // Update the displayed story with the latest data
-      
-      // Check if the user ID is in the likedBy array to determine the like state
-      const likedByCurrentUser = response.data.likedBy.includes(user.id);
-      setIsLiked(likedByCurrentUser); // Update the isLiked state based on the response
-    } catch (error) {
-      modallogin=true;
-      
+        // Check if the user ID is in the likedBy array to determine the like state
+        const likedByCurrentUser = response.data.likedBy.includes(user.id);
+        setIsLiked(likedByCurrentUser); // Update the isLiked state based on the response
+      } catch (error) {
+        modallogin = true;
 
-      console.error("Error:", error);
-       toast.error(error?.message || "Failed", {
-         position: "top-center",
+        console.error("Error:", error);
+        toast.error(error?.message || "Failed", {
+          position: "top-center",
         });
-      // Handle errors if necessary
-    }
-   
-  }
-  else{
-    setLikeLogin(true)
+        // Handle errors if necessary
+      }
+    } else {
+      setLikeLogin(true);
       console.log(likeLogin);
-    toast.error("Please Login", {
-    position: "top-center",
-  });
-
-    
-}
+      toast.error("Please Login", {
+        position: "top-center",
+      });
+      setisPageReloadRequired(!isPageReloadRequired);
+    }
   };
 
-  //   const bookmarkHandler = async() => {
-  //     const response=await saveStory({id:displayedStory._id});
-  // //    const response=await bookmarkedStory()
-  // console.log(response);
-  // if(response?.success){
-  //     setDisplayedStory(response?.data)
-  //     }
-  //     const saved=displayedStory.savedBy
-  //     console.log(saved);
-  //     console.log(saved.includes(user.id));
-  //     if(displayedStory.savedBy.includes(user.id)){
-  //      console.log(displayedStory);
-  //      setIsBookmarked(true)
-  //  }
-  //  else{
-  //         console.log(displayedStory);
-  //         setIsBookmarked(false)
-  //     }
-
-  //       // Optionally, show a loading indicator or message while copying the link
-  //   };
-  //   const likeHandler = async() => {
-  //    const response=await likeStory({id:displayedStory._id});
-  //    console.log(response.data.likedBy.includes(user.id));
-  //    setDisplayedStory(response.data)
-  //    if(response.data.likedBy.includes(user.id)){
-  //     setIsLiked(true)
-  //    }else{
-  //     setIsLiked(false)
-  //    }
-
-  //       // Optionally, show a loading indicator or message while copying the link
-  //   };
-//   useEffect(() => {
-//       const timer = setTimeout(() => {
-//         if (progress >= 100) {
-//           // Move to the next story when progress reaches 100%
-//           if (currentStoryIndex < displayedStory?.stories?.length - 1) {
-//             setCurrentStoryIndex(prevIndex => prevIndex + 1);
-//             setProgress(0); // Reset progress for the new story
-//           }
-//         } else {
-//           // Increment progress every 100 milliseconds until it reaches 100%
-//           setProgress(prevProgress => prevProgress + 1);
-//         }
-//       }, 300); // Adjust the interval as needed for smoother animation
-
-//       return () => clearTimeout(timer);
-//     }, [progress, currentStoryIndex, displayedStory, closeModal]);
-
-// useEffect(() => {
-//     let timer;
-//     // setCurrentStoryIndex(0);
-//     if (modalIsOpen) {
-//       timer = setTimeout(() => {
-//         if (currentStoryIndex < displayedStory?.stories?.length - 1) {
-//           setCurrentStoryIndex((prevIndex) => prevIndex + 1);
-//           setProgress(false);
-//         } else {
-//           // If the current story is the last one, close the modal as not mentioned to to it otherwise a good feature
-//         //   setIsOpen(false);
-
-
-//         }
-//       }, 3000); // Adjust the delay (in milliseconds) as needed
-//     }
-//     return () => clearTimeout(timer); // Clear the timer when the component unmounts or modalIsOpen changes
-//   }, [currentStoryIndex, modalIsOpen]);
-
-// useEffect(() => {
-//     let timer;
-  
-//     // Function to handle moving to the next story
-//     const goToNextStory = () => {
-//       if (currentStoryIndex < displayedStory?.stories?.length - 1) {
-//         setCurrentStoryIndex((prevIndex) => prevIndex + 1);
-//         setProgress(false);
-//       }
-//     };
-  
-//     // Function to start the timer for moving to the next story
-//     const startTimer = () => {
-//       timer = setTimeout(goToNextStory, 3000); // Adjust the delay (in milliseconds) as needed
-//     };
-  
-//     // Start the timer when the modal is open
-//     if (modalIsOpen) {
-//         setCurrentStoryIndex(0)
-//       startTimer();
-//     }
-  
-//     // Clear the timer when the component unmounts or modalIsOpen changes
-//     return () => {
-//       clearTimeout(timer);
-//     };
-//   }, [currentStoryIndex, displayedStory?.stories?.length, modalIsOpen]);
-  
-//   useEffect(() => {
-//     // Reset the progress bar to 0 when the story changes
-//     setProgress(false);
-//   }, [currentStoryIndex]);
-  
-//   // Start the progress bar animation when modalIsOpen and currentStoryIndex is not 0
-//   useEffect(() => {
-//     // setCurrentStoryIndex(0)
-//     modalIsOpen&&setCurrentStoryIndex(0)
-
-    
-//   }, [modalIsOpen]);
-
-
-
-useEffect(() => {
+  useEffect(() => {
     let timer;
-  
+
     // Function to handle moving to the next story
     const goToNextStory = () => {
       if (currentStoryIndex < displayedStory?.stories?.length - 1) {
@@ -315,29 +201,29 @@ useEffect(() => {
         setProgress(false);
       }
     };
-  
+
     // Function to start the timer for moving to the next story
     const startTimer = () => {
       timer = setTimeout(goToNextStory, 3000); // Adjust the delay (in milliseconds) as needed
     };
-  
+
     // Start the timer when the modal is open
     if (modalIsOpen) {
-        // setCurrentStoryIndex(0)
+      // setCurrentStoryIndex(0)
       startTimer();
     }
-  
+
     // Clear the timer when the component unmounts or modalIsOpen changes
     return () => {
       clearTimeout(timer);
     };
   }, [currentStoryIndex, displayedStory?.stories?.length, modalIsOpen]);
-  
+
   useEffect(() => {
     // Reset the progress bar to 0 when the story changes
     setProgress(false);
   }, [currentStoryIndex]);
-  
+
   // Start the progress bar animation when modalIsOpen and currentStoryIndex is not 0
   useEffect(() => {
     if (modalIsOpen && currentStoryIndex !== 0) {
@@ -350,118 +236,122 @@ useEffect(() => {
   }, [displayedStory]);
   const [previousDisplayedStory, setPreviousDisplayedStory] = useState(null);
 
-useEffect(() => {
-  if (displayedStory !== previousDisplayedStory) {
-    // Reset currentStoryIndex to 0 when a new story is displayed
-    setCurrentStoryIndex(0);
-    // Update the previousDisplayedStory to the current displayedStory
-    setPreviousDisplayedStory(displayedStory);
-  }
-}, [displayedStory, previousDisplayedStory]);
+  useEffect(() => {
+    if (displayedStory !== previousDisplayedStory) {
+      // Reset currentStoryIndex to 0 when a new story is displayed
+      setCurrentStoryIndex(0);
+      // Update the previousDisplayedStory to the current displayedStory
+      setPreviousDisplayedStory(displayedStory);
+    }
+  }, [displayedStory, previousDisplayedStory]);
 
-  
-  
   return (
-   <>
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      style={customStyles}
-      contentLabel="Example Modal"
-      overlayClassName={style.Overlay}
-      shouldCloseOnOverlayClick={false}
-    >
-      <div className={style.modalContainer}>
-        <div className={style.previousStoryContainerButton} onClick={goToPreviousStory}></div>
-        <div className={style.nextStoryContainerButton} onClick={goToNextStory}></div>
-        <div className={style.previousStoryContainer}>
-          <button onClick={goToPreviousStory}>{"<"}</button>
-        </div>
-        <div className={style.storyContainer}>
-        <div className={style.postContainer} >
-  {/* Other content */}
-            
-
-
-
-            {displayedStory?.stories?.[currentStoryIndex].image && (
-              <img className={style.imageContainer} src={displayedStory?.stories?.[currentStoryIndex]?.image}></img>
-            )}
-            <div className={style.storyNavigationContainer}>
+    <>
+   <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+        overlayClassName={style.Overlay}
+        shouldCloseOnOverlayClick={false}
+      >
+        <div className={style.modalContainer}>
+          <div
+            className={style.previousStoryContainerButton}
+            onClick={goToPreviousStory}
+          ></div>
+          <div
+            className={style.nextStoryContainerButton}
+            onClick={goToNextStory}
+          ></div>
+          <div className={style.previousStoryContainer}>
+            <button onClick={goToPreviousStory}>{"<"}</button>
+          </div>
+          <div className={style.storyContainer}>
+            <div className={style.postContainer}>
+              {displayedStory?.stories?.[currentStoryIndex].image && (
+                <img
+                  className={style.imageContainer}
+                  src={displayedStory?.stories?.[currentStoryIndex]?.image}
+                ></img>
+              )}
+              <div className={style.storyNavigationContainer}>
                 <div className={style.statusContainer}>
-                {displayedStory?.stories && displayedStory?.stories.map((story, index) => {
-    return (
-        <div className={style.statusBar} key={index}>
-            <div className={style.timer} style={{
-                width: `${(currentStoryIndex === index ? '100%' : '0%')}`,
-                transition: `${(currentStoryIndex === index ? 'width 3s linear' : '')}`,
-            }}></div>
-        </div>
-    );
-})}
+                  {displayedStory?.stories &&
+                    displayedStory?.stories.map((story, index) => {
+                      return (
+                        <div className={style.statusBar} key={index}>
+                          <div
+                            className={style.timer}
+                            style={{
+                              width: `${
+                                currentStoryIndex === index ? "100%" : "0%"
+                              }`,
+                              transition: `${
+                                currentStoryIndex === index
+                                  ? "width 3s linear"
+                                  : ""
+                              }`,
+                            }}
+                          ></div>
+                        </div>
+                      );
+                    })}
                 </div>
 
-              <div className={style.shareContainer}>
-                <img src={declineIcon} onClick={declineIconClicked}></img>
-                <img src={sendIcon} onClick={shareIconClicked}></img>
+                <div className={style.shareContainer}>
+                  <img src={declineIcon} onClick={declineIconClicked}></img>
+                  <img src={sendIcon} onClick={shareIconClicked}></img>
+                </div>
               </div>
-            </div>
-            <div className={style.storyContentContainer}>
-              {isCopied && (
-                <button
-                  className={style.copyLinkToClipboardContainer}
-                  onClick={() => {
-                    setisCopied(false);
-                  }}
-                >
-                  Link copied to clipboard
-                </button>
-              )}
-              <div className={style.storyContent}>
-                {displayedStory?.stories?.[currentStoryIndex].heading && (
-                  <p className={style.storyHeading}>
-                    {displayedStory.stories[currentStoryIndex].heading}
-                  </p>
+              <div className={style.storyContentContainer}>
+                {isCopied && (
+                  <button
+                    className={style.copyLinkToClipboardContainer}
+                    onClick={() => {
+                      setisCopied(false);
+                    }}
+                  >
+                    Link copied to clipboard
+                  </button>
                 )}
-                {displayedStory?.stories?.[currentStoryIndex].description && (
-                  <p className={style.storyDescription}>
-                    {displayedStory.stories[currentStoryIndex].description}
-                  </p>
-                )}
-              </div>
+                <div className={style.storyContent}>
+                  {displayedStory?.stories?.[currentStoryIndex].heading && (
+                    <p className={style.storyHeading}>
+                      {displayedStory.stories[currentStoryIndex].heading}
+                    </p>
+                  )}
+                  {displayedStory?.stories?.[currentStoryIndex].description && (
+                    <p className={style.storyDescription}>
+                      {displayedStory.stories[currentStoryIndex].description}
+                    </p>
+                  )}
+                </div>
 
-              <div className={style.bookmarkContainer}>
-                <img
-                  src={isBookmarked ? bookmarkIcon : bookmarkedIcon}
-                  onClick={bookmarkHandler}
-                ></img>
-
-                <div className={style.likeContainer}>
+                <div className={style.bookmarkContainer}>
                   <img
-                    src={isLiked ? likedIcon : likeIcon}
-                    onClick={likeHandler}
+                    src={isBookmarked ? bookmarkIcon : bookmarkedIcon}
+                    onClick={bookmarkHandler}
                   ></img>
-                  <div>
-                    {displayedStory ? displayedStory?.likedBy?.length: 0}
+
+                  <div className={style.likeContainer}>
+                    <img
+                      src={isLiked ? likedIcon : likeIcon}
+                      onClick={likeHandler}
+                    ></img>
+                    <div>
+                      {displayedStory ? displayedStory?.likedBy?.length : 0}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
-
-
-
-
+          </div>
+          <div className={style.nextStoryContainer}>
+            <button onClick={goToNextStory}>{">"}</button>
           </div>
         </div>
-        <div className={style.nextStoryContainer}>
-          <button onClick={goToNextStory}>{">"}</button>
-        </div>
-      </div>
-    </Modal>
-
-
-
+      </Modal>
     </>
   );
 };

@@ -7,31 +7,36 @@ import StoryCategory from '../../components/StoryCategory/StoryCategory';
 import { usePostsContext } from '../../context/PostContext';
 import BookmarIcon from '../../assets/boomarks.png'
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../context/AuthContext';
 const Bookmarks = () => {
     const navigate=useNavigate()
     const homeNavigationHandler=()=>{
         navigate('/')
     }
-    const {userBookmarkedPosts,fetchUserBookmarkedPosts,posts}=usePostsContext();
+    const {userBookmarkedPosts,fetchUserBookmarkedPosts,posts,isPageReloadRequired}=usePostsContext();
+    const {isAuthenticated}=useUserContext();
     useEffect(()=>{
         (async()=>{
 await fetchUserBookmarkedPosts()
         })()
-    },[])
+    },[isPageReloadRequired])
     console.log(userBookmarkedPosts);
   return (
     <>
     <Navbar></Navbar>
-   {userBookmarkedPosts.length? <div className={style.bookmarkPageContainer}>
+   {userBookmarkedPosts.length? isAuthenticated&&<div className={style.bookmarkPageContainer}>
     <div className={style.bookmark}>
         Your Bookmarks
         
     </div>
         {/* <Bookmarks posts={displayedPosts} setPosts={setDisplayedPosts} redirect={'/bookmarks'}></Bookmarks> */}
-        <StoryCategory
+       {isPageReloadRequired?<StoryCategory
                 Categorie={'bookmarkedPosts'}
                 stories={userBookmarkedPosts}
-              ></StoryCategory>
+              ></StoryCategory>:<StoryCategory
+              Categorie={'bookmarkedPosts'}
+              stories={userBookmarkedPosts}
+            ></StoryCategory>}
     </div>:
     <div  className={style.BookmarkContainer}>
     <div>You have no bookmarks!</div>
