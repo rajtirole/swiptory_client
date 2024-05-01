@@ -35,7 +35,6 @@ const StoryCardsCategory = ({ stories: posts, Categorie }) => {
 
     if (Categorie == "userCreatedPosts") {
       const userCreatedPostIndex = posts.length;
-      // const UserCreatedPostIndexLimit = posts.length + 4;
       const UserCreatedPostIndexLimit = userCreatedPostIndex + 4;
       await fetchNextUserCreatedPosts(
         userCreatedPostIndex,
@@ -90,15 +89,15 @@ const StoryCardsCategory = ({ stories: posts, Categorie }) => {
                     }}
                   >
                     <img
-                      src={post?.stories?.[0].image}
+                      src={post?.stories?.[0]?.image}
                       // onError={(e) => {
                       //   e.target.src = foodImage;
                       // }}
-                      alt={post?.stories[0].heading}
+                      // alt={post?.stories[0].heading}
                       className="story-image"
                     />
                     <div className={style.storyContent}>
-                      <h3>{post?.stories?.[0].heading}</h3>
+                      <h3>{post?.stories?.[0].heading}</h3> 
                       <p>{post?.stories?.[0].description}</p>
                     </div>
                     {isAuthor(post.owner) && (

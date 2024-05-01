@@ -38,8 +38,12 @@ const StoryModal = ({
   const [isCopied, setisCopied] = useState(false);
 
   const [progress, setProgress] = useState(false);
+  const [nextPost, setNextPost] = useState(false);
+  const [previousPost, setPreviousPost] = useState(false);
 
   const goToNextStory = () => {
+    setNextPost(true)
+    setPreviousPost(false)
     if (currentStoryIndex < displayedStory.stories.length - 1) {
       setCurrentStoryIndex((prevIndex) => prevIndex + 1);
       //   setProgress(false);
@@ -48,6 +52,8 @@ const StoryModal = ({
 
   const goToPreviousStory = () => {
     // setProgress(true);
+    setPreviousPost(true)
+    setNextPost(false)
     if (currentStoryIndex > 0) {
       setCurrentStoryIndex((prevIndex) => prevIndex - 1);
     }
@@ -244,6 +250,7 @@ const StoryModal = ({
     }
   }, [displayedStory, previousDisplayedStory]);
 
+
   return (
     <>
       <Modal
@@ -284,7 +291,7 @@ const StoryModal = ({
                             className={style.timer}
                             style={{
                               width: `${
-                                currentStoryIndex === index ? "100%" : "0%"
+                                currentStoryIndex === index ? "100%" :"0%"
                               }`,
                               transition: `${
                                 currentStoryIndex === index
