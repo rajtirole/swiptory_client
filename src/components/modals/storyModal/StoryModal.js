@@ -153,12 +153,11 @@ const StoryModal = ({
       const savedByCurrentUser = response.data.savedBy.includes(user.id);
       setIsBookmarked(savedByCurrentUser); // Update the isBookmarked state based on the response
     } catch (error) {
-      closeModal()
-      navigate('/')
+      closeModal();
+      navigate("/");
       console.error("Error:", error);
-     
-      // Handle errors if necessary
 
+      // Handle errors if necessary
     }
     setisPageReloadRequired(!isPageReloadRequired);
   };
@@ -247,7 +246,7 @@ const StoryModal = ({
 
   return (
     <>
-   <Modal
+      <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}

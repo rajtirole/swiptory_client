@@ -1,10 +1,8 @@
-
-.userCreatedStoryPageContainer{
-    padding: 1rem 3rem;
-
-    }
+.userCreatedStoryPageContainer {
+  padding: 1rem 3rem;
+}
 /* Extra small devices (phones, 0px and up) */
-.userCreatedStoryContainer{
+.userCreatedStoryContainer {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
@@ -12,25 +10,23 @@
   justify-content: center;
   align-items: center;
 }
-.userCreatedStoryContainer>div{
-  
-  color: #FF7373;
+.userCreatedStoryContainer > div {
+  color: #ff7373;
   font-size: var(--fs-4);
   font-weight: var(--fs-bold);
 }
-.userCreatedStoryContainer>div>button{
+.userCreatedStoryContainer > div > button {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
   gap: 1rem;
-  background-color: #FF7373;
+  background-color: #ff7373;
   color: #fff;
   padding: 10px 15px;
   border: none;
   border-radius: 10px;
   font-weight: var(--fs-bold);
 }
-.userCreatedStoryContainer>div>img{
+.userCreatedStoryContainer > div > img {
   width: 80%;
 }
-  

@@ -135,26 +135,12 @@ const [slide,setSlide]=useState(3)
     const addSlideHandler=()=>{
         console.log(slide);
         slide<6&&setSlide((prev)=>prev+1)
-        // let fromss=forms.map((e,i)=>{
-        //     console.log(slide);
-        //     console.log(currentSlideIndex);
-        //     if((currentSlideIndex-1)===i){
-        //         return form
-        //     }
-        //     return e
-        // })
-        // // setforms([...fromss])
-        // setCurrentSlideIndex()
-
-        // slide<6&&setSlide((prev)=>prev+1)
+       
         
 
 }    
 const declineChangeHandler=(i)=>{
-//    console.log(slide);
-//    console.log(currentSlideIndex);
-//    console.log(i);
-//    console.log(forms);
+
 }
   
   return (
@@ -184,24 +170,7 @@ const declineChangeHandler=(i)=>{
                setCurrentSlideIndex(i+1)
                
 
-            //    setCurrentSlideIndex((prev) => i + 1);
-
-            //    console.log(forms);
-
-
-            // console.log(i);
-            //     let fromss=forms.map((e,index)=>{
-            //         console.log(currentSlideIndex);
-            //         console.log(i);
-            //         // console.log(index);
-            //         if((currentSlideIndex-1)===i){
-            //             return form
-            //         }
-            //         return e
-            //     })
-            //     setforms([...fromss])
-            //   setForm(forms[i])
-            //   setCurrentSlideIndex(i+1)
+           
             }}>
               Slide {i + 1}
             </button>

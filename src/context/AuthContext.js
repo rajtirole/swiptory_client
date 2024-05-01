@@ -20,7 +20,7 @@ const INITIAL_STATE = {
 };
 const AuthContext = createContext(INITIAL_STATE);
 
-export function AuthProvider({ children } ){
+export function AuthProvider({ children }) {
   const navigate = useNavigate();
   const [user, setUser] = useState(INITIAL_USER);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -31,7 +31,11 @@ export function AuthProvider({ children } ){
     try {
       const currentAccount = await getCurrentUser();
       if (currentAccount.success) {
-        setUser({...currentAccount?.data,id:currentAccount?.data?.id, userName: currentAccount?.data?.userName});
+        setUser({
+          ...currentAccount?.data,
+          id: currentAccount?.data?.id,
+          userName: currentAccount?.data?.userName,
+        });
         setIsAuthenticated(true);
         return true;
       }
@@ -45,9 +49,9 @@ export function AuthProvider({ children } ){
   };
 
   useEffect(() => {
-    (async()=>{
+    (async () => {
       await checkAuthUser();
-    })()
+    })();
   }, []);
 
   const value = {

@@ -18,10 +18,9 @@
   display: flex;
   font-weight: var(--fs-bold);
   /* font-size: var(--fs-4); */
-  color: #8E8E8E;
+  color: #8e8e8e;
   /* background-color: red; */
 }
-
 
 .storyCard {
   flex: 0 0 calc(25% - 2rem);
@@ -29,8 +28,11 @@
   max-height: 60vh;
   min-height: 60vh;
   width: 100%;
-  background-image: 
-    linear-gradient(0deg, rgb(0, 0, 0) 40%, rgba(0, 0, 0, 0) 80%),
+  background-image: linear-gradient(
+      0deg,
+      rgb(0, 0, 0) 40%,
+      rgba(0, 0, 0, 0) 80%
+    ),
     linear-gradient(rgb(0, 0, 0) 15%, rgba(0, 0, 0, 0) 40%);
   background-size: cover;
   background-repeat: no-repeat;
@@ -44,7 +46,7 @@
   object-fit: cover;
   border-radius: 10px;
 }
-.buttonContainer{
+.buttonContainer {
   position: absolute;
   right: 0;
   left: 0;
@@ -80,7 +82,7 @@
 
 .storyCard::before {
   top: 0;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1),transparent);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
 }
 
 .storyCard::after {
@@ -89,184 +91,155 @@
 }
 .buttonContainer {
   align-items: center;
-    /* background-color: #fff;
+  /* background-color: #fff;
     border-radius: 2rem;
     box-shadow: 0 4px 15px 0 #00000040; */
-    /* color: #000; */
-    cursor: pointer;
-    /* display: flex;
+  /* color: #000; */
+  cursor: pointer;
+  /* display: flex;
     font-weight: 700; */
-    height: 34px;
-    justify-content: center;
-    left: 50%;
-    position: absolute;
-    top: 100%;
-    transform: translate(-50%, -50%);
-    width: 79px;
-
+  height: 34px;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 100%;
+  transform: translate(-50%, -50%);
+  width: 79px;
 }
-.buttonContainer>img{
+.buttonContainer > img {
   width: 100%;
   height: 100%;
-  object-fit:fill;
+  object-fit: fill;
 }
 
 .buttonContainer button {
   /* Additional styles for the button if needed */
   position: relative; /* Ensure z-index works */
   z-index: 1;
-  
+
   font-weight: var(--fs-bold);
   /* font-size: var(--fs-4); */
 }
-.loadStories{
+.loadStories {
   padding: 10px 15px;
   border-radius: 10px;
   border: none;
-  background-color: #FF7373;
+  background-color: #ff7373;
   color: #fff;
   font-weight: var(--fs-bold);
   font-size: inherit;
   cursor: pointer;
 }
-.StoryCardContainer{
+.StoryCardContainer {
   width: 100%;
   justify-content: space-between;
   flex-wrap: wrap;
   flex-grow: 1;
 }
-.storyCard{
+.storyCard {
   /* width: 100%; */
   min-width: 20vw;
   cursor: pointer;
   margin: 0;
- 
 }
-.StoryCardContainer{
+.StoryCardContainer {
   text-wrap: wrap;
   word-break: break-all;
-
 }
-
 
 @media (min-width: 0px) {
   /* CSS rules */
-  .StoriesCardContainer{
-      
-     font-size: var(--fs-7);
-     
-  }
-  .loadStories{
+  .StoriesCardContainer {
     font-size: var(--fs-7);
   }
-  .StoryCardContainer{
+  .loadStories {
+    font-size: var(--fs-7);
+  }
+  .StoryCardContainer {
     flex-wrap: wrap;
     justify-content: flex-start;
-
   }
-  .storyCard{
+  .storyCard {
     min-width: 100%;
     min-height: 70vh;
-    
-
   }
- .storyContent{
-  font-size: var(--fs-7);
- }
+  .storyContent {
+    font-size: var(--fs-7);
+  }
 }
 @media (max-width: 426px) {
   /* CSS rules */
- 
-  .StoryCardContainer{
-    padding: 2rem;
 
+  .StoryCardContainer {
+    padding: 2rem;
   }
-  .buttonContainer{
+  .buttonContainer {
     top: 95%;
   }
-  
- 
 }
-  /* Small devices (landscape phones, 576px and up) */
-  @media (min-width: 426px) {
-    /* CSS rules */
-    .StoriesCardContainer{
-      font-size: var(--fs-6);
-      
-   }
-   .loadStories{
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 426px) {
+  /* CSS rules */
+  .StoriesCardContainer {
+    font-size: var(--fs-6);
+  }
+  .loadStories {
     font-size: var(--fs-7);
   }
-  .storyCard{
-    min-width: 40%;  
+  .storyCard {
+    min-width: 40%;
     min-height: 70vh;
-
-
   }
+}
+@media (min-width: 576px) {
+  /* CSS rules */
+  .StoriesCardContainer {
+    font-size: var(--fs-6);
   }
-  @media (min-width: 576px) {
-    /* CSS rules */
-    .StoriesCardContainer{
-      font-size: var(--fs-6);
-      
-   }
-   .loadStories{
+  .loadStories {
     font-size: var(--fs-7);
   }
-  .storyCard{
-    min-width: 20%;  
+  .storyCard {
+    min-width: 20%;
     min-height: 50vh;
   }
-  }
-  
-  /* Medium devices (tablets, 768px and up) */
-  @media (min-width: 768px) {
-     
-    /* CSS rules */
-    .StoriesCardContainer{
-      font-size: var(--fs-7);
-      
-   }
-    .StoriesCardContainer{
-      
-    flex-wrap: wrap;
+}
 
-      
-   }
-   .storyCard{
-    min-width: 20%;  
-    min-height: 60vh;
-    font-size: var(--fs-6);
-
-  }
-
-  }
-  
-  /* Large devices (desktops, 992px and up) */
-  @media (min-width: 992px) {
-    /* CSS rules */
-    .StoriesCardContainer{
-      
-    flex-wrap: wrap;
-
-      
-   }
- 
-   .loadStories{
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  /* CSS rules */
+  .StoriesCardContainer {
     font-size: var(--fs-7);
   }
+  .StoriesCardContainer {
+    flex-wrap: wrap;
   }
-  
-  /* Extra large devices (large desktops, 1200px and up) */
-  @media (min-width: 1200px) {
-      /* CSS rules */
-      .StoriesCardContainer{
-      
-        font-size: var(--fs-5);
-        
-     }
-     .loadStories{
-      font-size: var(--fs-6);
-    }
+  .storyCard {
+    min-width: 20%;
+    min-height: 60vh;
+    font-size: var(--fs-6);
   }
-  
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* CSS rules */
+  .StoriesCardContainer {
+    flex-wrap: wrap;
+  }
+
+  .loadStories {
+    font-size: var(--fs-7);
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* CSS rules */
+  .StoriesCardContainer {
+    font-size: var(--fs-5);
+  }
+  .loadStories {
+    font-size: var(--fs-6);
+  }
+}

@@ -1,632 +1,540 @@
 .Overlay {
-    z-index: 100;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.9),
-    rgba(0, 0, 0, 0.9));
-  }
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+}
 
+.modalContainer {
+  width: 60%;
+  height: 80%;
+  display: flex;
+  background: none;
+  gap: 2rem;
+}
 
-  .modalContainer{
-    width: 60%;
-    height: 80%;
-    display: flex;
-    background: none;
-    gap: 2rem;
-  }
+.previousStoryContainer {
+  min-width: 10%;
+  height: 100%;
 
-
-
-  .previousStoryContainer{
-    min-width: 10%;
-    height: 100%;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* background-color: ; */
-    
-  }
-  .previousStoryContainer>button{
-    color: #ffff;
-    font-weight: var(--fs-bold);
-    background: none;
-    border: none;
-  font-size: 3rem;
-  cursor: pointer;
-    
-  }
-  .nextStoryContainer>button{
-    color: #ffff;
-    font-weight: var(--fs-bold);
-    background: none;
-    border: none;
-  font-size: 3rem;
-  cursor: pointer;
-    
-  }
-  .nextStoryContainer{
-
-    min-width: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    height: 100%;
-   
-  }
-  
-  .storyContainer{
-    flex: 1; /* Take up remaining space */
-    justify-content: center;
-    align-items: center;
-    /* min-width: 20%; */
-    display: flex;
-    position: relative;
-
-    
-  }
-  .postContainer{
-    width: 60%;
-        height: 100%;
-   border-radius: 10px;
-   position: relative;
-    box-shadow: 0px 4px 12px rgba(234, 232, 232, 0.9); /* Add this line for shadow */
-  }
-    .postContainer img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* This ensures the image covers the entire container without stretching */
-        border-radius: 10px;
-      }
- 
-  .storyNavigationContainer{
-   position: absolute;
-   color: #ffff;
-   font-weight: var(--fs-bold);
-   font-size: var(--fs-4);
-   display: flex;
-   flex-direction: column;
-   gap: 10px;
-   top: 0;
-   width: 100%;
-   padding: 0 5px;
-   margin-top: 1rem;
-
-
-
-  }
-  .storyContentContainer{
-   position: absolute;
-   color: #ffff;
-   font-weight: var(--fs-bold);
-   font-size: var(--fs-5);
-   bottom: 5px;
-   display: flex;
-   flex-direction: column;
-   gap: 5px;
-    padding: 5px 5px;
-    width: 100%;
-
-  }
-
-  .bookmarkContainer{
-    height: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-  }
-  .bookmarkContainer>img{
-    height: 100%;
-    width: 100%;
-    object-fit:contain;
-
-
-  }
- .shareContainer{
-    display: flex;
-    height: 2rem;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 100%;
- }
- .shareContainer>img{
-   height: 100%;
-   width: 100%;
-   object-fit: contain;
-   margin: 0;
-   padding: 0;
-   width: fit-content;
-   padding: 4px;
-   cursor: pointer;
- }
- .storyContent{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
- }
-
-
-
-
- .likeIcon {
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .liked {
-    transform: scale(1.2); /* Makes the heart slightly bigger when liked */
-  }
-  
-  .liked img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(100deg) brightness(100%) contrast(100%);
-  }
-
-.bookmarkContainer>img{
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    width: fit-content;
-
+  /* background-color: ; */
 }
-.copyLinkToClipboardContainer{
-    background-color: #D9D9D9;
+.previousStoryContainer > button {
+  color: #ffff;
+  font-weight: var(--fs-bold);
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+}
+.nextStoryContainer > button {
+  color: #ffff;
+  font-weight: var(--fs-bold);
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+}
+.nextStoryContainer {
+  min-width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.storyContainer {
+  flex: 1; /* Take up remaining space */
+  justify-content: center;
+  align-items: center;
+  /* min-width: 20%; */
+  display: flex;
+  position: relative;
+}
+.postContainer {
+  width: 60%;
+  height: 100%;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0px 4px 12px rgba(234, 232, 232, 0.9); /* Add this line for shadow */
+}
+.postContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the image covers the entire container without stretching */
+  border-radius: 10px;
+}
+
+.storyNavigationContainer {
+  position: absolute;
+  color: #ffff;
+  font-weight: var(--fs-bold);
+  font-size: var(--fs-4);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  top: 0;
+  width: 100%;
+  padding: 0 5px;
+  margin-top: 1rem;
+}
+.storyContentContainer {
+  position: absolute;
+  color: #ffff;
+  font-weight: var(--fs-bold);
+  font-size: var(--fs-5);
+  bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 5px;
+  width: 100%;
+}
+
+.bookmarkContainer {
+  height: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.bookmarkContainer > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.shareContainer {
+  display: flex;
+  height: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 100%;
+}
+.shareContainer > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  padding: 4px;
+  cursor: pointer;
+}
+.storyContent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.likeIcon {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.liked {
+  transform: scale(1.2); /* Makes the heart slightly bigger when liked */
+}
+
+.liked img {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(100deg)
+    brightness(100%) contrast(100%);
+}
+
+.bookmarkContainer > img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  width: fit-content;
+}
+.copyLinkToClipboardContainer {
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: none;
+  font-weight: 700;
+  font-size: var(--fs-5);
+  color: #ff0000;
+  position: relative;
+  /* top: 40%; */
+  z-index: 20;
+  /* background-color: #fff; */
+}
+.likeContainer {
+  margin-right: 5px;
+  display: flex;
+}
+
+.statusContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  padding: 0 5px;
+}
+
+.statusBar {
+  flex: 1;
+  height: 10px; /* Adjust height as needed */
+  background-color: #d9d9d980; /* Background color of the status bar */
+  position: relative;
+  height: 4px;
+}
+
+.timer {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* width: 0%; */
+  background-color: #ffff; /* Color of the timer line */
+  animation: timer 3s linear forwards;
+}
+
+.postContainer {
+  z-index: 0;
+}
+.postContainer > img {
+  z-index: 10;
+}
+.postContainer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  z-index: 1;
+  border-radius: 10px;
+}
+.postContainer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.postContainer::before {
+  top: 0;
+  z-index: 1;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
+}
+
+.postContainer::after {
+  bottom: 0;
+  z-index: 1;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+}
+
+.storyNavigationContainer {
+  position: absolute;
+  z-index: 3;
+}
+.storyContentContainer {
+  position: absolute;
+  z-index: 3;
+  word-wrap: break-word;
+  text-wrap: wrap;
+}
+.imageContainer {
+  /* position: absolute; */
+  z-index: 3;
+}
+
+.postContainer {
+  background-color: #ffff;
+  z-index: 1;
+}
+.likeContainer {
+  align-items: center;
+  gap: 5px;
+}
+@media (min-width: 0px) {
+  /* CSS rules */
+  .StoriesCardContainer {
+    font-size: var(--fs-7);
+  }
+  .loadStories {
+    font-size: var(--fs-7);
+  }
+  .StoryCardContainer {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .storyCard {
+    min-width: 100%;
+    min-height: 70vh;
+  }
+  .postContainer {
+    /* max-width: 70%; */
+    width: 100%;
+  }
+  .storyNavigationContainer {
+    margin-top: 1rem;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  .storyContentContainer {
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+    font-size: var(--fs-5);
+    gap: 1rem;
+  }
+  .bookmarkContainer > img {
+    height: 1rem;
+  }
+  .likeContainer > img {
+    height: 1rem;
+  }
+  .storyNavigationContainer > div > img {
+    height: 1.5rem;
+    /* width: 5rem; */
+  }
+  .modalContainer {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  .previousStoryContainerButton {
+    display: block;
+    position: absolute;
+    height: 70%;
+    background: none;
+    z-index: 10;
+    top: 15%;
+    width: 50%;
+  }
+
+  .nextStoryContainerButton {
+    display: block;
+    position: absolute;
+    height: 70%;
+    background: none;
+    top: 15%;
+    z-index: 11;
+    right: 0;
+    width: 50%;
+  }
+  .previousStoryContainer {
+    display: none;
+    /* position: absolute; */
+  }
+  .nextStoryContainer {
+    display: none;
+  }
+
+  .postContainer {
+    height: 100%;
+    width: 100%;
+  }
+  .storyContainer {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (max-width: 426px) {
+  /* CSS rules */
+
+  .StoryCardContainer {
+    padding: 2rem;
+  }
+  .modalContainer {
+    height: 100%;
+    width: 100%;
+  }
+  .postContainer {
+    height: 100%;
+    width: 100%;
+  }
+
+  .copyLinkToClipboardContainer {
+    background-color: #d9d9d9;
     border-radius: 10px;
     padding: 10px 20px;
     border: none;
     font-weight: 700;
     font-size: var(--fs-5);
-    color: #FF0000;
-    position: relative;
-    /* top: 40%; */
+    color: #ff0000;
+    position: absolute;
+    top: -500%;
+    right: 0;
+    left: 0;
     z-index: 20;
     /* background-color: #fff; */
-}
-.likeContainer{
-    margin-right: 5px;
- display: flex;
-}
-
-
-
-.statusContainer {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
-    padding:0 5px;
-    
-   
   }
-  
-  .statusBar{
-   
-    flex: 1;
-    height: 10px; /* Adjust height as needed */
-    background-color: #D9D9D980; /* Background color of the status bar */
-    position: relative;
-    height: 4px;
-    
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 426px) {
+  .modalContainer {
+    height: 80%;
+    width: 50%;
   }
-  
-  .timer {
-    position: relative;
-    top: 0;
-    left: 0;
+  .postContainer {
     height: 100%;
-    /* width: 0%; */
-    background-color: #ffff; /* Color of the timer line */
-    animation: timer 3s linear forwards; 
+    width: 100%;
   }
-  
-  /* @keyframes timer {
-    from {
-      width: 0%;
-    }
-    to {
-      width: 100%;
-    }
+  .nextStoryContainerButton {
+    display: none;
   }
-   */
-  /* .postContainer{
-    /* background-color: #fff; */
-  /* }
-   .postContainer>img::before,
-   .postContainer::after {
-     content: "";
-     position: absolute;
-     left: 0;
-     right: 0;
-     height: 70%; 
-     z-index: 1;
-     border-radius: 10px;
-   }
-   
-   */
-   .postContainer{
-    z-index: 0;
-   }
-   .postContainer>img{
-    z-index: 10;
-   }
-   .postContainer::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 50%; 
-    z-index: 1;
-    border-radius: 10px;
+  .previousStoryContainerButton {
+    display: none;
   }
-   .postContainer::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 50%; 
-    z-index: 1;
-    border-radius: 10px;
-  }
-  
-    .postContainer::before {
-     top: 0;
-     z-index: 1;
-     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1),transparent);
-   }
-    
-   .postContainer::after {
-     bottom: 0;
-     z-index: 1;
-     background-image: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
-   } 
 
-   
-.storyNavigationContainer{
-    position: absolute;
-    z-index: 3;
+  .nextStoryContainer {
+    display: block;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  .previousStoryContainer {
+    display: block;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  .modalContainer {
+    width: 80%;
+  }
 }
-.storyContentContainer{
-    position: absolute;
-    z-index: 3;
+@media (min-width: 576px) {
+  /* CSS rules */
+  .modalContainer {
+    width: 60%;
+    height: 70%;
+  }
+  .StoriesCardContainer {
+    font-size: var(--fs-6);
+  }
+  .loadStories {
+    font-size: var(--fs-7);
+  }
+  .storyCard {
+    min-width: 20%;
+    min-height: 50vh;
+  }
+
+  .postContainer {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .postContainer {
+    /* max-width: 70%; */
+    width: 80%;
+  }
+  .storyNavigationContainer {
+    margin-top: 1rem;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  .storyContentContainer {
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+    font-size: var(--fs-6);
+    gap: 1rem;
+  }
+  .bookmarkContainer > img {
+    height: 1rem;
+  }
+  .likeContainer > img {
+    height: 1rem;
+  }
+  .storyNavigationContainer > div > img {
+    height: 1.5rem;
+    /* width: 5rem; */
+  }
+  .modalContainer {
+    height: 70%;
+    width: 50%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* CSS rules */
+  .postContainer {
+    /* max-width: 70%; */
+    width: 70%;
+  }
+  .storyNavigationContainer {
+    margin-top: 1rem;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  .storyContentContainer {
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+    font-size: var(--fs-6);
     word-wrap: break-word;
     text-wrap: wrap;
-}
-.imageContainer{
-    /* position: absolute; */
-    z-index: 3;
-}
-
-
-   .postContainer{
-    background-color: #ffff;
-    z-index: 1;
-   }
-   .likeContainer{
-    align-items: center;
-    gap: 5px;
-   }
-@media (min-width: 0px) {
-    /* CSS rules */
-    .StoriesCardContainer{
-        
-       font-size: var(--fs-7);
-       
-    }
-    .loadStories{
-      font-size: var(--fs-7);
-    }
-    .StoryCardContainer{
-      flex-wrap: wrap;
-      justify-content: flex-start;
-  
-    }
-    .storyCard{
-      min-width: 100%;
-      min-height: 70vh;
-  
-    }
-    .postContainer{
-        /* max-width: 70%; */
-        width: 100%;
-      }
-      .storyNavigationContainer{
-        margin-top: 1rem;
-        gap: 1rem;
-        padding: 0 0.5rem;
-      }
-      .storyContentContainer{
-        margin-bottom: 1rem;
-        padding: 0 0.5rem;
-        font-size: var(--fs-5);
-        gap: 1rem;
-      }
-      .bookmarkContainer>img{
-        height: 1rem;
-      }
-      .likeContainer>img{
-        height: 1rem;
-      }
-      .storyNavigationContainer>div>img{
-        height: 1.5rem;
-        /* width: 5rem; */
-      }
-      .modalContainer{
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-      }
-      .previousStoryContainerButton{
-        display: block;
-        position: absolute;
-        height: 70%;
-       background: none;
-        z-index: 10;
-        top: 15%;
-        width: 50%;
-
-      }
-      /* .nextStoryContainerButton{
-        display: block;
-        position: absolute;
-        height: 100%;
-       background: none;
-       background-color: red;
-        z-index: 11;
-        top: 0;
-        width: 50%;
-
-      } */
-      .nextStoryContainerButton{
-        display: block;
-        position: absolute;
-        height: 70%;
-       background: none;
-       top: 15%;
-        z-index: 11;
-        right: 0;
-        width: 50%;
-
-      }
-      .previousStoryContainer{
-        display: none;
-        /* position: absolute; */
-      }
-      .nextStoryContainer{
-        display: none;
-      }
-      /* .nextStoryContainer{
-        display: flex;
-        position: absolute;
-        z-index: 11;
-        justify-content: center;
-        height: 100%;
-        width: 50%;
-        top: 0;
-        right: 0;
-        height: 50%;
-
-
-      } */
-      .postContainer{
-        height: 100%;
-        width: 100%;
-      }
-      .storyContainer{
-        width: 100%;
-        height: 100%;
-      }
+    gap: 1rem;
   }
-  @media (max-width: 426px) {
-    /* CSS rules */
-   
-    .StoryCardContainer{
-      padding: 2rem;
-  
-    }
-    .modalContainer{
-        height: 100%;
-        width: 100%;
-      }
-      .postContainer{
-        height: 100%;
-        width: 100%;
-      }
-     
-      .copyLinkToClipboardContainer{
-        background-color: #D9D9D9;
-        border-radius: 10px;
-        padding: 10px 20px;
-        border: none;
-        font-weight: 700;
-        font-size: var(--fs-5);
-        color: #FF0000;
-        position: absolute;
-        top: -500%;
-        right: 0;
-        left: 0;
-        z-index: 20;
-        /* background-color: #fff; */
-    }
-   
+  .bookmarkContainer > img {
+    height: 1.5rem;
   }
-    /* Small devices (landscape phones, 576px and up) */
-    @media (min-width: 426px) {
-        .modalContainer{
-            height: 80%;
-            width: 50%;
-            
-          }
-          .postContainer{
-            height: 100%;
-            width: 100%;
-          }
-          .nextStoryContainerButton{
-            display: none;
-          }
-          .previousStoryContainerButton{
-            display: none;
-          }
-        
-          .nextStoryContainer{
-            display: block;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-          }
-          .previousStoryContainer{
-            display: block;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-          }
-          .modalContainer{
-            width: 80%;
-          }
-    }
-    @media (min-width: 576px) {
-      /* CSS rules */
-      .modalContainer{
-        width: 60%;
-        height: 70%;
-      }
-      .StoriesCardContainer{
-        font-size: var(--fs-6);
-        
-     }
-     .loadStories{
-      font-size: var(--fs-7);
-    }
-    .storyCard{
-      min-width: 20%;  
-      min-height: 50vh;
-    }
-   
-      .postContainer{
-        height: 100%;
-        width: 100%;
-      }
-    
-    }
-    
-    /* Medium devices (tablets, 768px and up) */
-    @media (min-width: 768px) {
-       
-        .postContainer{
-            /* max-width: 70%; */
-            width: 80%;
-          }
-          .storyNavigationContainer{
-            margin-top: 1rem;
-            gap: 1rem;
-            padding: 0 0.5rem;
-          }
-          .storyContentContainer{
-            margin-bottom: 1rem;
-            padding: 0 0.5rem;
-            font-size: var(--fs-6);
-            gap: 1rem;
-          }
-          .bookmarkContainer>img{
-            height: 1rem;
-          }
-          .likeContainer>img{
-            height: 1rem;
-          }
-          .storyNavigationContainer>div>img{
-            height: 1.5rem;
-            /* width: 5rem; */
-          }
-          .modalContainer{
-            height: 70%;
-            width: 50%;
-          }
-          
-    }
-    
-    /* Large devices (desktops, 992px and up) */
-    @media (min-width: 992px) {
-      /* CSS rules */
-      .postContainer{
-        /* max-width: 70%; */
-        width: 70%;
-      }
-      .storyNavigationContainer{
-        margin-top: 1rem;
-        gap: 1rem;
-        padding: 0 0.5rem;
-      }
-      .storyContentContainer{
-        margin-bottom: 1rem;
-        padding: 0 0.5rem;
-        font-size: var(--fs-6);
-        word-wrap: break-word;
-        text-wrap: wrap;
-        gap: 1rem;
-      }
-      .bookmarkContainer>img{
-        height: 1.5rem;
-      }
-      .likeContainer>img{
-        height: 1.5rem;
-      }
-      .storyNavigationContainer>div>img{
-        height: 2rem;
-        /* width: 5rem; */
-      }
-      .modalContainer{
-        height: 70%;
-        width: 60%;
-      }
-      
-    }
-    
-    /* Extra large devices (large desktops, 1200px and up) */
-    @media (min-width: 1200px) {
-        /* CSS rules */
-        .StoriesCardContainer{
-        
-          font-size: var(--fs-5);
-          
-       }
-       .loadStories{
-        font-size: var(--fs-4);
-      }
-      .postContainer{
-        /* max-width: 70%; */
-        width: 50%;
-      }
-      .storyNavigationContainer{
-        margin-top: 1rem;
-        gap: 1rem;
-        padding: 0 0.5rem;
-      }
-      .storyContentContainer{
-        margin-bottom: 1rem;
-        padding: 0 0.5rem;
-        font-size: var(--fs-7);
-        gap: 1rem;
-      }
-      .bookmarkContainer>img{
-        height: 1.5rem;
-      }
-      .likeContainer>img{
-        height: 1.5rem;
-      }
-      .storyNavigationContainer>div>img{
-        height: 2rem;
-        /* width: 5rem; */
-      }
-      .modalContainer{
-        height: 80%;
-        width: 60%;
-      }
-      
-    }
-    
+  .likeContainer > img {
+    height: 1.5rem;
+  }
+  .storyNavigationContainer > div > img {
+    height: 2rem;
+    /* width: 5rem; */
+  }
+  .modalContainer {
+    height: 70%;
+    width: 60%;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* CSS rules */
+  .StoriesCardContainer {
+    font-size: var(--fs-5);
+  }
+  .loadStories {
+    font-size: var(--fs-4);
+  }
+  .postContainer {
+    /* max-width: 70%; */
+    width: 50%;
+  }
+  .storyNavigationContainer {
+    margin-top: 1rem;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  .storyContentContainer {
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+    font-size: var(--fs-7);
+    gap: 1rem;
+  }
+  .bookmarkContainer > img {
+    height: 1.5rem;
+  }
+  .likeContainer > img {
+    height: 1.5rem;
+  }
+  .storyNavigationContainer > div > img {
+    height: 2rem;
+    /* width: 5rem; */
+  }
+  .modalContainer {
+    height: 80%;
+    width: 60%;
+  }
+}

@@ -1,106 +1,147 @@
-.Sign_button{
-    padding: 10px 15px;
-border-radius: 15px;
-border: none;
-color: #ffff;
-background-color: #73ABFF;
-cursor: pointer;
-        font-size: var(--fs-5);
-        font-weight: var(--font-bold);
+.Sign_button {
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  color: #ffff;
+  background-color: #73abff;
+  cursor: pointer;
+  font-size: var(--fs-5);
+  font-weight: var(--font-bold);
 }
-.Sign_in_button{
+.Sign_in_button {
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  color: #ffff;
+  background-color: #73abff;
+  cursor: pointer;
+  font-size: var(--fs-5);
+  font-weight: var(--font-bold);
+}
+.Overlay {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+}
+.signInContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  gap: 2rem;
+}
+.heading {
+  font-size: var(--fs-3);
+  font-weight: var(--font-bold);
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+}
+.inputValueContainer {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  font-weight: var(--font-bold);
+  font-size: var(--fs-4);
+  align-items: center;
+  justify-content: space-between;
+}
+.input {
+  border: 1px solid #000000;
+  width: 100%;
+  padding: 5px 10px;
+  display: flex;
+}
+.input > input {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+.input > input::placeholder {
+  color: #8e8e8e;
+  font-weight: 500;
+  font-size: var(--fs-5);
+}
+.input > input::selection {
+}
+
+.errorContainer {
+  color: #ff0e0e;
+  font-size: var(--fs-5);
+  font-weight: var(--font-bold);
+}
+.declineImageContainer {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.Sign_in_button_small_device {
+  display: none;
+}
+.Sign_button {
+  display: block;
+}
+.Sign_in_button {
+  color: #000000;
+  font-weight: var(--font-bold);
+  font-size: var(--fs-5);
+}
+
+.modalContainer {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 20px;
+  outline: none;
+  padding: 1rem 0.5rem;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  /* width: 80%; */
+}
+@media (max-width: 768px) {
+  .Sign_in_button_small_device {
+    display: block;
     padding: 10px 15px;
     border-radius: 15px;
     border: none;
     color: #ffff;
-    background-color: #73ABFF;
+    background-color: #ff7373;
     cursor: pointer;
-            font-size: var(--fs-5);
-            font-weight: var(--font-bold);
-            
-}
-.Overlay {
-    position: fixed;
-    z-index: 50;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8),
-                       rgba(0, 0, 0, 0.8))
+    font-size: var(--fs-5);
+    font-weight: var(--font-bold);
+    width: 40%;
   }
-.signInContainer{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 1rem 2rem;
-    gap: 2rem;
-}
-.heading{
-    font-size: var(--fs-3);
-    font-weight: var(--font-bold);
-}
-.inputContainer{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 2rem;
-}
-.inputValueContainer{
-    display: flex;
-    gap: 1rem;
-    width: 100%;
-    font-weight: var(--font-bold);
-    font-size: var(--fs-4);
-    align-items: center;
-    justify-content: space-between;
-}
-.input{
-    border: 1px solid #000000;
-    width: 100%;
-    padding: 5px 10px;
-    display: flex;
-}
-.input>input{
-    outline:none;
-    border: none;
-    width: 100%;
-}
-.input>input::placeholder{
-   color: #8E8E8E;
-   font-weight: 500;
-   font-size: var(--fs-5);
-}
-.input>input::selection{
-  
-}
-
-.errorContainer{
-    color: #FF0E0E;
-    font-size: var(--fs-5);
-    font-weight: var(--font-bold);
-}
-.declineImageContainer{
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-}
-
-.Sign_in_button_small_device{
+  .Sign_button {
     display: none;
-
+  }
+  .Sign_button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
-.Sign_button{
-    display: block;
-
+@media (min-width: 0px) {
+  .Sign_in_button_small_device {
+    width: 100%;
+  }
 }
-.Sign_in_button{
-    color:#000000;
-    font-weight: var(--font-bold);
-    font-size: var(--fs-5);
+@media (min-width: 375px) {
+  .Sign_in_button_small_device {
+    width: 50%;
+  }
 }
-
-.modalContainer{
+@media (max-width: 426px) {
+  .modalContainer {
     position: absolute;
     inset: 50% auto auto 50%;
     border: 1px solid rgb(204, 204, 204);
@@ -108,84 +149,22 @@ cursor: pointer;
     overflow: auto;
     border-radius: 20px;
     outline: none;
-   padding: 1rem 0.5rem;
+    padding: 1rem 0.5rem;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    /* width: 80%; */
-}
-@media (max-width: 768px) {
-    .Sign_in_button_small_device{
-        display: block;
-        padding: 10px 15px;
-        border-radius: 15px;
-        border: none;
-        color: #ffff;
-        background-color:#FF7373;
-        cursor: pointer;
-        font-size: var(--fs-5);
-        font-weight: var(--font-bold);
-        width: 40%;
-
-    }
-    .Sign_button{
-        display: none;
-
-    }
-    .Sign_button_container{
-        display: flex;
-        justify-content:center;
-        align-items: center;
-    }
-
-}
-@media (min-width: 0px) {
-    .Sign_in_button_small_device{
-        
-        width: 100%;
-
-    }
-    
-
-}
-@media (min-width: 375px) {
-    .Sign_in_button_small_device{
-        
-        width: 50%;
-
-    }
-    
-
-}
-@media (max-width: 426px) {
-    .modalContainer{
-        position: absolute;
-        inset: 50% auto auto 50%;
-        border: 1px solid rgb(204, 204, 204);
-        background: rgb(255, 255, 255);
-        overflow: auto;
-        border-radius: 20px;
-        outline: none;
-       padding: 1rem 0.5rem;
-        margin-right: -50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-    }
-    .inputContainer>div{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .input{
-        padding: 0.7rem;
-    }
-    
-
+    width: 80%;
+  }
+  .inputContainer > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .input {
+    padding: 0.7rem;
+  }
 }
 @media (min-width: 1200px) {
-  
-    
-    .Sign_button{
-       font-size: var(--fs-6);
-
-    }
+  .Sign_button {
+    font-size: var(--fs-6);
+  }
 }

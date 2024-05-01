@@ -4,7 +4,6 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 axios.defaults.withCredentials = true;
 
 export const getCurrentUser = async () => {
@@ -17,10 +16,9 @@ export const getCurrentUser = async () => {
       withCredentials: true,
     };
     const res = await axios(options);
-    
+
     return res?.data;
   } catch (error) {
-   
     console.log(error);
     // throw error;
   }
@@ -55,13 +53,12 @@ export const registerUser = async (formValue) => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
-      toast.error( "User Registration Failed", {
+      toast.error("User Registration Failed", {
         position: "top-center",
       });
     }
-    
+
     console.log(error);
-   
   }
 };
 export const signInUser = async (formValue) => {
@@ -94,12 +91,12 @@ export const signInUser = async (formValue) => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
-      toast.error( "User login Failed", {
+      toast.error("User login Failed", {
         position: "top-center",
       });
     }
 
-   console.log(error);
+    console.log(error);
   }
 };
 export const logoutUser = async () => {
@@ -115,8 +112,6 @@ export const logoutUser = async () => {
     console.log(res.cookies);
     return res ? res?.data : null;
   } catch (error) {
-   
-
     console.log(error);
     if (error.response) {
       // The server responded with a status other than 2xx
@@ -132,7 +127,7 @@ export const logoutUser = async () => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
-      toast.error( "Something went wrong", {
+      toast.error("Something went wrong", {
         position: "top-center",
       });
     }
@@ -153,7 +148,7 @@ export const postStories = async (validPosts) => {
   } catch (error) {
     console.log(error);
     // throw error.response;
-    
+
     if (error.response) {
       // The server responded with a status other than 2xx
       console.log("Response data:", error.response.data);
@@ -168,7 +163,7 @@ export const postStories = async (validPosts) => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
-      toast.error( "Something went wrong", {
+      toast.error("Something went wrong", {
         position: "top-center",
       });
     }
@@ -189,7 +184,7 @@ export const updateStories = async ({ validPosts, id }) => {
   } catch (error) {
     console.log(error);
     // throw error.response;
-   
+
     if (error.response) {
       // The server responded with a status other than 2xx
       console.log("Response data:", error.response.data);
@@ -204,12 +199,10 @@ export const updateStories = async ({ validPosts, id }) => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
-      toast.error( "Something went wrong", {
+      toast.error("Something went wrong", {
         position: "top-center",
       });
     }
-
-    
   }
 };
 export const getStories = async () => {
@@ -227,7 +220,6 @@ export const getStories = async () => {
   } catch (error) {
     console.log(error);
     // throw error.response;
-
   }
 };
 export const getUserCreatedStory = async () => {
@@ -272,7 +264,6 @@ export const getNextStories = async (
   } catch (error) {
     console.log(error);
     // throw error.response;
-    
   }
 };
 export const getNextBookmarkedStory = async (postIndex, postIndexLimit) => {
@@ -298,7 +289,7 @@ export const getNextBookmarkedStory = async (postIndex, postIndexLimit) => {
 };
 export const getNextUserCreatedStory = async (
   userCreatedPostIndex,
-  UserCreatedPostIndexLimit,
+  UserCreatedPostIndexLimit
 ) => {
   try {
     let options = {
@@ -309,7 +300,7 @@ export const getNextUserCreatedStory = async (
       withCredentials: true,
       params: {
         userCreatedPostIndex: userCreatedPostIndex,
-        UserCreatedPostIndexLimit:UserCreatedPostIndexLimit,
+        UserCreatedPostIndexLimit: UserCreatedPostIndexLimit,
       },
     };
 
@@ -369,7 +360,7 @@ export const likeStory = async ({ id }) => {
     return res?.data;
   } catch (error) {
     console.log(error);
-   
+
     if (error.response) {
       // The server responded with a status other than 2xx
       console.log("Response data:", error.response.data);
@@ -384,7 +375,7 @@ export const likeStory = async ({ id }) => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
-      toast.error( "Something went wrong", {
+      toast.error("Something went wrong", {
         position: "top-center",
       });
     }
@@ -420,7 +411,7 @@ export const saveStory = async ({ id }) => {
     } else {
       // Something happened in setting up the request that triggered an Error
       console.error("Error:", error.message);
-      toast.error( "Something went wrong", {
+      toast.error("Something went wrong", {
         position: "top-center",
       });
     }

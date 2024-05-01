@@ -7,15 +7,20 @@ import { usePostsContext } from "../../context/PostContext";
 import { useUserContext } from "../../context/AuthContext";
 
 const StorySection = () => {
-  const { fetchPosts, categoriesPosts, posts, userCreatedposts,isPageReloadRequired } =
-    usePostsContext(); // Using the fetchPosts function from PostsContext
-    const {user,isAuthenticated}=useUserContext()
+  const {
+    fetchPosts,
+    categoriesPosts,
+    posts,
+    userCreatedposts,
+    isPageReloadRequired,
+  } = usePostsContext(); // Using the fetchPosts function from PostsContext
+  const { user, isAuthenticated } = useUserContext();
   useEffect(() => {
     // Fetch posts when the component mounts
     (async () => {
       await fetchPosts();
     })();
-  }, [categoriesPosts,isPageReloadRequired,user,isAuthenticated]); // Dependency array to prevent unnecessary fetches
+  }, [categoriesPosts, isPageReloadRequired, user, isAuthenticated]); // Dependency array to prevent unnecessary fetches
   console.log(user);
   return (
     <div className={style.StorySectionContainer}>

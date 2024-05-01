@@ -1,61 +1,53 @@
-.StoryCategoryContainer{
-    margin-top: 3rem;
-    /* padding: 3rem; */
-    gap: 2rem;
-    display: flex;
-    flex-direction: column;
-   align-items: center;
-   font-weight: var(--font-bold);
-   font-size: var(--fs-6);
-   
+.StoryCategoryContainer {
+  margin-top: 3rem;
+  /* padding: 3rem; */
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: var(--font-bold);
+  font-size: var(--fs-6);
 }
 
- 
 @media (min-width: 0px) {
-    /* CSS rules */
-    .StoryCategoryContainer{
-        margin-top: 2rem;
-        gap: 2rem;
-       font-size: var(--fs-6);
-       
-    }
+  /* CSS rules */
+  .StoryCategoryContainer {
+    margin-top: 2rem;
+    gap: 2rem;
+    font-size: var(--fs-6);
   }
-    /* Small devices (landscape phones, 576px and up) */
-    @media (min-width: 576px) {
-      /* CSS rules */
-      .StoryCategoryContainer{
-        margin-top: 2rem;
-        gap: 2rem;
-       font-size: var(--fs-6);
-       
-    }
-    }
-    
-    /* Medium devices (tablets, 768px and up) */
-    @media (min-width: 768px) {
-       
-      /* CSS rules */
-    }
-    
-    /* Large devices (desktops, 992px and up) */
-    @media (min-width: 992px) {
-      /* CSS rules */
-      .StoryCategoryContainer{
-        margin-top: 2rem;
-        gap: 2rem;
-       font-size: var(--fs-5);
-       
-    }
-    }
-    
-    /* Extra large devices (large desktops, 1200px and up) */
-    @media (min-width: 1200px) {
-        /* CSS rules */
-        .StoryCategoryContainer{
-            margin-top: 2rem;
-            gap: 2rem;
-           font-size: var(--fs-5);
-           
-        }
-    }
-    
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  /* CSS rules */
+  .StoryCategoryContainer {
+    margin-top: 2rem;
+    gap: 2rem;
+    font-size: var(--fs-6);
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  /* CSS rules */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* CSS rules */
+  .StoryCategoryContainer {
+    margin-top: 2rem;
+    gap: 2rem;
+    font-size: var(--fs-5);
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* CSS rules */
+  .StoryCategoryContainer {
+    margin-top: 2rem;
+    gap: 2rem;
+    font-size: var(--fs-5);
+  }
+}

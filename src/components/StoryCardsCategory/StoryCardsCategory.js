@@ -17,22 +17,20 @@ const StoryCardsCategory = ({ stories: posts, Categorie }) => {
     fetchNextUserCreatedPosts,
     fetchNextbookmarkedPosts,
     userBookmarkedPosts,
-    categoriesPosts
+    categoriesPosts,
   } = usePostsContext();
 
   const [displayedPosts, setDisplayedPosts] = useState(4); // Number of stories to display initially
   const [displayedStory, setDisplayedStory] = useState(""); // Number of stories to display initially
   console.log(posts);
-    console.log(displayedPosts);
-    console.log(displayedPosts < posts.length);
-    useEffect(()=>{
-setDisplayedPosts(4)
-    },[categoriesPosts])
+  console.log(displayedPosts);
+  console.log(displayedPosts < posts.length);
+  useEffect(() => {
+    setDisplayedPosts(4);
+  }, [categoriesPosts]);
   const handleSeeMore = async () => {
-    
     setDisplayedPosts((prev) => prev + 4);
-    
-    
+
     const category = Categorie.name;
 
     if (Categorie == "userCreatedPosts") {
@@ -48,7 +46,6 @@ setDisplayedPosts(4)
       const postIndexLimit = posts.length + 4;
       await fetchNextbookmarkedPosts(postIndex, postIndexLimit);
     } else {
-      
       const postIndex = posts.length;
       const postIndexLimit = posts.length + 4;
       console.log(displayedPosts);
@@ -56,15 +53,6 @@ setDisplayedPosts(4)
       // console.log(posts);
       await fetchNextPosts(user.id, postIndex, postIndexLimit, category); // Increase the number of stories to display by 4
     }
-    // if (userCreatedposts) {
-    //   const userCreatedPostIndex = userCreatedposts.length;
-    //   const UserCreatedPostIndexLimit = postIndex + 4;
-    //   await fetchNextUserCreatedPosts({
-    //     userCreatedPostIndex,
-    //     UserCreatedPostIndexLimit,
-    //   });
-    // } else {
-    // }
   };
   const isAuthor = (postId) => {
     return isAuthenticated && user.id === postId;
@@ -138,13 +126,6 @@ setDisplayedPosts(4)
           </div>
 
           <div>
-            {/* { (
-              <>
-                <button className={style.loadStories} onClick={handleSeeMore}>
-                  See More
-                </button>
-              </>
-            )} */}
             {displayedPosts < posts.length && (
               <>
                 <button className={style.loadStories} onClick={handleSeeMore}>

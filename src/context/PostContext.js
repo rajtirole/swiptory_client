@@ -1,4 +1,4 @@
-  import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getStories,
@@ -6,7 +6,7 @@ import {
   getUserCreatedStory,
   getNextUserCreatedStory,
   getNextBookmarkedStory,
-  getUserBookmarkedStory
+  getUserBookmarkedStory,
 } from "../api/api";
 import { useUserContext } from "./AuthContext";
 
@@ -21,14 +21,14 @@ export const INITIAL_POST = {
 };
 
 const INITIAL_STATE = {
-  isPageReloadRequired:false,
+  isPageReloadRequired: false,
   posts: [],
   currentStory: [],
-  userCreatedposts:[],
-  userBookmarkedPosts:[],
+  userCreatedposts: [],
+  userBookmarkedPosts: [],
   isLoading: false,
-  setIsLoading:()=>{},
-  categoriesPosts:'',
+  setIsLoading: () => {},
+  categoriesPosts: "",
   setPosts: () => {},
   setCategoriesPosts: () => {},
   setisPageReloadRequired: () => {},
@@ -52,7 +52,6 @@ export function PostsProvider({ children }) {
   const [isPageReloadRequired, setisPageReloadRequired] = useState(false);
   const [categoriesPosts, setCategoriesPosts] = useState(null);
 
-
   const fetchPosts = async (userId = null) => {
     setIsLoading(true);
     try {
@@ -60,10 +59,7 @@ export function PostsProvider({ children }) {
       const response = await getStories();
       await fetchUserCreatedPosts();
       if (response?.data) {
-        setPosts({...response?.data});
-        // setPosts({
-        //   userCreatedposts
-        // });
+        setPosts({ ...response?.data });
         return true;
       }
     } catch (error) {
@@ -76,7 +72,7 @@ export function PostsProvider({ children }) {
     setIsLoading(true);
     try {
       const response = await getUserCreatedStory();
-     
+
       if (response?.success) {
         setuserCreatedposts(response.data);
         return true;
@@ -91,7 +87,7 @@ export function PostsProvider({ children }) {
     setIsLoading(true);
     try {
       const response = await getUserBookmarkedStory();
-     
+
       if (response?.success) {
         setUserBookmarkedPosts(response.data);
         return true;
@@ -124,7 +120,6 @@ export function PostsProvider({ children }) {
         });
         return true;
       }
-
     } catch (error) {
       console.error(error);
     } finally {
@@ -138,7 +133,10 @@ export function PostsProvider({ children }) {
     setIsLoading(true);
     try {
       // Fetch posts from your backend or database
-      const response = await getNextUserCreatedStory(userCreatedPostIndex ,UserCreatedPostIndexLimit);
+      const response = await getNextUserCreatedStory(
+        userCreatedPostIndex,
+        UserCreatedPostIndexLimit
+      );
       if (response?.data) {
         setuserCreatedposts([...userCreatedposts, ...response.data]);
         return true;
@@ -149,14 +147,11 @@ export function PostsProvider({ children }) {
       setIsLoading(false);
     }
   };
-  const fetchNextbookmarkedPosts = async (
-    postIndex,
-    postIndexLimit
-  ) => {
+  const fetchNextbookmarkedPosts = async (postIndex, postIndexLimit) => {
     setIsLoading(true);
     try {
       // Fetch posts from your backend or database
-      const response = await getNextBookmarkedStory(postIndex ,postIndexLimit);
+      const response = await getNextBookmarkedStory(postIndex, postIndexLimit);
       if (response?.data) {
         setUserBookmarkedPosts([...userBookmarkedPosts, ...response.data]);
         return true;
@@ -169,9 +164,9 @@ export function PostsProvider({ children }) {
   };
 
   useEffect(() => {
-    (async()=>{
+    (async () => {
       await fetchPosts();
-    })()
+    })();
   }, []);
 
   const value = {
@@ -193,8 +188,7 @@ export function PostsProvider({ children }) {
     categoriesPosts,
     setCategoriesPosts,
     setisPageReloadRequired,
-    isPageReloadRequired
-    
+    isPageReloadRequired,
   };
 
   return (

@@ -1,6 +1,6 @@
 .Overlay {
-    position: fixed;
-    z-index: 50;
+  position: fixed;
+  z-index: 50;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,50 +9,47 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-  .menu_button{
-    padding: 10px 15px;
-border-radius: 15px;
-border: none;
-position: relative;
-cursor: pointer;
-font-weight: var(--font-bold);
-height: min-content;
-width: min-content;
-
-       
 }
-.profile_container{
-    /* height: 100%;
+.menu_button {
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  font-weight: var(--font-bold);
+  height: min-content;
+  width: min-content;
+}
+.profile_container {
+  /* height: 100%;
     width: 100%; */
-    display: flex;
-    flex-direction: column;
-    gap:1rem;
-    justify-content: space-around;
-    align-items: center;
-  
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-around;
+  align-items: center;
 }
-.profile_container>div>button{
-    padding: 10px 15px;
-    border-radius: 15px;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    color:#ffff;
-    background-color: var(--primary-color);
+.profile_container > div > button {
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  color: #ffff;
+  background-color: var(--primary-color);
 }
-.modalContainer{
-    position: absolute;
-    inset: 15% 40px 40px 80%;
-    border: 1px solid rgb(204, 204, 204);
-    background: rgb(255, 255, 255);
-    overflow: auto;
-    border-radius: 8px;
-    outline: none;
-    padding: 20px;
-    height: fit-content;
-    width: fit-content;
-    transform: translateX(-50%);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
-    right: 0;
+.modalContainer {
+  position: absolute;
+  inset: 15% 40px 40px 80%;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 8px;
+  outline: none;
+  padding: 20px;
+  height: fit-content;
+  width: fit-content;
+  transform: translateX(-50%);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+  right: 0;
 }

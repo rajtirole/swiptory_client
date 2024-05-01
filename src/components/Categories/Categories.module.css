@@ -1,8 +1,7 @@
-.carousel_item{
-    display: flex;
-    gap: 3rem;
-    width: 100%;
-    overflow-x:scroll;
-    overflow-y:hidden;
-    /* padding: 3rem 3rem 0 3rem; */
+.carousel_item {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }

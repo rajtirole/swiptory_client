@@ -5,7 +5,7 @@ import declineIcon from "../../../assets/Vector (9).png";
 import { postSchema } from "../../../lib/zod/userValidation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { postStories,updateStories } from "../../../api/api";
+import { postStories, updateStories } from "../../../api/api";
 import { usePostsContext } from "../../../context/PostContext";
 export const SlideCard = ({
   formCurrent,
@@ -107,7 +107,11 @@ export const SlideCard = ({
               defaultValue={"Select Category"}
               onChange={handleCategoryChange}
             >
-              <option disabled value={"Select Category"} name={"Select Category"}>
+              <option
+                disabled
+                value={"Select Category"}
+                name={"Select Category"}
+              >
                 Select Category
               </option>
               {StoryCreationCategory.map((e) => {
@@ -124,9 +128,16 @@ export const SlideCard = ({
     </>
   );
 };
-function FormModal({EditmModal,closeModal}) {
+function FormModal({ EditmModal, closeModal }) {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const {currentStory,setCurrentStory,isLoading,setIsLoading,setisPageReloadRequired,isPageReloadRequired}=usePostsContext()
+  const {
+    currentStory,
+    setCurrentStory,
+    isLoading,
+    setIsLoading,
+    setisPageReloadRequired,
+    isPageReloadRequired,
+  } = usePostsContext();
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -144,7 +155,6 @@ function FormModal({EditmModal,closeModal}) {
     }))
   );
 
-
   useEffect(() => {
     if (EditmModal && currentStory) {
       let formss = forms.map((e, i) => {
@@ -156,59 +166,48 @@ function FormModal({EditmModal,closeModal}) {
       setforms([...formss]);
     }
   }, [EditmModal, currentStory]);
-  // if(EditmModal){
-  //   console.log(currentStory);
-  //   let formss = forms.map((e, i) => {
-  //     if(i<currentStory.stories.length){
-  //       return currentStory.stories[i]}
-  //       return e
-  //   });
-  //   console.log(formss);
-  //   // setforms([...formss]);
-    
-  // }
+ 
 
-  const submitHandler =async () => {
+  const submitHandler = async () => {
     const validPosts = forms.slice(0, slides);
-    
+
     try {
       const parsedPosts = postSchema.parse(validPosts);
-      if(parsedPosts){
-        setIsLoading(true)
-          try {
-            
-            let postResponse;
-            if(EditmModal){
-              postResponse = await updateStories({validPosts,id:currentStory._id});
-              if(postResponse.success){
-                closeModal()
-                toast.success(postResponse?.message || "Updated post succesfully", {
+      if (parsedPosts) {
+        setIsLoading(true);
+        try {
+          let postResponse;
+          if (EditmModal) {
+            postResponse = await updateStories({
+              validPosts,
+              id: currentStory._id,
+            });
+            if (postResponse.success) {
+              closeModal();
+              toast.success(
+                postResponse?.message || "Updated post succesfully",
+                {
                   position: "top-center",
-                });
-              }
-             
+                }
+              );
             }
-            else{
+          } else {
             postResponse = await postStories(validPosts);
-            if(postResponse.success){
-              closeModal()
-            toast.success(postResponse?.message || "Post Created", {
-              position: "top-center",
-            });
+            if (postResponse.success) {
+              closeModal();
+              toast.success(postResponse?.message || "Post Created", {
+                position: "top-center",
+              });
             }
-            
-
-            }
-            
+          }
         } catch (error) {
-            console.log(error); 
-            toast.error(error?.data?.message || "something went wrong", {
-              position: "top-center",
-            });
-            
+          console.log(error);
+          toast.error(error?.data?.message || "something went wrong", {
+            position: "top-center",
+          });
         }
-        setisPageReloadRequired(!isPageReloadRequired)
-        setIsLoading(false)
+        setisPageReloadRequired(!isPageReloadRequired);
+        setIsLoading(false);
       }
     } catch (error) {
       setValidationError({
@@ -229,23 +228,20 @@ function FormModal({EditmModal,closeModal}) {
   };
   const addSlideHandler = () => {
     slides < 6 && setSlides((prev) => prev + 1);
-    setFromCurrent(slides);// make slide index
+    setFromCurrent(slides); // make slide index
     setSelectedSlide(slides);
   };
   const declineChangeHandler = (i) => {
-   
     let formsValue = forms.map((e, index) => {
-      if(index===i){
+      if (index === i) {
         return {
           heading: "",
           description: "",
           image: "",
           category: "",
-        }
-        
+        };
       }
-      return e
-      
+      return e;
     });
     const newArray = [
       ...forms.slice(0, i),
@@ -255,15 +251,14 @@ function FormModal({EditmModal,closeModal}) {
         description: "",
         image: "",
         category: "",
-      }
+      },
     ];
-   
-    setforms([...newArray]);
-    setFromCurrent(i-1)
-    setSlides(slides-1)
 
+    setforms([...newArray]);
+    setFromCurrent(i - 1);
+    setSlides(slides - 1);
   };
-  const [selectedSlide,setSelectedSlide]=useState(null)
+  const [selectedSlide, setSelectedSlide] = useState(null);
 
   return (
     <>
@@ -272,68 +267,78 @@ function FormModal({EditmModal,closeModal}) {
         <h3 className={style.smallDeviceHeading}>Add story to feed</h3>
         <div className={style.smallDeviceContainer}>
           <div className={style.smallDeviceSlideContainer}>
-              
-          <p>Add upto 6 slides</p>
-          <div className={style.SlideButtonContainer}>
-  {Array.from({ length: slides }, (_, i) => (
-    <div className={`${style.slide}`} style={(selectedSlide === i || (selectedSlide === null && i === 0)) ? { border: '2px solid #73ABFF' } : {}}>
-      <button
-        key={i}
-        onClick={() => {
-          setFromCurrent(i);
-          setSelectedSlide(i);
-        }}
-      >
-        Slide {i + 1}
-      </button>
-      {i > 2 && (
-        <img
-          src={declineIcon}
-          onClick={() => {
-            declineChangeHandler(i);
-          }}
-        />
-      )}
-    </div>
-  ))}
-  <div>
-    {slides < 6 && <button onClick={addSlideHandler}>Add +</button>}
-  </div>
-</div>
-
-
+            <p>Add upto 6 slides</p>
+            <div className={style.SlideButtonContainer}>
+              {Array.from({ length: slides }, (_, i) => (
+                <div
+                  className={`${style.slide}`}
+                  style={
+                    selectedSlide === i || (selectedSlide === null && i === 0)
+                      ? { border: "2px solid #73ABFF" }
+                      : {}
+                  }
+                >
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setFromCurrent(i);
+                      setSelectedSlide(i);
+                    }}
+                  >
+                    Slide {i + 1}
+                  </button>
+                  {i > 2 && (
+                    <img
+                      src={declineIcon}
+                      onClick={() => {
+                        declineChangeHandler(i);
+                      }}
+                    />
+                  )}
+                </div>
+              ))}
+              <div>
+                {slides < 6 && <button onClick={addSlideHandler}>Add +</button>}
+              </div>
+            </div>
           </div>
           <div className={style.smallDeviceInputContainer}>
-          {
-            <SlideCard
-              form={forms}
-              setform={setforms}
-              formCurrent={formCurrent}
-              validationError={validationError}
-              setValidationError={setValidationError}
-              selectedCategory={selectedCategory}
-              onCategoryChange={handleCategoryChange}
-            />
-          }
+            {
+              <SlideCard
+                form={forms}
+                setform={setforms}
+                formCurrent={formCurrent}
+                validationError={validationError}
+                setValidationError={setValidationError}
+                selectedCategory={selectedCategory}
+                onCategoryChange={handleCategoryChange}
+              />
+            }
           </div>
         </div>
-       
+
         <div className={style.smallDeviceNavigationContainer}>
-        <button className={style.postButton} onClick={submitHandler}>
-              Post
-            </button>
+          <button className={style.postButton} onClick={submitHandler}>
+            Post
+          </button>
         </div>
 
         <div className={style.slideContainer}>
           <p>Add upto 6 slides</p>
           <div className={style.SlideButtonContainer}>
             {Array.from({ length: slides }, (_, i) => (
-              <div style={(selectedSlide === i || (selectedSlide === null && i === 0)) ? { border: '2px solid #73ABFF' } : {}}>
+              <div
+                style={
+                  selectedSlide === i || (selectedSlide === null && i === 0)
+                    ? { border: "2px solid #73ABFF" }
+                    : {}
+                }
+              >
                 <button
                   key={i}
                   onClick={() => {
                     setFromCurrent(i);
-                    setSelectedSlide(i)
+                    setSelectedSlide(i);
                   }}
                 >
                   Slide {i + 1}

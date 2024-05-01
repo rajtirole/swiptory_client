@@ -1,56 +1,43 @@
-/* .Container{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-} */
 
-.StorySectionContainer{
-    padding: 1rem 3rem;
-
-    }
+.StorySectionContainer {
+  padding: 1rem 3rem;
+}
 /* Extra small devices (phones, 0px and up) */
-  
+
 @media (min-width: 0px) {
   /* CSS rules */
-  .StorySectionContainer{
-      padding: 1rem 0.5rem;
-
-      }
+  .StorySectionContainer {
+    padding: 1rem 0.5rem;
+  }
 }
-  /* Small devices (landscape phones, 576px and up) */
-  @media (min-width: 576px) {
-    /* CSS rules */
-    .StorySectionContainer{
-        padding: 1rem 1rem;
-  
-        }
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  /* CSS rules */
+  .StorySectionContainer {
+    padding: 1rem 1rem;
   }
-  
-  /* Medium devices (tablets, 768px and up) */
-  @media (min-width: 768px) {
-    .StorySectionContainer{
-        padding: 1rem 2rem;
-  
-        }
-    /* CSS rules */
-  }
-  
-  /* Large devices (desktops, 992px and up) */
-  @media (min-width: 992px) {
-    /* CSS rules */
-    .StorySectionContainer{
-        padding: 1rem 2rem;
+}
 
-  
-        }
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .StorySectionContainer {
+    padding: 1rem 2rem;
   }
-  
-  /* Extra large devices (large desktops, 1200px and up) */
-  @media (min-width: 1200px) {
-      /* CSS rules */
-      .StorySectionContainer{
-      padding: 1rem 3rem;
+  /* CSS rules */
+}
 
-      }
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* CSS rules */
+  .StorySectionContainer {
+    padding: 1rem 2rem;
   }
-  
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* CSS rules */
+  .StorySectionContainer {
+    padding: 1rem 3rem;
+  }
+}

@@ -26,12 +26,11 @@ Modal.setAppElement("#root");
 export const Sign_up_modal = () => {
   const [validationError, setValidationError] = useState(null);
   const [passwordValue, setPasswordValue] = useState("password");
-  const {isPageReloadRequired,setisPageReloadRequired}=usePostsContext()
- 
+  const { isPageReloadRequired, setisPageReloadRequired } = usePostsContext();
+
   const submitHandler = async (e) => {
     const result = userSchema.safeParse(formValue);
     if (result.success) {
-      
       try {
         // Proceed with form submission
         let userValue = await registerUser(formValue);
@@ -49,9 +48,8 @@ export const Sign_up_modal = () => {
       // Handle validation errors
       setValidationError(result.error.formErrors.fieldErrors);
     }
-    setisPageReloadRequired(true)
+    setisPageReloadRequired(true);
     // setisPageReloadRequired(!isPageReloadRequired)
-
   };
 
   const changeHandelr = async (e) => {
