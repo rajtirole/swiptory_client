@@ -24,7 +24,7 @@
   }
 .RegisterButton{
     background-color: var(--secondary-color);
-    padding: 5px 10px;
+    padding: 10px 15px;
     border-radius: 15px;
         border: none;
         color: #000000;
@@ -139,4 +139,16 @@
     }
     
 
+}
+@media (min-width: 1200px) {
+    .Sign_up_button_small_device{
+        
+        width: 50%;
+
+    }
+    
+    .Sign_up_button{
+       font-size: var(--fs-6);
+
+    }
 }

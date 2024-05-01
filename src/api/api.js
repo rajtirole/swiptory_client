@@ -4,6 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 axios.defaults.withCredentials = true;
 
 export const getCurrentUser = async () => {
@@ -16,14 +17,10 @@ export const getCurrentUser = async () => {
       withCredentials: true,
     };
     const res = await axios(options);
-    res?.data?.data?.success&&toast.success(res?.data?.data?.message || "success", {
-      position: "top-center",
-    });
+    
     return res?.data;
   } catch (error) {
-    toast.error(error?.data?.message || "something went wrong", {
-      position: "top-center",
-    });
+   
     console.log(error);
     // throw error;
   }
@@ -44,7 +41,24 @@ export const registerUser = async (formValue) => {
     const res = await axios(options);
     return res?.data;
   } catch (error) {
-    throw error.response;
+    if (error.response) {
+      // The server responded with a status other than 2xx
+      console.log("Response data:", error.response.data);
+      toast.error(error.response.data.message || "User Registration Failed", {
+        position: "top-center",
+      });
+      console.log("Status code:", error.response.status);
+      console.log("Status text:", error.response.statusText);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("Request error:", error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error("Error:", error.message);
+    }
+    
+    console.log(error);
+   
   }
 };
 export const signInUser = async (formValue) => {
@@ -63,7 +77,23 @@ export const signInUser = async (formValue) => {
     const res = await axios(options);
     return res?.data?.success;
   } catch (error) {
-    throw error.response;
+    if (error.response) {
+      // The server responded with a status other than 2xx
+      console.log("Response data:", error.response.data);
+      toast.error(error.response.data.message || "User Registration Failed", {
+        position: "top-center",
+      });
+      console.log("Status code:", error.response.status);
+      console.log("Status text:", error.response.statusText);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("Request error:", error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error("Error:", error.message);
+    }
+
+   console.log(error);
   }
 };
 export const logoutUser = async () => {
@@ -79,7 +109,10 @@ export const logoutUser = async () => {
     console.log(res.cookies);
     return res ? res?.data : null;
   } catch (error) {
-    throw error.response;
+    toast.error(error?.data?.message || "Logout Failed", {
+      position: "top-center",
+    });
+    console.log(error);
   }
 };
 export const postStories = async (validPosts) => {
@@ -96,7 +129,10 @@ export const postStories = async (validPosts) => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    // throw error.response;
+    toast.error(error?.data?.message || "Unable to create post", {
+      position: "top-center",
+    });
   }
 };
 export const updateStories = async ({ validPosts, id }) => {
@@ -113,7 +149,10 @@ export const updateStories = async ({ validPosts, id }) => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    // throw error.response;
+    toast.error(error?.data?.message || "Unable to update post", {
+      position: "top-center",
+    });
   }
 };
 export const getStories = async () => {
@@ -130,7 +169,8 @@ export const getStories = async () => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    // throw error.response;
+
   }
 };
 export const getUserCreatedStory = async () => {
@@ -146,7 +186,7 @@ export const getUserCreatedStory = async () => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    // throw error.response;
   }
 };
 
@@ -174,7 +214,8 @@ export const getNextStories = async (
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    // throw error.response;
+    
   }
 };
 export const getNextBookmarkedStory = async (postIndex, postIndexLimit) => {
@@ -195,7 +236,7 @@ export const getNextBookmarkedStory = async (postIndex, postIndexLimit) => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    // throw error.response;
   }
 };
 export const getNextUserCreatedStory = async (
@@ -219,7 +260,7 @@ export const getNextUserCreatedStory = async (
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    // throw error.response;
   }
 };
 
@@ -237,7 +278,7 @@ export const getStory = async ({ id }) => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    // throw error.response;
   }
 };
 export const getUserBookmarkedStory = async () => {
@@ -254,7 +295,7 @@ export const getUserBookmarkedStory = async () => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    // throw error.response;
   }
 };
 export const likeStory = async ({ id }) => {
@@ -271,7 +312,10 @@ export const likeStory = async ({ id }) => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    toast.error(error?.data?.message || "Unable to Like", {
+      position: "top-center",
+    });
+    // throw error.response;
   }
 };
 export const saveStory = async ({ id }) => {
@@ -289,6 +333,21 @@ export const saveStory = async ({ id }) => {
     return res?.data;
   } catch (error) {
     console.log(error);
-    throw error.response;
+    if (error.response) {
+      // The server responded with a status other than 2xx
+      console.log("Response data:", error.response.data);
+      toast.error(error.response.data.message || "Bookmarks adding Failed", {
+        position: "top-center",
+      });
+      console.log("Status code:", error.response.status);
+      console.log("Status text:", error.response.statusText);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("Request error:", error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error("Error:", error.message);
+    }
+    // throw error.response;
   }
 };

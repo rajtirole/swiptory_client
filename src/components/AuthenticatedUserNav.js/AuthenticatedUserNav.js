@@ -10,11 +10,13 @@ import {logoutUser} from '../../api/api'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserContext,INITIAL_USER } from "../../context/AuthContext";
+import { usePostsContext } from "../../context/PostContext";
 
 const AuthenticatedUserNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const {isAuthenticated,user,setUser,setIsAuthenticated,}=useUserContext()
+  const {isPageReloadRequired,setisPageReloadRequired}=usePostsContext()
   const handleBookmarkClick = () => {
     navigate("/bookmarks");
   };
@@ -22,6 +24,7 @@ const AuthenticatedUserNav = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const logoutHandler=async()=>{
+    
     try {
       let logoutUservalue = await logoutUser();
       if(logoutUservalue?.success){
@@ -38,9 +41,18 @@ const AuthenticatedUserNav = () => {
      console.log(error);
      
     }
+    if(!isPageReloadRequired){
+      setisPageReloadRequired(true)
+    }
+    else{
+      setisPageReloadRequired(false)
+      setisPageReloadRequired(true)
+    }
    }
    const yourStoryHandler=()=>{
+    setisPageReloadRequired(!isPageReloadRequired)
     navigate('/userCreatedStory')
+    setisPageReloadRequired(!isPageReloadRequired)
    }
   return (
     <>

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import StoryCardsCategory from "../StoryCardsCategory/StoryCardsCategory";
 import { usePostsContext } from "../../context/PostContext";
 import {getNextBookmarked} from '../../api/api'
-const StoryCategory = ({ Categorie ,stories=[]}) => {
+const  StoryCategory = ({ Categorie ,stories=[]}) => {
   // const {userCreatedposts,fetchNextUserCreatedPosts}=usePostsContext()
 // useEffect(()=>{
 //  (async()=>{await fetchNextUserCreatedPosts()})()

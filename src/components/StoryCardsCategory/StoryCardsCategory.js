@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useUserContext } from "../../context/AuthContext";
 import { usePostsContext } from "../../context/PostContext";
 import style from "./StoryCardsCategory.module.css";
@@ -17,18 +17,27 @@ const StoryCardsCategory = ({ stories: posts, Categorie }) => {
     fetchNextUserCreatedPosts,
     fetchNextbookmarkedPosts,
     userBookmarkedPosts,
+    categoriesPosts
   } = usePostsContext();
 
   const [displayedPosts, setDisplayedPosts] = useState(4); // Number of stories to display initially
   const [displayedStory, setDisplayedStory] = useState(""); // Number of stories to display initially
+  console.log(posts);
+    console.log(displayedPosts);
+    console.log(displayedPosts < posts.length);
+    useEffect(()=>{
+setDisplayedPosts(4)
+    },[categoriesPosts])
   const handleSeeMore = async () => {
+    
     setDisplayedPosts((prev) => prev + 4);
-    const postIndex = posts.length;
-    const postIndexLimit = postIndex + 4;
+    
+    
     const category = Categorie.name;
 
     if (Categorie == "userCreatedPosts") {
       const userCreatedPostIndex = posts.length;
+      // const UserCreatedPostIndexLimit = posts.length + 4;
       const UserCreatedPostIndexLimit = userCreatedPostIndex + 4;
       await fetchNextUserCreatedPosts(
         userCreatedPostIndex,
@@ -36,13 +45,15 @@ const StoryCardsCategory = ({ stories: posts, Categorie }) => {
       );
     } else if (Categorie == "bookmarkedPosts") {
       const postIndex = posts.length;
-      const postIndexLimit = postIndex + 4;
+      const postIndexLimit = posts.length + 4;
       await fetchNextbookmarkedPosts(postIndex, postIndexLimit);
     } else {
-      console.log(posts);
-      console.log(displayedPosts);
+      
       const postIndex = posts.length;
-      const postIndexLimit = postIndex + 4;
+      const postIndexLimit = posts.length + 4;
+      console.log(displayedPosts);
+      console.log(displayedPosts < posts.length);
+      // console.log(posts);
       await fetchNextPosts(user.id, postIndex, postIndexLimit, category); // Increase the number of stories to display by 4
     }
     // if (userCreatedposts) {
@@ -92,9 +103,9 @@ const StoryCardsCategory = ({ stories: posts, Categorie }) => {
                   >
                     <img
                       src={post?.stories?.[0].image}
-                      onError={(e) => {
-                        e.target.src = foodImage;
-                      }}
+                      // onError={(e) => {
+                      //   e.target.src = foodImage;
+                      // }}
                       alt={post?.stories[0].heading}
                       className="story-image"
                     />
@@ -127,6 +138,13 @@ const StoryCardsCategory = ({ stories: posts, Categorie }) => {
           </div>
 
           <div>
+            {/* { (
+              <>
+                <button className={style.loadStories} onClick={handleSeeMore}>
+                  See More
+                </button>
+              </>
+            )} */}
             {displayedPosts < posts.length && (
               <>
                 <button className={style.loadStories} onClick={handleSeeMore}>

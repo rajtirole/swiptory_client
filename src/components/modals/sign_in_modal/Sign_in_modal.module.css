@@ -94,6 +94,11 @@ cursor: pointer;
     display: block;
 
 }
+.Sign_in_button{
+    color:#000000;
+    font-weight: var(--font-bold);
+    font-size: var(--fs-5);
+}
 
 .modalContainer{
     position: absolute;
@@ -175,4 +180,12 @@ cursor: pointer;
     }
     
 
+}
+@media (min-width: 1200px) {
+  
+    
+    .Sign_button{
+       font-size: var(--fs-6);
+
+    }
 }

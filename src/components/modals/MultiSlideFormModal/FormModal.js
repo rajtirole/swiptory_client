@@ -126,8 +126,7 @@ export const SlideCard = ({
 };
 function FormModal({EditmModal,closeModal}) {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const {currentStory,setCurrentStory}=usePostsContext()
-  console.log(currentStory);
+  const {currentStory,setCurrentStory,isLoading,setIsLoading,setisPageReloadRequired,isPageReloadRequired}=usePostsContext()
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -171,30 +170,35 @@ function FormModal({EditmModal,closeModal}) {
 
   const submitHandler =async () => {
     const validPosts = forms.slice(0, slides);
-    console.log(forms);
-    console.log(formCurrent);
-    console.log(slides);
-    console.log(validPosts);
+    
     try {
       const parsedPosts = postSchema.parse(validPosts);
-      console.log("Valid posts:", parsedPosts);
       if(parsedPosts){
+        setIsLoading(true)
           try {
+            
             let postResponse;
             if(EditmModal){
               postResponse = await updateStories({validPosts,id:currentStory._id});
-              toast.success(postResponse?.message || "success", {
-                position: "top-center",
-              });
+              if(postResponse.success){
+                closeModal()
+                toast.success(postResponse?.message || "Updated post succesfully", {
+                  position: "top-center",
+                });
+              }
+             
             }
             else{
             postResponse = await postStories(validPosts);
-            toast.success(postResponse?.message || "success", {
+            if(postResponse.success){
+              closeModal()
+            toast.success(postResponse?.message || "Post Created", {
               position: "top-center",
             });
+            }
+            
 
             }
-            console.log(postResponse);
             
         } catch (error) {
             console.log(error); 
@@ -203,6 +207,8 @@ function FormModal({EditmModal,closeModal}) {
             });
             
         }
+        setisPageReloadRequired(!isPageReloadRequired)
+        setIsLoading(false)
       }
     } catch (error) {
       setValidationError({
@@ -223,8 +229,40 @@ function FormModal({EditmModal,closeModal}) {
   };
   const addSlideHandler = () => {
     slides < 6 && setSlides((prev) => prev + 1);
+    setFromCurrent(slides);// make slide index
+    setSelectedSlide(slides);
   };
-  const declineChangeHandler = (i) => {};
+  const declineChangeHandler = (i) => {
+   
+    let formsValue = forms.map((e, index) => {
+      if(index===i){
+        return {
+          heading: "",
+          description: "",
+          image: "",
+          category: "",
+        }
+        
+      }
+      return e
+      
+    });
+    const newArray = [
+      ...forms.slice(0, i),
+      ...forms.slice(i + 1),
+      {
+        heading: "",
+        description: "",
+        image: "",
+        category: "",
+      }
+    ];
+   
+    setforms([...newArray]);
+    setFromCurrent(i-1)
+    setSlides(slides-1)
+
+  };
   const [selectedSlide,setSelectedSlide]=useState(null)
 
   return (
@@ -238,7 +276,7 @@ function FormModal({EditmModal,closeModal}) {
           <p>Add upto 6 slides</p>
           <div className={style.SlideButtonContainer}>
   {Array.from({ length: slides }, (_, i) => (
-    <div className={`${style.slide} ${selectedSlide === i ? style.selectedSlide : ''}`}>
+    <div className={`${style.slide}`} style={(selectedSlide === i || (selectedSlide === null && i === 0)) ? { border: '2px solid #73ABFF' } : {}}>
       <button
         key={i}
         onClick={() => {
@@ -290,7 +328,7 @@ function FormModal({EditmModal,closeModal}) {
           <p>Add upto 6 slides</p>
           <div className={style.SlideButtonContainer}>
             {Array.from({ length: slides }, (_, i) => (
-              <div>
+              <div style={(selectedSlide === i || (selectedSlide === null && i === 0)) ? { border: '2px solid #73ABFF' } : {}}>
                 <button
                   key={i}
                   onClick={() => {

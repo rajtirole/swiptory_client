@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+  import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getStories,
@@ -21,14 +21,17 @@ export const INITIAL_POST = {
 };
 
 const INITIAL_STATE = {
+  isPageReloadRequired:false,
   posts: [],
   currentStory: [],
   userCreatedposts:[],
   userBookmarkedPosts:[],
   isLoading: false,
+  setIsLoading:()=>{},
   categoriesPosts:'',
   setPosts: () => {},
   setCategoriesPosts: () => {},
+  setisPageReloadRequired: () => {},
   fetchPosts: async (userId = null) => [],
   fetchUserCreatedPosts: async (userId = null) => [],
   fetchUserBookmarkedPosts: async (userId = null) => [],
@@ -46,6 +49,7 @@ export function PostsProvider({ children }) {
   const [userBookmarkedPosts, setUserBookmarkedPosts] = useState([]);
   const [currentStory, setcurrentStory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPageReloadRequired, setisPageReloadRequired] = useState(false);
   const [categoriesPosts, setCategoriesPosts] = useState(null);
 
 
@@ -176,6 +180,7 @@ export function PostsProvider({ children }) {
     setcurrentStory,
     setPosts,
     isLoading,
+    setIsLoading,
     fetchPosts,
     fetchNextPosts,
     userCreatedposts,
@@ -186,7 +191,10 @@ export function PostsProvider({ children }) {
     fetchNextbookmarkedPosts,
     fetchUserBookmarkedPosts,
     categoriesPosts,
-    setCategoriesPosts
+    setCategoriesPosts,
+    setisPageReloadRequired,
+    isPageReloadRequired
+    
   };
 
   return (

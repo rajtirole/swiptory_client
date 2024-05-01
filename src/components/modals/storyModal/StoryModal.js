@@ -15,6 +15,7 @@ import { FRONTEND_URL } from "../../../constants/apiConstant";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { likeStory, saveStory } from "../../../api/api";
+import { Sign_in_modal } from "../sign_in_modal/Sign_in_modal";
 
 const StoryModal = ({
   displayedStory,
@@ -26,17 +27,15 @@ const StoryModal = ({
 }) => {
   const { user,isAuthenticated } = useUserContext();
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+  const [likeLogin, setLikeLogin] = useState(false);
+  let modallogin=false;
 //   const [currentStory, setCurrentStory] = useState(displayedStory?.stories?.[0]);
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isCopied, setisCopied] = useState(false);
 
   const [progress, setProgress] = useState(false);
-  // setIsLiked(()=>{
-  //     const like=displayedStory?.likedBy?.includes(user.id)
-  //     console.log(like);
-  //     return like
-  // })
+ 
 
   const goToNextStory = () => {
     if (currentStoryIndex < displayedStory.stories.length - 1) {
@@ -115,6 +114,9 @@ const StoryModal = ({
     if(Categorie=='bookmarkedPosts'){
       closeModal()
     }
+    else if(Categorie=='userCreatedPosts'){
+      closeModal()
+    }
    else {
       navigate("/");
     }
@@ -153,9 +155,7 @@ const StoryModal = ({
       setIsBookmarked(savedByCurrentUser); // Update the isBookmarked state based on the response
     } catch (error) {
       console.error("Error:", error);
-      toast.error(error?.message || "Failed", {
-        position: "top-center",
-      });
+      
       // Handle errors if necessary
     }
   };
@@ -171,17 +171,26 @@ const StoryModal = ({
       const likedByCurrentUser = response.data.likedBy.includes(user.id);
       setIsLiked(likedByCurrentUser); // Update the isLiked state based on the response
     } catch (error) {
+      modallogin=true;
+      
+
       console.error("Error:", error);
        toast.error(error?.message || "Failed", {
-        position: "top-center",
-      });
+         position: "top-center",
+        });
       // Handle errors if necessary
     }
    
   }
-  else{toast.error("Please Login", {
+  else{
+    setLikeLogin(true)
+      console.log(likeLogin);
+    toast.error("Please Login", {
     position: "top-center",
-  });}
+  });
+
+    
+}
   };
 
   //   const bookmarkHandler = async() => {
@@ -353,6 +362,7 @@ useEffect(() => {
   
   
   return (
+   <>
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
@@ -379,21 +389,6 @@ useEffect(() => {
             )}
             <div className={style.storyNavigationContainer}>
                 <div className={style.statusContainer}>
-                {/* {displayedStory?.stories &&
-                displayedStory?.stories?.map((e,index) => {
-                  console.log(displayedStory);
-                  return (
-                    <>
-                      <div className={style.statusBar}>
-                        <div className={style.timer}  style={{
-                    // backgroundColor: `red`, // Adjust width calculation for two bars
-                    width: `${(currentStoryIndex === index?'100%':(progress&&(currentStoryIndex+1 === index)&&'0%'))}`, // Set width to 100% if currentStoryIndex matches the index, otherwise 0%
-        transition: `${(currentStoryIndex === index)&&'width 3s ease-in-out'}`, // Add CSS transition for smooth animation over 3 seconds
-                  }}></div>
-                      </div>
-                    </>
-                  );
-                })} */}
                 {displayedStory?.stories && displayedStory?.stories.map((story, index) => {
     return (
         <div className={style.statusBar} key={index}>
@@ -464,6 +459,10 @@ useEffect(() => {
         </div>
       </div>
     </Modal>
+
+
+
+    </>
   );
 };
 

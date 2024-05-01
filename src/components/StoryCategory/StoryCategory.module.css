@@ -6,7 +6,7 @@
     flex-direction: column;
    align-items: center;
    font-weight: var(--font-bold);
-   font-size: var(--fs-3);
+   font-size: var(--fs-6);
    
 }
 
@@ -16,7 +16,7 @@
     .StoryCategoryContainer{
         margin-top: 2rem;
         gap: 2rem;
-       font-size: var(--fs-5);
+       font-size: var(--fs-6);
        
     }
   }
@@ -26,7 +26,7 @@
       .StoryCategoryContainer{
         margin-top: 2rem;
         gap: 2rem;
-       font-size: var(--fs-4);
+       font-size: var(--fs-6);
        
     }
     }
@@ -43,7 +43,7 @@
       .StoryCategoryContainer{
         margin-top: 2rem;
         gap: 2rem;
-       font-size: var(--fs-3);
+       font-size: var(--fs-5);
        
     }
     }
@@ -54,7 +54,7 @@
         .StoryCategoryContainer{
             margin-top: 2rem;
             gap: 2rem;
-           font-size: var(--fs-3);
+           font-size: var(--fs-5);
            
         }
     }

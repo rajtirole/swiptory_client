@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {useUserContext} from '../../../context/AuthContext'
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { usePostsContext } from "../../../context/PostContext";
 const customStyles = {
     content: {
       top: '50%',
@@ -26,9 +27,12 @@ const customStyles = {
   Modal.setAppElement('#root');
 
 
-export function Sign_in_modal() {
+export function Sign_in_modal({login,modal,likeLogin,setLikeLogin}) {
+ 
+ 
     const navigate=useNavigate()
     const {setUser,user,setIsAuthenticated,checkAuthUser,isAuthenticated}=useUserContext()
+    const {isPageReloadRequired,setisPageReloadRequired}=usePostsContext()
     const [formValue, setFormValue] = React.useState({
       username: "",
       password: "",
@@ -57,8 +61,10 @@ export function Sign_in_modal() {
     password: "",})
 
   }
+ 
   const submitHandler = async (e) => {
     const result = userSchema.safeParse(formValue);
+   
     if (result.success) {
         try {
         let userValue = await signInUser(formValue);
@@ -69,7 +75,7 @@ export function Sign_in_modal() {
           }
 
           if (isLoggedIn) {
-            toast.success(userValue?.message || "success", {
+            toast.success(userValue?.message || "Login Successfully", {
               position: "top-center",
             });
             reset()      
@@ -81,6 +87,7 @@ export function Sign_in_modal() {
           setIsOpen(false)
           setIsAuthenticated(true)
           navigate('/')
+          
       } catch (error) {
         toast.error(error?.data?.message || "something went wrong", {
           position: "top-center",
@@ -90,6 +97,7 @@ export function Sign_in_modal() {
       // Handle validation errors
       setValidationError(result.error.formErrors.fieldErrors);
     }
+    setisPageReloadRequired(!isPageReloadRequired)
   };
   const changeHandelr = async (e) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
@@ -98,6 +106,7 @@ export function Sign_in_modal() {
 
   
     return (
+       <>
         <div className={style.Sign_button_container}>
         <button onClick={openModal} className={style.Sign_button}>Sign In</button>
         <button onClick={openModal} className={style.Sign_in_button_small_device}>Login</button>
@@ -176,7 +185,7 @@ export function Sign_in_modal() {
           </div>
         </div>
         </Modal>
-      </div>
+      </div></>
       
     );
   }

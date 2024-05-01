@@ -8,6 +8,7 @@ import { registerUser } from "../../../api/api";
 import declineImage from "../../../assets/Vector (9).png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { usePostsContext } from "../../../context/PostContext";
 const customStyles = {
   content: {
     top: "50%",
@@ -25,19 +26,21 @@ Modal.setAppElement("#root");
 export const Sign_up_modal = () => {
   const [validationError, setValidationError] = useState(null);
   const [passwordValue, setPasswordValue] = useState("password");
+  const {isPageReloadRequired,setisPageReloadRequired}=usePostsContext()
  
   const submitHandler = async (e) => {
     const result = userSchema.safeParse(formValue);
-
     if (result.success) {
+      
       try {
         // Proceed with form submission
         let userValue = await registerUser(formValue);
-        userValue.success &&
+        userValue?.success &&
           toast.success(userValue?.message || "success", {
             position: "top-center",
           });
       } catch (error) {
+        console.log(error);
         toast.error(error?.data?.message || "something went wrong", {
           position: "top-center",
         });
@@ -46,7 +49,11 @@ export const Sign_up_modal = () => {
       // Handle validation errors
       setValidationError(result.error.formErrors.fieldErrors);
     }
+    setisPageReloadRequired(true)
+    // setisPageReloadRequired(!isPageReloadRequired)
+
   };
+
   const changeHandelr = async (e) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
     setValidationError(false);

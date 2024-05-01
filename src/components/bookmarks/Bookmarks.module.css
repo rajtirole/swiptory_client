@@ -150,6 +150,35 @@
 
     }
 /* Extra small devices (phones, 0px and up) */
+.BookmarkContainer{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.BookmarkContainer>div{
+  
+  color: #FF7373;
+  font-size: var(--fs-4);
+  font-weight: var(--fs-bold);
+}
+.BookmarkContainer>div>button{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
+  background-color: #FF7373;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  font-weight: var(--fs-bold);
+}
+.BookmarkContainer>div>img{
+  width: 80%;
+}
   
 @media (min-width: 0px) {
   /* CSS rules */

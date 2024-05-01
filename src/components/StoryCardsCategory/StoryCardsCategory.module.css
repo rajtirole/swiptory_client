@@ -247,7 +247,7 @@
    }
  
    .loadStories{
-    font-size: var(--fs-5);
+    font-size: var(--fs-7);
   }
   }
   
@@ -260,7 +260,7 @@
         
      }
      .loadStories{
-      font-size: var(--fs-4);
+      font-size: var(--fs-6);
     }
   }
   
