@@ -329,7 +329,7 @@ export const getStory = async ({ id }) => {
     // throw error.response;
   }
   console.log(`backend url ${BACKEND_URL}/stories/getStory/${id}`);
-  console.log(`frontend url ${FRONTEND_URL}/stories/${postId}`);
+  // console.log(`frontend url ${FRONTEND_URL}/stories/${postId}`);
 };
 export const getUserBookmarkedStory = async () => {
   try {
