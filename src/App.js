@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import BookmarkPage from "./pages/BookmarkPage";
 import StoryPage from "./pages/StoryPage";
@@ -16,6 +16,7 @@ const App = () => {
   <div class="loader"></div>
 </div>
 }
+<BrowserRouter>
         <Routes>
           {/* Route to the specific story page */}
 
@@ -30,6 +31,7 @@ const App = () => {
           
           <Route path="/" element={<HomePage />} />
         </Routes>
+        </BrowserRouter>
 
       <ToastContainer />
     </main>

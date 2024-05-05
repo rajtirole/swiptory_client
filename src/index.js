@@ -15,7 +15,6 @@ root.render(
   // Wrap the entire app with React.StrictMode for additional checks and warnings
   <React.StrictMode>
     {/* Use BrowserRouter for client-side routing */}
-    <BrowserRouter>
       {/* Provide authentication context to the app */}
       <AuthProvider>
         {/* Provide posts context to the app */}
@@ -24,6 +23,5 @@ root.render(
           <App />
         </PostsProvider>
       </AuthProvider>
-    </BrowserRouter>
   </React.StrictMode>
 );
