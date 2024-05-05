@@ -315,11 +315,11 @@ export const getNextUserCreatedStory = async (
 export const getStory = async ({ id }) => {
   try {
     let options = {
-      method: "GET",
+      method: "POST",
       headers: { "content-type": "application/json" },
       url: `${BACKEND_URL}/stories/getStory/${id}`,
-      // withCookies:true,
-      // withCredentials:true,
+      withCookies:true,
+      withCredentials:true,
     };
 
     const res = await axios(options);
@@ -328,6 +328,8 @@ export const getStory = async ({ id }) => {
     console.log(error);
     // throw error.response;
   }
+  console.log(`backend url ${BACKEND_URL}/stories/getStory/${id}`);
+  console.log(`frontend url ${FRONTEND_URL}/stories/${postId}`);
 };
 export const getUserBookmarkedStory = async () => {
   try {

@@ -14,6 +14,9 @@ const StoryPage = () => {
       }
     })();
   }, []);
+  console.log('story page ');
+  console.log(displayedStory);
+  console.log(id);
   return (
     <>
       <StoryModal
