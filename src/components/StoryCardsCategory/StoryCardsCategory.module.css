@@ -158,7 +158,7 @@
   .StoryCardContainer {
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding: 1rem;
+    /* padding: 1rem; */
   }
   .storyCard {
     min-width: 100%;
@@ -171,9 +171,9 @@
 @media (min-width: 375px) {
   /* CSS rules */
 
-  .StoryCardContainer {
+  /* .StoryCardContainer {
     padding: 2rem;
-  }
+  } */
   
 }
 @media (max-width: 426px) {
