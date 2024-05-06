@@ -1,16 +1,26 @@
 import React, { useEffect } from "react";
 import StoryModal from "../components/modals/storyModal/StoryModal";
 import { getStory } from "../api/api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const StoryPage = () => {
   const [modalIsOpen, setIsOpen] = React.useState(true);
   const [displayedStory, setDisplayedStory] = React.useState("");
   const { id } = useParams();
+  const navigate=useNavigate()
   useEffect(() => {
     (async () => {
       const response = await getStory({ id });
-      if (response.success) {
+      if (response?.success) {
         setDisplayedStory(response?.data);
+      }
+      else{
+        toast.error("Please Provide Valid Link", {
+          position: "top-center",
+        });
+        navigate('/')
+
       }
     })();
   }, []);
@@ -19,12 +29,12 @@ const StoryPage = () => {
   console.log(id);
   return (
     <>
-      <StoryModal
+      {displayedStory&&<StoryModal
         modalIsOpen={modalIsOpen}
         setIsOpen={setIsOpen}
         displayedStory={displayedStory}
         setDisplayedStory={setDisplayedStory}
-      ></StoryModal>
+      ></StoryModal>}
     </>
   );
 };

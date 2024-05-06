@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import style from "./Sign_in_modal.module.css";
@@ -27,7 +27,7 @@ Modal.setAppElement("#root");
 
 export function Sign_in_modal({ login, modal, likeLogin, setLikeLogin }) {
   const navigate = useNavigate();
-  const { setUser, user, setIsAuthenticated, checkAuthUser, isAuthenticated } =
+  const { setUser, user, setIsAuthenticated,loginUserModal,setloginUserModal, checkAuthUser, isAuthenticated } =
     useUserContext();
   const { isPageReloadRequired, setisPageReloadRequired } = usePostsContext();
   const [formValue, setFormValue] = React.useState({
@@ -39,7 +39,11 @@ export function Sign_in_modal({ login, modal, likeLogin, setLikeLogin }) {
   const [passwordValue, setPasswordValue] = useState("password");
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
-
+useEffect(()=>{
+  if(loginUserModal){
+   openModal()
+  }
+},[])
   function openModal() {
     setIsOpen(true);
   }
@@ -51,6 +55,7 @@ export function Sign_in_modal({ login, modal, likeLogin, setLikeLogin }) {
 
   function closeModal() {
     setIsOpen(false);
+    setloginUserModal(false)
   }
   const reset = () => {
     setFormValue({ username: "", password: "" });
@@ -79,6 +84,8 @@ export function Sign_in_modal({ login, modal, likeLogin, setLikeLogin }) {
           return;
         }
         setIsOpen(false);
+        setloginUserModal(false)
+        
         setIsAuthenticated(true);
         navigate("/");
       } catch (error) {
@@ -100,15 +107,15 @@ export function Sign_in_modal({ login, modal, likeLogin, setLikeLogin }) {
   return (
     <>
       <div className={style.Sign_button_container}>
-        <button onClick={openModal} className={style.Sign_button}>
+        {!loginUserModal&&<button onClick={openModal} className={style.Sign_button}>
           Sign In
-        </button>
-        <button
+        </button>}
+        {!loginUserModal&&<button
           onClick={openModal}
           className={style.Sign_in_button_small_device}
         >
           Login
-        </button>
+        </button>}
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}

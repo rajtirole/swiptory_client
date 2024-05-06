@@ -14,7 +14,8 @@ const INITIAL_STATE = {
   user: INITIAL_USER,
   isLoading: false,
   isAuthenticated: false,
-  setUser: () => {},
+  loginUserModal: false,
+  setloginUserModal: () => {},
   setIsAuthenticated: () => {},
   checkAuthUser: async () => false,
 };
@@ -25,6 +26,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(INITIAL_USER);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loginUserModal, setloginUserModal] = useState(false);
 
   const checkAuthUser = async () => {
     setIsLoading(true);
@@ -61,6 +63,8 @@ export function AuthProvider({ children }) {
     isAuthenticated,
     setIsAuthenticated,
     checkAuthUser,
+    loginUserModal,
+    setloginUserModal
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

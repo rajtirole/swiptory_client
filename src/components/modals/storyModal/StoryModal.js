@@ -27,7 +27,7 @@ const StoryModal = ({
   redirect,
   Categorie,
 }) => {
-  const { user, isAuthenticated } = useUserContext();
+  const { user, isAuthenticated,setloginUserModal } = useUserContext();
   const { isPageReloadRequired, setisPageReloadRequired } = usePostsContext();
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [likeLogin, setLikeLogin] = useState(false);
@@ -161,6 +161,7 @@ const StoryModal = ({
     } catch (error) {
       closeModal();
       navigate("/");
+      setloginUserModal(true)
       console.error("Error:", error);
 
       // Handle errors if necessary
@@ -179,7 +180,7 @@ const StoryModal = ({
         setIsLiked(likedByCurrentUser); // Update the isLiked state based on the response
       } catch (error) {
         modallogin = true;
-
+        
         console.error("Error:", error);
         toast.error(error?.message || "Failed", {
           position: "top-center",
@@ -189,6 +190,9 @@ const StoryModal = ({
     } else {
       setLikeLogin(true);
       console.log(likeLogin);
+      closeModal();
+        navigate("/");
+        setloginUserModal(true)
       toast.error("Please Login", {
         position: "top-center",
       });
@@ -358,6 +362,7 @@ const StoryModal = ({
           </div>
         </div>
       </Modal>
+      
     </>
   );
 };
