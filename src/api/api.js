@@ -315,7 +315,7 @@ export const getNextUserCreatedStory = async (
 export const getStory = async ({ id }) => {
   try {
     let options = {
-      method: "POST",
+      method: "GET",
       headers: { "content-type": "application/json" },
       url: `${BACKEND_URL}/stories/getStory/${id}`,
       withCookies:true,
