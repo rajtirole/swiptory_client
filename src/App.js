@@ -31,7 +31,8 @@ const App = () => {
         {/* Route to the specific story page */}
         <Route path="/" element={<HomePage />} />
         {/* Route for 404 page */}
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/test" element={<div>test</div>} />
+          <Route path="/test/:id" element={<div>get id</div>} />
         <Route path="/stories/:id" element={<StoryPage />} />
         {/* <Route path={`${FRONTEND_URL}/userCreatedStory`} element={<UserCreatedPostsPage />} /> */}
         <Route path="/userCreatedStory" element={<UserCreatedPostsPage />} />
@@ -39,6 +40,8 @@ const App = () => {
         {/* Route to bookmark page */}
 
         <Route path="/bookmarks" element={<BookmarkPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+
 
         {/* Route to home page */}
       </Routes>
