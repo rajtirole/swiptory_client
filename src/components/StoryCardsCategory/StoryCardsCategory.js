@@ -88,14 +88,22 @@ const StoryCardsCategory = ({ stories: posts, Categorie }) => {
                       handleCardClick(post);
                     }}
                   >
-                    <img
+                    {/* <img
                       src={post?.stories?.[0]?.image}
                       // onError={(e) => {
                       //   e.target.src = foodImage;
                       // }}
                       // alt={post?.stories[0].heading}
                       className="story-image"
-                    />
+                    /> */}
+                   <div className={style.imageContainer}> <img
+                      src={post?.stories?.[0]?.image}
+                      // onError={(e) => {
+                      //   e.target.src = foodImage;
+                      // }}
+                      // alt={post?.stories[0].heading}
+                      className="story-image"
+                    /></div>
                     <div className={style.storyContent}>
                       <h3>{post?.stories?.[0].heading}</h3> 
                       <p>{post?.stories?.[0].description}</p>

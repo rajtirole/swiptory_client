@@ -4,10 +4,10 @@
   box-sizing: initial;
   cursor: pointer;
   position: relative;
-  min-height: 12rem;
-  max-height: 12rem;
-  min-width: 12rem;
-  max-width: 12rem;
+  min-height: 1rem;
+  max-height: 10rem;
+  min-width: 10rem;
+  max-width: 10rem;
   border-radius: 15px;
 }
 
@@ -116,10 +116,10 @@
     box-sizing: initial;
     cursor: pointer;
     position: relative;
-    min-height: 12rem;
-    max-height: 12rem;
-    min-width: 12rem;
-    max-width: 12rem;
+    min-height: 10rem;
+    max-height: 10rem;
+    min-width: 10rem;
+    max-width: 10rem;
     border-radius: 15px;
   }
   .CategoryCard > h2 {

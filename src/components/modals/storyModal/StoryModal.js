@@ -279,12 +279,12 @@ const StoryModal = ({
           </div>
           <div className={style.storyContainer}>
             <div className={style.postContainer}>
-              {displayedStory?.stories?.[currentStoryIndex].image && (
+             <div className={style.imageContainer}> {displayedStory?.stories?.[currentStoryIndex].image && (
                 <img
-                  className={style.imageContainer}
+                  // className={style.imageContainer}
                   src={displayedStory?.stories?.[currentStoryIndex]?.image}
                 ></img>
-              )}
+              )}</div>
               <div className={style.storyNavigationContainer}>
                 <div className={style.statusContainer}>
                   {displayedStory?.stories &&
@@ -327,9 +327,9 @@ const StoryModal = ({
                 )}
                 <div className={style.storyContent}>
                   {displayedStory?.stories?.[currentStoryIndex].heading && (
-                    <p className={style.storyHeading}>
+                    <h2 className={style.storyHeading}>
                       {displayedStory.stories[currentStoryIndex].heading}
-                    </p>
+                    </h2>
                   )}
                   {displayedStory?.stories?.[currentStoryIndex].description && (
                     <p className={style.storyDescription}>
